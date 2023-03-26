@@ -19,6 +19,7 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #003476;
+  position: sticky;
 }
 
 li {
@@ -50,4 +51,7 @@ li a:focus {
   color: #003476;
 }
 
+@media screen and (max-width: 600px) {
+  ul li {float: none;}
+}
 /*  */
