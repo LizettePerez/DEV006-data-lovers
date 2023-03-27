@@ -9,9 +9,14 @@ header {
   font-weight: bold;
 }
 
-nav img {
+img {
   width: 100%;
   height: auto;
+}
+
+nav {
+  width: 80%;
+  margin-left: 10%;
 }
 
 ul {
@@ -66,20 +71,21 @@ input[type=text] {
 input:focus {
   outline: 4px solid #006ebe;
   color: #006ebe;
-  
+
 }
 
 ::placeholder {
   color: #00b16a;
 }
 
-#search{
+#search {
   background-color: #ffcd00;
 }
 
 /* responsive */
 
 @media screen and (max-width: 600px) {
+
   ul li {
     float: none;
     padding: 10px;
@@ -106,8 +112,8 @@ body {
 }
 
 main {
- background-color: #fff;
- opacity: .4;
- text-align: center;
- margin: 10px 30px 10px 30px;
+  background-color: #fff;
+  opacity: .4;
+  text-align: center;
+  margin: 10px 30px 10px 30px;
 }
