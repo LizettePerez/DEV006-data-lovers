@@ -6,12 +6,12 @@
 
 /* NAV */
 header {
-  background-color: #003476;
+  font-weight: bold;
 }
 
 nav img {
   width: 100%;
-  height: 340px;
+  height: auto;
 }
 
 ul {
@@ -19,7 +19,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #003476;
+  background-color: #00b16a;
   position: sticky;
 }
 
@@ -33,23 +33,23 @@ li a {
   text-decoration: none;
   padding: 25px;
   color: #fff;
-  background-color: #003476;
+  background-color: #00b16a;
 }
 
 li a:hover {
-  background-color: #e2e2e4;
-  color: #003476;
+  background-color: #ffcd00;
+  color: #fff;
 }
 
 
 li a:focus {
   background: #ffcd00;
-  color: #003476;
+  color: #00b16a;
 }
 
 .active {
   background-color: #ffcd00;
-  color: #003476;
+  color: #00b16a;
 }
 
 input[type=text] {
@@ -57,9 +57,27 @@ input[type=text] {
   padding: 6px;
   margin-top: 15px;
   margin-right: 16px;
-  border: none;
+  border: solid #ffcd00;
   font-size: 17px;
+  color: #00b16a;
 }
+
+
+input:focus {
+  outline: 4px solid #006ebe;
+  color: #006ebe;
+  
+}
+
+::placeholder {
+  color: #00b16a;
+}
+
+#search{
+  background-color: #ffcd00;
+}
+
+/* responsive */
 
 @media screen and (max-width: 600px) {
   ul li {
@@ -69,11 +87,6 @@ input[type=text] {
 
   li a {
     padding: 1px;
-  }
-
-  nav img {
-    width: 100%;
-    height: auto;
   }
 
   input[type=text] {
@@ -87,3 +100,14 @@ input[type=text] {
 }
 
 /*  */
+body {
+  background-color: #00b16a;
+
+}
+
+main {
+ background-color: #fff;
+ opacity: .4;
+ text-align: center;
+ margin: 10px 30px 10px 30px;
+}
