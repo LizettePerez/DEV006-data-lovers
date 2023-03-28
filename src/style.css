@@ -15,8 +15,11 @@ img {
 }
 
 nav {
-  width: 80%;
+  width: 85%;
   margin-left: 10%;
+  font-family: 'Berlin Sans FB Demi', sans-serif;
+  text-transform: uppercase;
+  font-size: 26px;
 }
 
 ul {
@@ -24,7 +27,6 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #00b16a;
   position: sticky;
 }
 
@@ -33,44 +35,38 @@ li {
 }
 
 li a {
+  margin-bottom: 10px;
   text-align: center;
   display: block;
+  padding-left: 10px;
+  padding-right: 10px;
   text-decoration: none;
-  padding: 25px;
-  color: #fff;
-  background-color: #00b16a;
-}
-
-li a:hover {
-  background-color: #ffcd00;
   color: #fff;
 }
 
-
-li a:focus {
-  background: #ffcd00;
-  color: #00b16a;
-}
-
+li a:hover,
+li a:focus,
 .active {
-  background-color: #ffcd00;
-  color: #00b16a;
+  -webkit-text-fill-color: #ffcd00;
+  -webkit-text-stroke: 2px #006ebe;
+  text-shadow: -1px -1px 1px #006ebe, 1px 1px 1px #006ebe, -1px 1px 1px #006ebe, 1px -1px 1px #006ebe;
+  font-size: 28px;
 }
+
 
 input[type=text] {
   float: right;
   padding: 6px;
-  margin-top: 15px;
-  margin-right: 16px;
-  border: solid #ffcd00;
   font-size: 17px;
   color: #00b16a;
 }
 
 
 input:focus {
-  outline: 4px solid #006ebe;
+  outline: none;
+  border: none;
   color: #006ebe;
+  background-color: #ffcd00;
 
 }
 
@@ -79,12 +75,45 @@ input:focus {
 }
 
 #search {
-  background-color: #ffcd00;
+  background-color: #fff;
 }
 
 /* responsive */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1080px) {
+
+  input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    margin-left: 35%;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  nav {
+    font-size: 20px;
+  }
+
+  li a:hover,
+  li a:focus,
+  .active {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+
+  nav {
+    font-size: 24px;
+  }
+
+  li a:hover,
+  li a:focus,
+  .active {
+    font-size: 26px;
+  }
 
   ul li {
     float: none;
@@ -105,6 +134,7 @@ input:focus {
   }
 }
 
+
 /*  */
 body {
   background-color: #00b16a;
@@ -118,6 +148,6 @@ main {
   color: #9a9f9d;
 }
 
-h1{
+h1 {
   color: #4f6764;
 }
