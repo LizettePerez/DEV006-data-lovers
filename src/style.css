@@ -104,25 +104,11 @@ input:focus {
 }
 
 @media screen and (max-width: 670px) {
-
-  nav {
-    font-size: 24px;
-  }
-
-  li a:hover,
-  li a:focus,
-  .active {
-    font-size: 26px;
-  }
-
   ul li {
     float: none;
-    padding: 10px;
+    padding: 5px;
   }
 
-  li a {
-    padding: 1px;
-  }
 
   input[type=text] {
     float: none;
