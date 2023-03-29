@@ -101,6 +101,7 @@ input:focus {
   .active {
     font-size: 22px;
   }
+
 }
 
 @media screen and (max-width: 670px) {
@@ -132,6 +133,8 @@ main {
   text-align: center;
   margin: 10px 30px 10px 30px;
   color: #9a9f9d;
+  padding: 10px 20px;
+  border-radius: 15px;
 }
 
 h1 {
