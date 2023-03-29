@@ -137,11 +137,17 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
-  padding: 10px;
+  padding: 15px;
+}
+
+.container > * {
+  border: 1px solid black;
+  height: 300px;
 }
 
 div {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   text-align: center;
+  font-weight: bold;
 }
