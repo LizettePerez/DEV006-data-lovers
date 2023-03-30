@@ -192,3 +192,13 @@ h1 {
   padding: 15px;
 }
 
+/* Boton arriba */
+.arriba {
+  position: fixed;
+  width: 80px;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
