@@ -24,7 +24,7 @@ const typeImages = {
   steel: "./img/elementos/steel.png",
 };
 
-for (let i = 0; i < 30; i++) {
+for (let i = 0; i < 251; i++) {
   const { num, name, img, type } = data.pokemon[i];
 
   // creación card para informacion de cada pokémon
