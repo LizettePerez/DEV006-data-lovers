@@ -35,7 +35,7 @@ for (let i = 0; i < 251; i++) {
 
   pokemonCard.addEventListener("click", () => {
     // Obtiene el número de pokemon del atributo "data name" en la tarjeta pokemon seleccionada
-    const about = pokemonCard.name;
+    // const about = pokemonCard.name;
     // Crea una URL usando el nombre de pokemon obtenido y redirecciona a la nueva página
     window.location.href = `pokemon.html?name=${name}`;
   });
