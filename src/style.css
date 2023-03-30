@@ -76,7 +76,7 @@ input:focus {
   background-color: #fff;
 }
 
-/* responsive */
+responsive
 
 @media screen and (max-width: 1080px) {
   input[type="text"] {
