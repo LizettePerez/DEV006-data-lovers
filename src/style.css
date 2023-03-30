@@ -192,13 +192,3 @@ h1 {
   padding: 15px;
 }
 
-.container > * {
-  border: 1px solid black;
-  height: 300px;
-}
-
-div {
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
-}
