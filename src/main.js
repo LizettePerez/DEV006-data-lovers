@@ -13,7 +13,7 @@ const typeImages = {
   normal: "./img/elementos/normal.png",
   electric: "./img/elementos/electric.png",
   ground: "./img/elementos/ground.png",
-  fighting: "./img/elementos/fighting.png",
+  fighting: "./img/elementos/fight.png",
   psychic: "./img/elementos/psychic.png",
   rock: "./img/elementos/rock.png",
   ice: "./img/elementos/ice.png",
