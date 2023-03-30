@@ -98,7 +98,6 @@ input:focus {
   .active {
     font-size: 22px;
   }
-
 }
 
 @media screen and (max-width: 670px) {
@@ -125,6 +124,56 @@ body {
 main {
   background-color: #eaf8e3;
   text-align: center;
+  margin: 10px 15%;
+  color: #9a9f9d;
+  border-radius: 15px;
+}
+
+.pokemon-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 4fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.pokemon-card {
+  border-radius: 10px;
+  text-align: left;
+  padding: 0;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: roboto;
+  width: 200px;
+  height: 300px;
+}
+
+.pokemon-img-container {
+  position: relative;
+  background-image: url("img/fondo.png");
+  background-size: cover;
+  overflow: hidden;
+}
+
+.pokemon-card img {
+  display: block;
+  margin: auto;
+  width: 150px;
+  height: 160px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.pokemon-card img:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  animation: rotate 4s linear infinite;
+}
+
+h2 {
+  color: #4f6764;
+}
+
+.pokemon-type-img {
+  width: 25px;
+  height: 25px;
   margin: 10px 30px 10px 30px;
   color: #9a9f9d;
   padding: 10px 20px;
