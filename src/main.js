@@ -58,7 +58,7 @@ for (let i = 0; i < 30; i++) {
 
   // creación parrafo para ingresar número
   const pokemonNum = document.createElement("p");
-  pokemonNum.textContent = `#0${num}`;
+  pokemonNum.textContent = `#${num}`;
 
   // creación h2 para ingresar nombre
   const pokemonName = document.createElement("h2");
