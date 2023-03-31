@@ -189,3 +189,27 @@ h1 {
   padding: 10px;
   cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+.container-info-img {
+  position: relative;
+  background-image: url("img/fondo.png");
+  background-size: cover;
+  overflow: hidden;
+}
+
+.container-info-img img {
+  width: 200px;
+}
+
+.container-info-perfil{
+  background-color: #D9D9D9;
+  border-radius: 20px;
+}

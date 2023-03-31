@@ -54,7 +54,7 @@ for (let i = 0; i < 251; i++) {
   pokemonImgContainer.appendChild(pokemonImg);
 
   // creación h3 para mostrar los tipos de pokemon
-  const pokemonType = document.createElement("h3");
+  const pokemonType = document.createElement("div");
   pokemonType.classList.add("pokemon-type");
 
   // creación parrafo para ingresar número
@@ -166,6 +166,18 @@ function filterPokemon() {
     pokemonContainer.appendChild(pokemonArray[i]);
   }
 }
+
+
+
+
+const pokemonContainerInfo = document.querySelector("pokemon-container-info");
+
+
+
+
+
+
+
 
 
 
