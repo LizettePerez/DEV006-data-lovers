@@ -24,37 +24,70 @@
     <nav>
       <ul>
         <li><a href="./index.html" class="active">Pokédex</a></li>
-        <li><a href="#">Regiones</a></li>
-        <li><a href="#">Elementos</a></li>
-        <li><a href="#">Rareza</a></li>
-        <li><a href="#">Huevos</a></li>
-        <input type="text" id="search" placeholder="Nombre o n° de Pokémon" />
+        <li><a href="#">Regions</a></li>
+        <li><a href="#">Type</a></li>
+        <li><a href="#">Rarity</a></li>
+        <li><a href="#">Egg</a></li>
+        <input type="text" id="search" placeholder="Name or Number" />
       </ul>
     </nav>
   </header>
 
   <main>
+    <h1>Bulbasaur #001</h1>
     <div class="container-info">
-      <h1>Bulbasaur #001</h1>
+
       <div class="container-info-img">
         <img src="https://www.serebii.net/pokemongo/pokemon/001.png" alt="bulbasaur">
       </div>
-      <div class="type-info">
-        <img src="./img/elementos/grass.png" alt="grass" title="Grass" style="width: 100px; height: 100px; display: inline-block; margin-right: 5px;">
-        <img src="./img/elementos/poison.png" aldt="poison" title="Poison" style="width: 100px; height: 100px; display: inline-block; margin-right: 5px;">
-      </div>
-      <h4>Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.</h4>
-      <div class="container-info-perfil">
-        <h5>NORMAL</h5>
-        <div class="size">
-          <h6 class="height">Height</h6>
-          <h6 class="weight">Weight</h6>
+      <div class="container-info-pokemon">
+        <div class="type-info">
+          <img src="./img/elementos/grass.png" alt="grass" title="Grass"
+            style="width: 60px; height: 60px; display: inline-block; margin-right: 40px;">
+          <img src="./img/elementos/poison.png" aldt="poison" title="Poison"
+            style="width: 60px; height: 60px; display: inline-block; margin-right: 5px;">
+          <h4 class="description">Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By
+            soaking up the sun's rays, the seed grows progressively larger.</h4>
         </div>
-        <div class="size-title">
-          <h6 class="height">Height</h6>
-          <h6 class="weight">Weight</h6>
+        <div class="container-info-perfil">
+          <h5>NORMAL</h5>
+          <div class="size-title">
+            <h6>Height</h6>
+            <h6>Weight</h6>
+          </div>
+          <div class="size-info">
+            <p class="height">0.71 m</p>
+            <p class="weight">6.9 kg</p>
+          </div>
+          <div class="generation-title">
+            <h6>Generation</h6>
+            <h6>Region</h6>
+          </div>
+          <div class="generation-info">
+            <p class="num">generation i</p>
+            <p class="name">kanto</p>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="container-stats">
+      <table class="stats">
+        <tr class="stats-title">
+          <td>base attack</td>
+          <td>base defense</td>
+          <td>base stamina</td>
+          <td>max cp</td>
+          <td>max hp</td>
+        </tr>
+        <tr class="stats.info">
+          <td>198</td>
+          <td>189</td>
+          <td>190</td>
+          <td>2720</td>
+          <td>162</td>
+        </tr>
+      </table>
+    </div>
   </main>
 
   <div id="root"></div>
