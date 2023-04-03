@@ -34,6 +34,16 @@
   </header>
 
   <main>
+    <input type="text" id="search" placeholder="Name or Number" /><br>
+    <label for="filter">Sort by:</label>
+    
+    <select id="filter">
+      <option value="num-asc">Number (Low to High)</option>
+      <option value="num-desc">Number (High to Low)</option>
+      <option value="name-asc">Name (A-Z)</option>
+      <option value="name-desc">Name (Z-A)</option>
+    </select>
+
     <div class="pokemon-container">
     </div>
   </main>
