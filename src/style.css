@@ -1,47 +1,53 @@
-
-
-/* NAV */
-header {
-  font-weight: bold;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-img {
+/* NAV */
+.logo {
+  font-family: "Berlin Sans FB Demi", sans-serif;
+  text-transform: uppercase;
+  font-size: 26px;
+  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo img {
   width: 100%;
   height: auto;
 }
 
-nav {
-  width: 85%;
-  margin-left: 10%;
-  font-family: "Berlin Sans FB Demi", sans-serif;
-  text-transform: uppercase;
-  font-size: 26px;
-}
-
-ul {
-  list-style-type: none;
+.navbar {
+  list-style: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  position: sticky;
 }
 
-li {
-  float: left;
+.navbar li {
+  margin: 0 10px;
 }
 
-li a {
+.navbar a {
+  color: #fff;
+  text-decoration: none;
   margin-bottom: 10px;
   text-align: center;
-  display: block;
   padding-left: 10px;
   padding-right: 10px;
   text-decoration: none;
-  color: #fff;
 }
 
-li a:hover,
-li a:focus,
+.icon {
+  display: none;
+  cursor: pointer;
+  color: white;
+}
+
+.navbar a:hover,
+.navbar a:focus,
 .active {
   -webkit-text-fill-color: #ffcd00;
   -webkit-text-stroke: 2px #006ebe;
@@ -53,6 +59,7 @@ li a:focus,
 /*  */
 body {
   background-color: #00b16a;
+
 }
 
 main {
@@ -79,11 +86,16 @@ main {
   width: 200px;
 }
 
+
 .pokemon-img-container {
   position: relative;
   background-image: url("img/fondo.png");
   background-size: cover;
   overflow: hidden;
+}
+
+.pokemon-name {
+  text-transform: capitalize;
 }
 
 .pokemon-card img {
@@ -102,11 +114,6 @@ main {
 
 h2 {
   color: #4f6764;
-}
-
-.pokemon-type-img {
-  width: 25px;
-  height: 25px;
 }
 
 h1 {
@@ -145,7 +152,7 @@ h1 {
   overflow: hidden;
   grid-area: container-info-img;
   border-radius: 25px;
-  
+
 }
 
 .container-info-img img {
@@ -215,7 +222,7 @@ h6 {
 .stats-title {
   background-color: #00b16a;
   color: #fff;
-  height: 40px;  
+  height: 40px;
   text-transform: uppercase;
 }
 
@@ -226,4 +233,26 @@ h6 {
 td {
   border: 2px solid #4F6764;
   font-size: 25px;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) {display: none;}
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    bottom:0;
+  }
+  .navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
 }

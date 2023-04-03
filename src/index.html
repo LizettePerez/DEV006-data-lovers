@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="style.css" />
   <!-- FAVICON -->
   <link rel="icon" type="" href="img/favicon.png" />
+  <!--Libreria icono hamburger menu-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- FONT BERLIN SANS -->
   <link href="https://fonts.cdnfonts.com/css/berlin-sans-fb-demi" rel="stylesheet" />
   <!-- FONT ROBOTO -->
@@ -19,37 +21,30 @@
 </head>
 
 <body>
-  <header>
+  <header class="logo">
     <img src="img/header.png " />
-    <nav>
-      <ul>
-        <li><a href="./index.html" class="active">Pokédex</a></li>
-        <li><a href="#">Regions</a></li>
-        <li><a href="#">Type</a></li>
-        <li><a href="#">Rarity</a></li>
-        <li><a href="#">Egg</a></li>
-      </ul>
-    </nav>
+    <div class="navbar" id="myNavbar">
+        <a href="./index.html" class="active">Pokédex</a>
+        <a href="#">Regions</a>
+        <a href="#">Type</a>
+        <a href="#">Rarity</a>
+        <a href="#">Egg</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </div>
   </header>
 
   <main>
-    <input type="text" id="search" placeholder="Name or Number" /><br>
-    <label for="filter">Sort by:</label>
-    <select id="filter">
-      <option value="num-asc">Number (Low to High)</option>
-      <option value="num-desc">Number (High to Low)</option>
-      <option value="name-asc">Name (A-Z)</option>
-      <option value="name-desc">Name (Z-A)</option>
-    </select>
 
     <div class="pokemon-container">
     </div>
 
   </main>
-
-  <div id="root"></div>
   <img src="img/up.png" alt="Subir" class="arriba">
 
+  <div id="root"></div>
+  <script src="data.js" type="module"></script>
   <script src="main.js" type="module"></script>
 </body>
 
