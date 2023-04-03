@@ -24,6 +24,7 @@ const typeImages = {
   steel: "./img/elementos/steel.png",
 };
 
+
 for (let i = 0; i < 251; i++) {
   const { num, name, img, type } = data.pokemon[i];
 
@@ -53,7 +54,7 @@ for (let i = 0; i < 251; i++) {
   pokemonImgContainer.appendChild(pokemonImg);
 
   // creación h3 para mostrar los tipos de pokemon
-  const pokemonType = document.createElement("h3");
+  const pokemonType = document.createElement("div");
   pokemonType.classList.add("pokemon-type");
 
   // creación parrafo para ingresar número
@@ -165,6 +166,62 @@ function filterPokemon() {
     pokemonContainer.appendChild(pokemonArray[i]);
   }
 }
+
+
+
+
+const pokemonContainerInfo = document.querySelector("pokemon-container-info");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const sortSelect = document.querySelector("#sort");
+// sortSelect.addEventListener("change", sortPokemon);
+
+// function sortPokemon() {
+//   const sortValue = sortSelect.value;
+//   const pokemonCards = Array.from(document.querySelectorAll(".pokemon-card"));
+
+//   pokemonCards.sort((a, b) => {
+//     const aData = data.pokemon.find((p) => p.name === a.querySelector("h2").textContent.toLowerCase());
+//     const bData = data.pokemon.find((p) => p.name === b.querySelector("h2").textContent.toLowerCase());
+
+//     switch (sortValue) {
+//       case "name-asc":
+//         return aData.name.localeCompare(bData.name);
+//       case "name-desc":
+//         return bData.name.localeCompare(aData.name);
+//       case "num-asc":
+//         return aData.num.localeCompare(bData.num);
+//       case "num-desc":
+//         return bData.num.localeCompare(aData.num);
+//       default:
+//         return 0;
+//     }
+//   });
+
+//   pokemonContainer.innerHTML = "";
+//   pokemonCards.forEach((card) => {
+//     pokemonContainer.appendChild(card);
+//   });
+// }
+
 
 
 /* eslint-disable no-console */
