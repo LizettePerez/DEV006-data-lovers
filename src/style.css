@@ -242,6 +242,21 @@ td {
   font-size: 25px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 768px) {
   .navbar a:not(:first-child) {display: none;}
   .navbar a.icon {
@@ -251,15 +266,16 @@ td {
 }
 
 @media screen and (max-width: 768px) {
+  .navbar.responsive {position: relative;}
   .navbar.responsive .icon {
     position: absolute;
     right: 0;
-    bottom:0;
+    top: 0;
   }
   .navbar.responsive a {
     float: none;
     display: block;
-    text-align: center;
+    text-align: left;
   }
 
 }
