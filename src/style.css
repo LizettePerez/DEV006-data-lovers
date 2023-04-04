@@ -65,16 +65,18 @@ body {
 main {
   background-color: #eaf8e3;
   text-align: center;
-  margin: 10px 15%;
   color: #9a9f9d;
   border-radius: 15px;
+  width: 65vw;
+  padding: 20px 50px;
+  margin: 20px auto;
 }
 
 .pokemon-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 4fr));
-  gap: 30px;
-  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 5px;
 }
 
 .pokemon-card {
