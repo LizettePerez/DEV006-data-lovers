@@ -29,7 +29,7 @@
       <a href="#">Type</a>
       <a href="#">Rarity</a>
       <a href="#">Egg</a>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <a href="javascript:void(0);" class="icon" id="hamburger">
         <i class="fa fa-bars"></i>
       </a>
 
@@ -53,17 +53,6 @@
   <img src="img/up.png" alt="Subir" class="arriba">
 
   <div id="root"></div>
-  <script>
-    function myFunction() {
-      var x = document.getElementById("myNavbar");
-      if (x.className === "navbar") {
-        x.className += " responsive";
-      } else {
-        x.className = "navbar";
-      }
-    }
-    </script>
-  <script src="data.js" type="module"></script>
   <script src="main.js" type="module"></script>
 </body>
 

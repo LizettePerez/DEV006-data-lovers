@@ -48,6 +48,7 @@
 
 .navbar a:hover,
 .navbar a:focus,
+.navbar .icon,
 .active {
   -webkit-text-fill-color: #ffcd00;
   -webkit-text-stroke: 2px #006ebe;
@@ -263,13 +264,18 @@ td {
     float: right;
     display: block;
   }
+
+  .arriba {
+    width: 60px;
+
+  }
 }
 
 @media screen and (max-width: 768px) {
   .navbar.responsive {position: relative;}
   .navbar.responsive .icon {
     position: absolute;
-    right: 0;
+    right: -40px;
     top: 0;
   }
   .navbar.responsive a {
