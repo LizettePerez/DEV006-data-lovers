@@ -44,7 +44,7 @@ const cardTemplate = (pokemon) => {
                 alt="${t}"
                 class="pokemon-type-img"
                 title="${t.charAt(0).toUpperCase() + t.slice(1)}"
-                style="width: 25px; height: 25px; display: inline-block; marginRight = 5px;"
+                style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
       })

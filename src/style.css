@@ -122,6 +122,11 @@ h1 {
   color: #4f6764;
 }
 
+.pokemon-type {
+  padding-bottom: 20px;
+}
+
+
 
 /* Boton arriba */
 .arriba {
@@ -237,7 +242,7 @@ td {
   font-size: 25px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .navbar a:not(:first-child) {display: none;}
   .navbar a.icon {
     float: right;
@@ -245,7 +250,7 @@ td {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .navbar.responsive .icon {
     position: absolute;
     right: 0;
