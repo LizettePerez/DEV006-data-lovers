@@ -60,17 +60,39 @@
 /*  */
 body {
   background-color: #00b16a;
+}
 
+section {
+  background-color: #eaf8e3;
+  text-align: center;
+  color: #9a9f9d;
+  width: 65vw;
+  margin: 0 auto;
+  font-family: roboto;
+  margin-bottom: -10px;
+  margin-top: 20px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
 }
 
 main {
   background-color: #eaf8e3;
   text-align: center;
   color: #9a9f9d;
-  border-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
   width: 65vw;
-  padding: 20px 50px;
-  margin: 20px auto;
+  margin: 10px auto;
+  font-family: roboto;
+}
+
+.search {
+  padding: 20px 0 20px 0;
+}
+
+#search-input {
+  margin: 10px 0;
+  padding: 10px;
 }
 
 .pokemon-container {
@@ -85,7 +107,6 @@ main {
   text-align: left;
   padding: 0;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: roboto;
   width: 200px;
 }
 
@@ -259,7 +280,10 @@ td {
 
 
 @media screen and (max-width: 768px) {
-  .navbar a:not(:first-child) {display: none;}
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+
   .navbar a.icon {
     float: right;
     display: block;
@@ -271,12 +295,16 @@ td {
 }
 
 @media screen and (max-width: 768px) {
-  .navbar.responsive {position: relative;}
+  .navbar.responsive {
+    position: relative;
+  }
+
   .navbar.responsive .icon {
     position: absolute;
     right: -40px;
     top: 0;
   }
+
   .navbar.responsive a {
     float: none;
     display: block;
