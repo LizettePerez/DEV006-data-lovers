@@ -1,6 +1,7 @@
 import data from "./data/pokemon/pokemon.js";
 
 const pokemonContainer = document.querySelector(".pokemon-container");
+const searchInput = document.querySelector("#search-input");
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -73,6 +74,41 @@ const goToPokemonDetails = (pokemonName) => {
   const pokemonDetailsUrl = `./pokemon-details.html?name=${pokemonName}`;
   window.location.href = pokemonDetailsUrl;
 };
+
+
+// Función para buscar Pokémon por nombre o número
+const searchPokemon = (searchText) => {
+  const cards = document.querySelectorAll('.pokemon-card');
+  cards.forEach(card => {
+    const name = card.dataset.name.toLowerCase();
+    const num = card.querySelector('.pokemon-num').textContent.toLowerCase();
+    if (name.includes(searchText) || num.includes(searchText)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+};
+
+// Event listener para detectar el cambio en el input de búsqueda
+searchInput.addEventListener('input', (e) => {
+  const searchText = e.target.value.toLowerCase();
+  searchPokemon(searchText);
+});
+
+
+// Obtén la referencia del botón "arriba"
+const botonArriba = document.querySelector('.arriba');
+
+// Agrega un listener de evento al botón "arriba"
+botonArriba.addEventListener('click', function () {
+  // Usa la función "scrollTo" para moverte al inicio del documento
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
 
 
 

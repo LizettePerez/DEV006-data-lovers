@@ -24,18 +24,30 @@
   <header class="logo">
     <img src="img/header.png " />
     <div class="navbar" id="myNavbar">
-        <a href="./index.html" class="active">Pokédex</a>
-        <a href="#">Regions</a>
-        <a href="#">Type</a>
-        <a href="#">Rarity</a>
-        <a href="#">Egg</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
+      <a href="./index.html" class="active">Pokédex</a>
+      <a href="#">Regions</a>
+      <a href="#">Type</a>
+      <a href="#">Rarity</a>
+      <a href="#">Egg</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+
     </div>
   </header>
 
   <main>
+    <input type="text" id="search-input" placeholder="Buscar por nombre o número...">
+    <label for="sort-select">Ordenar por:</label>
+    <select id="sort-select">
+      <option value="name-asc">Nombre (A-Z)</option>
+      <option value="name-desc">Nombre (Z-A)</option>
+      <option value="num-asc">Número (menor a mayor)</option>
+      <option value="num-desc">Número (mayor a menor)</option>
+    </select>
+
+    
+
 
     <div class="pokemon-container">
     </div>
@@ -44,6 +56,16 @@
   <img src="img/up.png" alt="Subir" class="arriba">
 
   <div id="root"></div>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myNavbar");
+      if (x.className === "navbar") {
+        x.className += " responsive";
+      } else {
+        x.className = "navbar";
+      }
+    }
+    </script>
   <script src="data.js" type="module"></script>
   <script src="main.js" type="module"></script>
 </body>
