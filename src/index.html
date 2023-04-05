@@ -1,66 +1,67 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- FAVICON -->
+    <link rel="icon" type="" href="img/favicon.png" />
+    <!--Libreria icono hamburger menu-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- FONT BERLIN SANS -->
+    <link
+      href="https://fonts.cdnfonts.com/css/berlin-sans-fb-demi"
+      rel="stylesheet"
+    />
+    <!-- FONT ROBOTO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Pokédex</title>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <!-- FAVICON -->
-  <link rel="icon" type="" href="img/favicon.png" />
-  <!--Libreria icono hamburger menu-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- FONT BERLIN SANS -->
-  <link href="https://fonts.cdnfonts.com/css/berlin-sans-fb-demi" rel="stylesheet" />
-  <!-- FONT ROBOTO -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-    rel="stylesheet" />
-  <title>Pokédex</title>
-</head>
+  <body>
+    <header class="logo">
+      <img src="img/header.png " />
+      <div class="navbar" id="myNavbar">
+        <a href="./index.html" class="active">Pokédex</a>
+        <a href="#">Regions</a>
+        <a href="#">Type</a>
+        <a href="#">Rarity</a>
+        <a href="#">Egg</a>
+        <a href="javascript:void(0);" class="icon" id="hamburger">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </header>
 
-<body>
-  <header class="logo">
-    <img src="img/header.png " />
-    <div class="navbar" id="myNavbar">
-      <a href="./index.html" class="active">Pokédex</a>
-      <a href="#">Regions</a>
-      <a href="#">Type</a>
-      <a href="#">Rarity</a>
-      <a href="#">Egg</a>
-      <a href="javascript:void(0);" class="icon" id="hamburger">
-        <i class="fa fa-bars"></i>
-      </a>
+    <section>
+      <div class="search">
+        <h2>Search for a Pokémon by name or number</h2>
+        <input type="text" id="search-input" placeholder="Name or Number" />
+      </div>
+    </section>
+    <main>
+      <!-- <label for="sort-select">Ordenar por:</label>
+      <select id="sort-select">
+        <option value="name-asc">Nombre (A-Z)</option>
+        <option value="name-desc">Nombre (Z-A)</option>
+        <option value="num-asc">Número (menor a mayor)</option>
+        <option value="num-desc">Número (mayor a menor)</option>
+      </select> -->
 
-    </div>
-  </header>
+      <div class="pokemon-container"></div>
+    </main>
+    <img src="img/up.png" alt="Subir" class="arriba" />
 
-  <section>
-    <div class="search">
-      <h2>Search for a Pokémon by name or number</h2>
-      <input type="text" id="search-input" placeholder="Name or Number">
-    </div>
-  </section>
-  <main>
-    
-
-    <!-- <label for="sort-select">Ordenar por:</label>
-    <select id="sort-select">
-      <option value="name-asc">Nombre (A-Z)</option>
-      <option value="name-desc">Nombre (Z-A)</option>
-      <option value="num-asc">Número (menor a mayor)</option>
-      <option value="num-desc">Número (mayor a menor)</option>
-    </select> -->
-
-    <div class="pokemon-container">
-    </div>
-
-  </main>
-  <img src="img/up.png" alt="Subir" class="arriba">
-
-  <div id="root"></div>
-  <script src="main.js" type="module"></script>
-</body>
-
+    <div id="root"></div>
+    <script src="main.js" type="module"></script>
+  </body>
 </html>
