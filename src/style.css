@@ -69,8 +69,8 @@ section {
   width: 65vw;
   margin: 0 auto;
   font-family: roboto;
-  margin-bottom: -10px;
-  margin-top: 20px;
+  margin-bottom: -25px;
+  margin-top: 40px;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
 }
@@ -79,8 +79,7 @@ main {
   background-color: #eaf8e3;
   text-align: center;
   color: #9a9f9d;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-radius: 15px;
   width: 65vw;
   margin: 10px auto;
   font-family: roboto;
@@ -95,7 +94,7 @@ main {
   padding: 10px;
 }
 
-.pokemon-container {
+.pokemon-container, .pokemon-detail {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -289,204 +288,48 @@ td {
   }
 }
 
-/*Página individual del pokemon */
 
-.container-info {
-  display: grid;
-  grid: "container-info-img container-info-pokemon" auto / 1fr 1fr;
-  gap: 8px;
-  margin: 20px;
+/* PERIL POKEMON */
+
+
+.pokemon-detail-title {
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  font-size: 2.4vw;
+  font-weight: bold;
+  padding-bottom: 5px;
 }
 
-.container-info-img {
-  margin: 0 auto;
+.pokemon-name {
+  padding-right: 10px;
+}
+
+.pokemon-image {
   position: relative;
   background-image: url("img/fondo.png");
   background-size: cover;
   overflow: hidden;
-  grid-area: container-info-img;
-  border-radius: 25px;
-  width: 400px;
-  height: 400px;
 }
 
-.container-info-img img {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
 
-.container-info-pokemon {
-  grid-area: container-info-pokemon;
-  margin-right: 20px;
-  margin-top: 60px;
-  width: auto;
-  height: 300px;
-  margin: 0 auto;
-}
 
-.description {
-  padding-top: 20px;
-  margin: 0px 35px;
-  text-align: justify;
-  font-size: small;
-}
 
-.container-info-perfil {
-  background-color: #d9d9d9;
-  padding: 5px;
-  margin: 30px;
-  width: auto;
-  height: 170px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat (3, 1fr);
-  padding: 10px; /* Agrega un espacio de relleno interno de 10px */
-}
 
-.container-info-perfil h5 {
-  grid-row: 1;
-  grid-column: 1 / span 2;
-  margin: 0; /* Elimina el margen predeterminado del encabezado */
-  font-size: 22px; /* Aumenta el tamaño de la fuente del encabezado */
-}
 
-.container-info-perfil h6 {
-  margin: 0; /* Elimina el margen predeterminado del subtítulo */
-}
 
-.container-info-perfil .height h6,
-.container-info-perfil .weight h6,
-.container-info-perfil .generation h6,
-.container-info-perfil .region h6 {
-  font-weight: bold; /* Añade negrita al subtítulo */
-  font-size: 20px; /* Aumenta el tamaño de la fuente del texto */
-}
 
-.container-info-perfil .height p,
-.container-info-perfil .weight p,
-.container-info-perfil .generation p,
-.container-info-perfil .region p {
-  margin: 0; /* Elimina el margen predeterminado del texto */
-}
 
-.container-stats {
-  display: flex;
-  justify-content: center;
-  padding: 50px 30px;
-}
 
-.container-info-perfil > * {
-  flex: 1;
-}
 
-.container-stats {
-  display: flex;
-  justify-content: center;
-  padding: 50px 30px;
-}
 
-.stats-title {
-  background-color: #df740a;
-  color: #fff;
-  height: 40px;
-  text-transform: uppercase;
-}
 
-.stats-info {
-  color: #4f6764;
-}
 
-td {
-  border: 2px solid #4f6764;
-  font-size: 25px;
-  padding: 2px;
-}
 
-.weak-strength {
-  display: grid;
-  grid: "strength weakness" auto / 1fr 1fr;
-  gap: 8px;
-}
 
-.type-img-info {
-  width: 60px;
-  height: 60px;
-  display: inline-block;
-  margin-right: 40px;
-}
 
-/*Responsive pagina indivual*/
 
-@media screen and (max-width: 910px) {
-  .container-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .container-info-img {
-    order: -1; /* Coloca el elemento antes que los demás */
-    width: 300px;
-    height: 300px;
-    margin: 20px 0;
-  }
 
-  .container-info-pokemon {
-    margin: 20px 0;
-    width: 100%;
-    height: auto;
-    align-items: center;
-  }
 
-  .description {
-    margin: 20px 0;
-    padding: 10px;
-  }
 
-  .container-info-perfil {
-    margin: 20px;
-  }
-
-  .size-title {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .size-info,
-  .generation-info {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .generation-title {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .container-stats {
-    padding: 20px;
-    flex-direction: column;
-  }
-
-  .stats-title {
-    height: auto;
-    text-align: center;
-  }
-
-  td {
-    font-size: 16px;
-  }
-
-  .type-img-info {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-  }
-}
-
-.back {
-  display: flex;
-  align-items: flex-start;
-  padding: 10px;
-}

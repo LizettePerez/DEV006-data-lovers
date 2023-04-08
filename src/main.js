@@ -239,6 +239,38 @@ function sortPokemon() {
 //   }
 // }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* eslint-disable no-console */
 console.log(data);
 /* eslint-enable no-console */
