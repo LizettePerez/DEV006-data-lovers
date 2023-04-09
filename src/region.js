@@ -1,7 +1,8 @@
 import data from "./data/pokemon/pokemon.js";
 
 const pokemonContainer = document.querySelector(".pokemon-container");
-const searchInput = document.querySelector("#search-input");
+const kantoButton = document.querySelector(".kanto-button");
+const johtoButton = document.querySelector(".johto-button");
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -75,27 +76,32 @@ const goToPokemonDetails = (pokemonName) => {
   window.location.href = pokemonDetailsUrl;
 };
 
+// Agregar event listeners a los botones de región
+kantoButton.addEventListener("click", () => {
+  filterPokemonByRegion("kanto");
+  pokemonContainer.classList.remove("hidden");
+});
 
+johtoButton.addEventListener("click", () => {
+  filterPokemonByRegion("johto");
+  pokemonContainer.classList.remove("hidden");
+});
 
-// Función para buscar Pokémon por nombre o número
-const searchPokemon = (searchText) => {
-  const cards = document.querySelectorAll('.pokemon-card');
-  cards.forEach(card => {
-    const name = card.dataset.name.toLowerCase();
-    const num = card.querySelector('.pokemon-num').textContent.toLowerCase();
-    if (name.includes(searchText) || num.includes(searchText)) {
-      card.style.display = 'block';
+// Función para filtrar los Pokémon por región
+const filterPokemonByRegion = (region) => {
+  const cards = document.querySelectorAll(".pokemon-card");
+  cards.forEach((card) => {
+    const pokemonName = card.dataset.name;
+    const pokemonData = data.pokemon.find(pokemon => pokemon.name === pokemonName);
+    const pokemonRegion = pokemonData.generation.name.toLowerCase();
+    if (pokemonRegion === region) {
+      card.style.display = "block";
     } else {
-      card.style.display = 'none';
+      card.style.display = "none";
     }
   });
 };
 
-// Event listener para detectar el cambio en el input de búsqueda
-searchInput.addEventListener('input', (e) => {
-  const searchText = e.target.value.toLowerCase();
-  searchPokemon(searchText);
-});
 
 
 // Obtén la referencia del botón "arriba"

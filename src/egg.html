@@ -24,11 +24,11 @@
   <header class="logo">
     <img src="img/header.png " />
     <div class="navbar" id="myNavbar">
-      <a href="./index.html" class="active">Pokédex</a>
-      <a href="./region.html">Regions</a>
-      <a href="#">Type</a>
+      <a href="./egg.html" class="active">Egg</a>
+      <a href="./index.html">Pokédex</a>
+      <a href="./region.html">Regions</a>   
+      <a href="#">Type</a> 
       <a href="./rarity.html">Rarity</a>
-      <a href="./egg.html">Egg</a>
       <a href="javascript:void(0);" class="icon" id="hamburger">
         <i class="fa fa-bars"></i>
       </a>
@@ -36,31 +36,35 @@
     </div>
   </header>
 
-  <section>
-    
-  </section>
   <main>
-    <div class="search">
-      <h2>Search for a Pokémon by name or number</h2>
-      <input type="text" id="search-input" placeholder="Name or Number">
+    <div class="egg-buttons">
+      <div class="km2">
+        <img src="./img/egg_2km.png" alt="2 KM">
+        <button class="k2-button">2 KM</button>
+      </div>
+      <div class="km5">
+        <img src="./img/egg_5km.png" alt="5 KM">
+        <button class="k5-button">5 KM</button>
+      </div>
+      <div class="km7">
+        <img src="./img/egg_7km.png" alt="7 KM">
+        <button class="k7-button">7 KM</button>
+      </div>
+      <div class="km10">
+        <img src="./img/egg_10km.png" alt="10 KM">
+        <button class="k10-button">10 KM</button>
+      </div>
     </div>
+  
 
-    <!-- <label for="sort-select">Ordenar por:</label>
-    <select id="sort-select">
-      <option value="name-asc">Nombre (A-Z)</option>
-      <option value="name-desc">Nombre (Z-A)</option>
-      <option value="num-asc">Número (menor a mayor)</option>
-      <option value="num-desc">Número (mayor a menor)</option>
-    </select> -->
-
-    <div class="pokemon-container">
+    <div class="pokemon-container hidden">
     </div>
 
   </main>
   <img src="img/up.png" alt="Subir" class="arriba">
 
   <div id="root"></div>
-  <script src="main.js" type="module"></script>
+  <script src="egg.js" type="module"></script>
 </body>
 
 </html>

@@ -1,7 +1,13 @@
 import data from "./data/pokemon/pokemon.js";
 
 const pokemonContainer = document.querySelector(".pokemon-container");
-const searchInput = document.querySelector("#search-input");
+
+const k2Button = document.querySelector(".k2-button");
+const k5Button = document.querySelector(".k5-button");
+const k7Button = document.querySelector(".k7-button");
+const k10Button = document.querySelector(".k10-button");
+
+
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -77,25 +83,44 @@ const goToPokemonDetails = (pokemonName) => {
 
 
 
-// Función para buscar Pokémon por nombre o número
-const searchPokemon = (searchText) => {
-  const cards = document.querySelectorAll('.pokemon-card');
-  cards.forEach(card => {
-    const name = card.dataset.name.toLowerCase();
-    const num = card.querySelector('.pokemon-num').textContent.toLowerCase();
-    if (name.includes(searchText) || num.includes(searchText)) {
-      card.style.display = 'block';
+k2Button.addEventListener("click", () => {
+  filterPokemonByEgg("2 km");
+  pokemonContainer.classList.remove("hidden");
+});
+
+
+k5Button.addEventListener("click", () => {
+  filterPokemonByEgg("5 km");
+  pokemonContainer.classList.remove("hidden");
+});
+
+k7Button.addEventListener("click", () => {
+  filterPokemonByEgg("7 km");
+  pokemonContainer.classList.remove("hidden");
+});
+
+k10Button.addEventListener("click", () => {
+  filterPokemonByEgg("10 km");
+  pokemonContainer.classList.remove("hidden");
+});
+
+
+// Función para filtrar los Pokémon por región
+const filterPokemonByEgg = (egg) => {
+  const cards = document.querySelectorAll(".pokemon-card");
+  cards.forEach((card) => {
+    const pokemonName = card.dataset.name;
+    const pokemonData = data.pokemon.find(pokemon => pokemon.name === pokemonName);
+    const pokemonEgg = pokemonData.egg;
+    if (pokemonEgg === egg) {
+      card.style.display = "block";
     } else {
-      card.style.display = 'none';
+      card.style.display = "none";
     }
   });
 };
 
-// Event listener para detectar el cambio en el input de búsqueda
-searchInput.addEventListener('input', (e) => {
-  const searchText = e.target.value.toLowerCase();
-  searchPokemon(searchText);
-});
+
 
 
 // Obtén la referencia del botón "arriba"

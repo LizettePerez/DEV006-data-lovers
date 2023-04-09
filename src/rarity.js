@@ -1,7 +1,11 @@
 import data from "./data/pokemon/pokemon.js";
 
 const pokemonContainer = document.querySelector(".pokemon-container");
-const searchInput = document.querySelector("#search-input");
+
+const normalButton = document.querySelector(".normal-button");
+const legendaryButton = document.querySelector(".legendary-button");
+const mythicButton = document.querySelector(".mythic-button");
+
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -77,25 +81,40 @@ const goToPokemonDetails = (pokemonName) => {
 
 
 
-// Función para buscar Pokémon por nombre o número
-const searchPokemon = (searchText) => {
-  const cards = document.querySelectorAll('.pokemon-card');
-  cards.forEach(card => {
-    const name = card.dataset.name.toLowerCase();
-    const num = card.querySelector('.pokemon-num').textContent.toLowerCase();
-    if (name.includes(searchText) || num.includes(searchText)) {
-      card.style.display = 'block';
+normalButton.addEventListener("click", () => {
+  filterPokemonByRarity("normal");
+  pokemonContainer.classList.remove("hidden");
+});
+
+
+legendaryButton.addEventListener("click", () => {
+  filterPokemonByRarity("legendary");
+  pokemonContainer.classList.remove("hidden");
+});
+
+mythicButton.addEventListener("click", () => {
+  filterPokemonByRarity("mythic");
+  pokemonContainer.classList.remove("hidden");
+});
+
+
+
+// Función para filtrar los Pokémon por región
+const filterPokemonByRarity = (rarity) => {
+  const cards = document.querySelectorAll(".pokemon-card");
+  cards.forEach((card) => {
+    const pokemonName = card.dataset.name;
+    const pokemonData = data.pokemon.find(pokemon => pokemon.name === pokemonName);
+    const pokemonRarity = pokemonData["pokemon-rarity"];
+    if (pokemonRarity === rarity) {
+      card.style.display = "block";
     } else {
-      card.style.display = 'none';
+      card.style.display = "none";
     }
   });
 };
 
-// Event listener para detectar el cambio en el input de búsqueda
-searchInput.addEventListener('input', (e) => {
-  const searchText = e.target.value.toLowerCase();
-  searchPokemon(searchText);
-});
+
 
 
 // Obtén la referencia del botón "arriba"

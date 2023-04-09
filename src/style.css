@@ -62,21 +62,6 @@ body {
   background-color: #00b16a;
 }
 
-section {
-  background-color: #eaf8e3;
-  text-align: center;
-  color: #9a9f9d;
-  width: 65vw;
-  margin: 0 auto;
-  font-family: 'Roboto Mono', monospace;
-  margin-bottom: -25px;
-  margin-top: 20px;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
-  padding: 0 30px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
 main {
   background-color: #eaf8e3;
   text-align: center;
@@ -180,7 +165,7 @@ h1 {
     width: 60px;
   }
 
-  
+
 }
 
 @media screen and (max-width: 768px) {
@@ -321,10 +306,11 @@ h4 {
   width: 98%;
   margin: 0 auto;
   border-collapse: collapse;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));  
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-td, th {
+td,
+th {
   border: 2px solid #4f6764;
   padding: 16px 0;
 }
@@ -340,14 +326,15 @@ td {
   font-size: 19px;
 }
 
-.pokemon-resistant-weaknesses{
+.pokemon-resistant-weaknesses {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
 
-.pokemon-resistant-types, .pokemon-weaknesses-types {
+.pokemon-resistant-types,
+.pokemon-weaknesses-types {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -356,8 +343,9 @@ td {
 }
 
 
-.pokemon-resistant-types img, .pokemon-weaknesses-types img{
-  width: 60px; 
+.pokemon-resistant-types img,
+.pokemon-weaknesses-types img {
+  width: 60px;
   padding: 6px 8px;
 }
 
@@ -368,4 +356,155 @@ td {
   margin: 0 auto;
   border-radius: 15px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* REGIONS */
+
+.region-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 30px 0;
+}
+
+.kanto-button,
+.johto-button {
+  margin: 20px;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: #9a9f9d;
+  color: #fff;
+}
+
+
+.kanto img,
+.johto img {
+  width: 180px;
+  margin-bottom: -35px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.kanto-button:hover,
+.johto-button:hover {
+  background: #ffcd00;
+  border: 3px solid #006ebe;
+  color: #006ebe;
+}
+
+.kanto-button {
+  background: #006ebe;
+}
+
+.johto-button {
+  background: #00b16a;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+/* RARITY & EGG*/
+
+.rarity-buttons,
+.egg-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 30px 0;
+}
+
+
+.normal-button,
+.legendary-button,
+.mythic-button,
+.k2-button,
+.k5-button,
+.k7-button,
+.k10-button {
+  margin: 20px;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: #9a9f9d;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.normal-button:hover,
+.legendary-button:hover,
+.mythic-button:hover,
+.k2-button:hover,
+.k5-button:hover,
+.k7-button:hover,
+.k10-button:hover {
+  background: #ffcd00;
+  border: 3px solid #006ebe;
+  color: #006ebe;
+}
+
+.normal-button {
+  background: #006ebe;
+}
+
+.legendary-button {
+  background: #ffcd00;
+}
+
+.mythic-button {
+  background: #00b16a;
+}
+
+
+.km2,
+.km5,
+.km7,
+.km10 {
+  display: flex;
+  flex-direction: column;
+}
+
+.km2 img,
+.km5 img,
+.km7 img,
+.km10 img {
+  width: 60px;
+  height: 70px;
+  margin-bottom: -80px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.k2-button {
+  background-color: #00b16a;
+}
+
+.k5-button {
+  background-color: #ed713c;
+}
+
+.k7-button {
+  background-color: #ffcd00;
+}
+
+.k10-button {
+  background-color: #006ebe;
 }

@@ -46,7 +46,7 @@ const resistantImages = {
 
 
 //agregar imagen a cada elemento
-const weaknessImages  = {
+const weaknessImages = {
   grass: "./img/elementos/grass.png",
   poison: "./img/elementos/poison.png",
   fire: "./img/elementos/fire.png",
@@ -118,6 +118,9 @@ pokemon.resistant.forEach((resistance) => {
   resistancesContainer.appendChild(resistanceParagraph);
 });
 
+function getPokemonByName(name) {
+  return pokemonListData.find((pokemon) => pokemon.name === name);
+}
 
 
 
@@ -148,4 +151,16 @@ function myFunction() {
   } else {
     x.className = "navbar";
   }
-}
+};
+
+// Obtén la referencia del botón "arriba"
+const botonArriba = document.querySelector('.arriba');
+
+// Agrega un listener de evento al botón "arriba"
+botonArriba.addEventListener('click', function () {
+  // Usa la función "scrollTo" para moverte al inicio del documento
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
