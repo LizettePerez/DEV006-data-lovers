@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- FAVICON -->
+  <link rel="icon" type="" href="img/favicon.png" />
+  <!--Libreria icono hamburger menu-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- FONT BERLIN SANS -->
+  <link href="https://fonts.cdnfonts.com/css/berlin-sans-fb-demi" rel="stylesheet" />
+  <!-- FONT ROBOTO -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet" />
+  <title>Pokédex</title>
+</head>
+
+<body>
+  <header class="logo">
+    <img src="img/header.png " />
+    <div class="navbar" id="myNavbar">
+      <a href="./index.html" class="active">Pokédex</a>
+      <a href="#">Regions</a>
+      <a href="#">Type</a>
+      <a href="#">Rarity</a>
+      <a href="#">Egg</a>
+      <a href="javascript:void(0);" class="icon" id="hamburger">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </header>
+  <main>
+    <a href="#" id="volver">&#8592; Volver</a>
+    <div class="pokemon-details-container">
+      <div class="pokemon-detail-title">
+        <h2 class="pokemon-name"></h2>
+        <h2 class="pokemon-number"></h2>
+      </div>
+      <div class="pokemon-detail-first">
+        <div class="pokemon-detail-img">
+          <img class="pokemon-image" />
+        </div>
+        <div class="pokemon-detail-info">
+          <p class="pokemon-types"></p>
+          <p class="pokemon-description"></p>
+          <div class="pokemon-detail-infoGrey">
+            <h3 class="pokemon-rarity"></h3>
+          </div>
+        </div>
+
+
+      </div>
+
+      
+      <ul>
+        <li>Altura: <span class="pokemon-height"></span></li>
+        <li>Peso: <span class="pokemon-weight"></span></li>
+        
+      </ul>
+    </div>
+  </main>
+
+
+  <div id="root"></div>
+  <script src="detail.js" type="module"></script>
+</body>
+
+</html>
