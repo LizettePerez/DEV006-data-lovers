@@ -37,13 +37,13 @@ const cardTemplate = (pokemon) => {
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
         ${pokemon.type
-      .map((t) => {
+      .map((type) => {
         return `
               <img
-                src="${typeImages[t]}"
-                alt="${t}"
+                src="${typeImages[type]}"
+                alt="${type}"
                 class="pokemon-type-img"
-                title="${t.charAt(0).toUpperCase() + t.slice(1)}"
+                title="${type.charAt(0).toUpperCase() + type.slice(1)}"
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
@@ -122,8 +122,6 @@ function myFunction() {
     x.className = "navbar";
   }
 }
-
-
 
 
 
