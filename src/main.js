@@ -36,13 +36,13 @@ const cardTemplate = (pokemon) => {
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
         ${pokemon.type
-          .map((t) => {
+          .map((type) => {
             return `
               <img
-                src="${typeImages[t]}"
-                alt="${t}"
+                src="${typeImages[type]}"
+                alt="${type}"
                 class="pokemon-type-img"
-                title="${t.charAt(0).toUpperCase() + t.slice(1)}"
+                title="${type.charAt(0).toUpperCase() + type.slice(1)}"
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
@@ -153,39 +153,39 @@ function myFunction() {
 //     pokemonContainer.appendChild(card);
 //   });
 // }const sortSelect = document.querySelector("#sort-select");
-sortSelect.addEventListener("change", sortPokemon);
+//sortSelect.addEventListener("change", sortPokemon);
 
-function sortPokemon() {
-  const sortValue = sortSelect.value;
-  const cards = Array.from(document.querySelectorAll(".pokemon-card"));
+// function sortPokemon() {
+//   const sortValue = sortSelect.value;
+//   const cards = Array.from(document.querySelectorAll(".pokemon-card"));
 
-  cards.sort((a, b) => {
-    const aData = data.pokemon.find(
-      (p) => p.name === a.querySelector("h2").textContent.toLowerCase()
-    );
-    const bData = data.pokemon.find(
-      (p) => p.name === b.querySelector("h2").textContent.toLowerCase()
-    );
+//   cards.sort((a, b) => {
+//     const aData = data.pokemon.find(
+//       (p) => p.name === a.querySelector("h2").textContent.toLowerCase()
+//     );
+//     const bData = data.pokemon.find(
+//       (p) => p.name === b.querySelector("h2").textContent.toLowerCase()
+//     );
 
-    switch (sortValue) {
-      case "name-asc":
-        return aData.name.localeCompare(bData.name);
-      case "name-desc":
-        return bData.name.localeCompare(aData.name);
-      case "num-asc":
-        return aData.num.localeCompare(bData.num);
-      case "num-desc":
-        return bData.num.localeCompare(aData.num);
-      default:
-        return 0;
-    }
-  });
+//     switch (sortValue) {
+//       case "name-asc":
+//         return aData.name.localeCompare(bData.name);
+//       case "name-desc":
+//         return bData.name.localeCompare(aData.name);
+//       case "num-asc":
+//         return aData.num.localeCompare(bData.num);
+//       case "num-desc":
+//         return bData.num.localeCompare(aData.num);
+//       default:
+//         return 0;
+//     }
+//   });
 
-  pokemonContainer.innerHTML = "";
-  cards.forEach((card) => {
-    pokemonContainer.appendChild(card);
-  });
-}
+//   pokemonContainer.innerHTML = "";
+//   cards.forEach((card) => {
+//     pokemonContainer.appendChild(card);
+//   });
+// }
 
 // // Obtener el elemento de selección de orden
 // const filterSelect = document.querySelector("#sort-select");
