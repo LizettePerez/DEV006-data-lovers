@@ -25,7 +25,6 @@ const typeImages = {
   steel: "./img/elementos/steel.png",
 };
 
-
 // Plantilla de cadena de texto para una tarjeta de Pokémon
 const cardTemplate = (pokemon) => {
   return `
@@ -37,8 +36,8 @@ const cardTemplate = (pokemon) => {
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
         ${pokemon.type
-      .map((type) => {
-        return `
+          .map((type) => {
+            return `
               <img
                 src="${typeImages[type]}"
                 alt="${type}"
@@ -47,8 +46,8 @@ const cardTemplate = (pokemon) => {
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
-      })
-      .join("")}
+          })
+          .join("")}
       </div>
     </div>
   `;
@@ -56,13 +55,13 @@ const cardTemplate = (pokemon) => {
 
 // Bucle forEach para crear las tarjetas de Pokémon
 data.pokemon.forEach((pokemon) => {
-  const card = document.createElement('div');
-  card.classList.add('pokemon-card');
+  const card = document.createElement("div");
+  card.classList.add("pokemon-card");
   card.dataset.name = pokemon.name;
   card.innerHTML = cardTemplate(pokemon);
 
   // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-  card.addEventListener('click', () => {
+  card.addEventListener("click", () => {
     goToPokemonDetails(pokemon.name);
   });
 
@@ -75,45 +74,41 @@ const goToPokemonDetails = (pokemonName) => {
   window.location.href = pokemonDetailsUrl;
 };
 
-
-
 // Función para buscar Pokémon por nombre o número
 const searchPokemon = (searchText) => {
-  const cards = document.querySelectorAll('.pokemon-card');
-  cards.forEach(card => {
+  const cards = document.querySelectorAll(".pokemon-card");
+  cards.forEach((card) => {
     const name = card.dataset.name.toLowerCase();
-    const num = card.querySelector('.pokemon-num').textContent.toLowerCase();
+    const num = card.querySelector(".pokemon-num").textContent.toLowerCase();
     if (name.includes(searchText) || num.includes(searchText)) {
-      card.style.display = 'block';
+      card.style.display = "block";
     } else {
-      card.style.display = 'none';
+      card.style.display = "none";
     }
   });
 };
 
 // Event listener para detectar el cambio en el input de búsqueda
-searchInput.addEventListener('input', (e) => {
+searchInput.addEventListener("input", (e) => {
   const searchText = e.target.value.toLowerCase();
   searchPokemon(searchText);
 });
 
-
 // Obtén la referencia del botón "arriba"
-const botonArriba = document.querySelector('.arriba');
+const botonArriba = document.querySelector(".arriba");
 
 // Agrega un listener de evento al botón "arriba"
-botonArriba.addEventListener('click', function () {
+botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 });
 
-
 //Nav Hamburger
 const btnHamburger = document.querySelector("#hamburger");
-btnHamburger.addEventListener("click", myFunction)
+btnHamburger.addEventListener("click", myFunction);
 
 function myFunction() {
   var x = document.getElementById("myNavbar");
@@ -122,29 +117,43 @@ function myFunction() {
   } else {
     x.className = "navbar";
   }
-};
+}
 
+//Función para el filtrado.
 
+const sortSelect = document.querySelector("#sort-select");
 
+// Ordenar por nombre o número, ascendente o descendente
+sortSelect.addEventListener("change", () => {
+  const optionValue = sortSelect.value;
+  let sortedData;
 
+  if (optionValue === "name-asc") {
+    sortedData = data.pokemon.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (optionValue === "name-desc") {
+    sortedData = data.pokemon.sort((a, b) => b.name.localeCompare(a.name));
+  } else if (optionValue === "num-asc") {
+    sortedData = data.pokemon.sort((a, b) => a.num - b.num);
+  } else if (optionValue === "num-desc") {
+    sortedData = data.pokemon.sort((a, b) => b.num - a.num);
+  }
 
+  // Limpiar la sección de tarjetas de Pokémon y volver a crearlas con el nuevo orden
+  pokemonContainer.innerHTML = "";
+  sortedData.forEach((pokemon) => {
+    const card = document.createElement("div");
+    card.classList.add("pokemon-card");
+    card.dataset.name = pokemon.name;
+    card.innerHTML = cardTemplate(pokemon);
 
+    // Agregar un event listener al hacer clic en la tarjeta de Pokémon
+    card.addEventListener("click", () => {
+      goToPokemonDetails(pokemon.name);
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    pokemonContainer.appendChild(card);
+  });
+});
 
 /* eslint-disable no-console */
 console.log(data);
