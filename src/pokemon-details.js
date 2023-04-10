@@ -238,7 +238,7 @@ botonArriba.addEventListener('click', function () {
 
 const pokemonData = data.pokemon.find(pokemon => pokemon.name === pokemonName);
 
-if (pokemonData.evolution) {
+if (pokemonData && pokemonData.evolution) {
   let evolution = pokemonData.evolution;
   let evolutions = [pokemonData]; // incluir el pokemon actual en la lista de evoluciones
   while (evolution && evolution["prev-evolution"]) {
@@ -305,13 +305,7 @@ const goToPokemonDetails = (pokemonName) => {
 
 
 
-
-
-
-
-
-
-
+console.log(pokemonData);
 
 
 
