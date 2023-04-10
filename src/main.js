@@ -119,6 +119,10 @@ function myFunction() {
   }
 }
 
+// document.getElementById("regions").addEventListener("click", function () {
+//   window.open("regions.html");
+// });
+
 // const sortSelect = document.querySelector("#sort-select");
 // sortSelect.addEventListener("change", sortPokemon);
 
@@ -248,3 +252,37 @@ console.log(data);
 //    return response.json();
 // })
 // .then(jsondata => console.log(jsondata));
+
+// POKÉMON DETAILS //
+// const pokemonDetail = document.querySelector(".pokemon-detail");
+// Plantilla de cadena de texto para una tarjeta de Pokémon
+// const cardDetail = (pokemon) => {
+//   return `
+//     <div class="pokemon-card-detail" data-name="${pokemon.name}">
+//       <h1 data-name='${pokemon.name}'></h1>
+
+//     // <div class="pokemon-card" data-name="${pokemon.name}">
+//     //   <div class="pokemon-img-container">
+//     //     <img src="${pokemon.img}" alt="${pokemon.name}" />
+//     //   </div>
+//     //   <p class="pokemon-num">#${pokemon.num}</p>
+//     //   <h2 class="pokemon-name">${pokemon.name}</h2>
+//     //   <div class="pokemon-type">
+//     //     ${
+//       pokemon.type
+//       //       .map((t) => {
+//       //         return `
+//       //           <img
+//       //             src="${typeImages[t]}"
+//       //             alt="${t}"
+//       //             class="pokemon-type-img"
+//       //             title="${t.charAt(0).toUpperCase() + t.slice(1)}"
+//       //             style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
+//       //           />
+//       //         `;
+//     })
+//     //       .join("")}
+//     //   </div>
+//     // </div>
+//   `;
+// };
