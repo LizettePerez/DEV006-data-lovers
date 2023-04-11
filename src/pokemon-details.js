@@ -143,15 +143,17 @@ console.log(data);
 
 
 //Nav Hamburger
-const btnHamburger = document.getElementById("hamburger");
-btnHamburger.addEventListener("click", function () {
-  const navbar = document.getElementById("myNavbar");
-  if (navbar.classList.contains("navbar")) {
-    navbar.classList.add("responsive");
+const btnHamburger = document.querySelector("#hamburger");
+btnHamburger.addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("myNavbar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
   } else {
-    navbar.classList.remove("responsive");
+    x.className = "navbar";
   }
-});
+}
 
 
 // Agrega un listener de evento al botón "arriba"
