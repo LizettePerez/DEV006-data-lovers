@@ -98,19 +98,22 @@ filterPokemonByEggButton(k7Button, "7 km");
 filterPokemonByEggButton(k10Button, "10 km");
 
 
-// Función para filtrar los Pokémon por región
-const filterPokemonByEgg = (egg) => {
+// Función para filtrar los Pokémon por egg
+function filterPokemonByEgg(egg) {
   const cards = document.querySelectorAll(".pokemon-card");
-  cards.forEach((card) => {
+  for (let i = 0; i < cards.length; i++) {
+    const card = cards[i];
     const pokemonName = card.dataset.name;
-    const pokemonData = data.pokemon.find(pokemon => pokemon.name === pokemonName);
-    const pokemonEgg = pokemonData.egg;
-    if (pokemonEgg === egg) {
+    const pokemon = data.pokemon.find(function (pokemon) {
+      return pokemon.name === pokemonName;
+    });
+    const pokemonEgg = pokemon.egg;
+    if (pokemonEgg.includes(egg)) {
       card.style.display = "block";
     } else {
       card.style.display = "none";
     }
-  });
+  }
 };
 
 

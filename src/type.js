@@ -133,14 +133,10 @@ function filterPokemonByType(type) {
   for (let i = 0; i < cards.length; i++) {
     const card = cards[i];
     const pokemonName = card.dataset.name;
-    let pokemonData = null;
-    for (let j = 0; j < data.pokemon.length; j++) {
-      if (data.pokemon[j].name === pokemonName) {
-        pokemonData = data.pokemon[j];
-        break;
-      }
-    }
-    const pokemonType = pokemonData.type;
+    const pokemon = data.pokemon.find(function (pokemon) {
+      return pokemon.name === pokemonName;
+    });
+    const pokemonType = pokemon.type;
     if (pokemonType.includes(type)) {
       card.style.display = "block";
     } else {
@@ -174,34 +170,3 @@ btnHamburger.addEventListener("click", function () {
     navbar.classList.remove("responsive");
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* eslint-disable no-console */
-console.log(data);
-/* eslint-enable no-console */
-
-// fetch("./data/pokemon/pokemon.json")
-// .then(response => {
-//    return response.json();
-// })
-// .then(jsondata => console.log(jsondata));

@@ -92,19 +92,22 @@ addFilterButtonRarity(mythicButton, "mythic");
 
 
 
-// Función para filtrar los Pokémon por región
-const filterPokemonByRarity = (rarity) => {
+// Función para filtrar los Pokémon por rarity
+function filterPokemonByRarity(rarity) {
   const cards = document.querySelectorAll(".pokemon-card");
-  cards.forEach((card) => {
+  for (let i = 0; i < cards.length; i++) {
+    const card = cards[i];
     const pokemonName = card.dataset.name;
-    const pokemonData = data.pokemon.find(pokemon => pokemon.name === pokemonName);
-    const pokemonRarity = pokemonData["pokemon-rarity"];
-    if (pokemonRarity === rarity) {
+    const pokemon = data.pokemon.find(function (pokemon) {
+      return pokemon.name === pokemonName;
+    });
+    const pokemonRarity = pokemon["pokemon-rarity"];
+    if (pokemonRarity.includes(rarity)) {
       card.style.display = "block";
     } else {
       card.style.display = "none";
     }
-  });
+  }
 };
 
 

@@ -37,8 +37,8 @@ function cardTemplate(pokemon) {
       <p class="pokemon-num">#${pokemon.num}</p>
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
-        ${pokemon.type.map(function(type) {
-          return `
+        ${pokemon.type.map(function (type) {
+    return `
               <img
                 src="${typeImages[type]}"
                 alt="${type}"
@@ -47,7 +47,7 @@ function cardTemplate(pokemon) {
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
-        }).join("")}
+  }).join("")}
       </div>
     </div>
   `;
@@ -57,14 +57,14 @@ function cardTemplate(pokemon) {
 // Bucle para crear las tarjetas de Pokémon
 for (let i = 0; i < data.pokemon.length; i++) {
   const pokemon = data.pokemon[i];
-  
+
   const card = document.createElement("div");
   card.className = "pokemon-card";
   card.setAttribute("data-name", pokemon.name);
   card.innerHTML = cardTemplate(pokemon);
 
   // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-  card.addEventListener("click", function() {
+  card.addEventListener("click", function () {
     goToPokemonDetails(pokemon.name);
   });
 
@@ -92,19 +92,20 @@ addFilterButtonRegion(johtoButton, "johto");
 // Función para filtrar los Pokémon por region
 function filterPokemonByRegion(region) {
   const cards = document.querySelectorAll(".pokemon-card");
-  cards.forEach(function(card) {
+  for (let i = 0; i < cards.length; i++) {
+    const card = cards[i];
     const pokemonName = card.dataset.name;
-    const pokemonData = data.pokemon.find(function(pokemon) {
+    const pokemon = data.pokemon.find(function (pokemon) {
       return pokemon.name === pokemonName;
     });
-    const pokemonRegion = pokemonData.generation.name.toLowerCase();
+    const pokemonRegion = pokemon.generation.name.toLowerCase();
     if (pokemonRegion === region) {
       card.style.display = "block";
     } else {
       card.style.display = "none";
     }
-  });
-}
+  }
+};
 
 
 
@@ -132,35 +133,3 @@ btnHamburger.addEventListener("click", function () {
     navbar.classList.remove("responsive");
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* eslint-disable no-console */
-console.log(data);
-/* eslint-enable no-console */
-
-// fetch("./data/pokemon/pokemon.json")
-// .then(response => {
-//    return response.json();
-// })
-// .then(jsondata => console.log(jsondata));
