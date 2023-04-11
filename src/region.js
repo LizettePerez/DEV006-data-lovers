@@ -71,11 +71,13 @@ for (let i = 0; i < data.pokemon.length; i++) {
   pokemonContainer.appendChild(card);
 };
 
+
 // Función para redirigir a la página de detalles del Pokémon
 function goToPokemonDetails(pokemonName) {
   var pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
   window.location.href = pokemonDetailsUrl;
 };
+
 
 // Funcion para filtrar por region
 function addFilterButtonRegion(button, region) {
@@ -84,7 +86,6 @@ function addFilterButtonRegion(button, region) {
     pokemonContainer.classList.remove("hidden");
   });
 }
-
 addFilterButtonRegion(kantoButton, "kanto");
 addFilterButtonRegion(johtoButton, "johto");
 
@@ -106,8 +107,6 @@ function filterPokemonByRegion(region) {
     }
   }
 };
-
-
 
 
 // Obtén la referencia del botón "arriba"
