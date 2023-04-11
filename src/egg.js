@@ -6,6 +6,7 @@ const k2Button = document.querySelector(".k2-button");
 const k5Button = document.querySelector(".k5-button");
 const k7Button = document.querySelector(".k7-button");
 const k10Button = document.querySelector(".k10-button");
+const botonArriba = document.querySelector('.arriba');
 
 
 
@@ -119,8 +120,7 @@ function filterPokemonByEgg(egg) {
 
 
 
-// Obtén la referencia del botón "arriba"
-const botonArriba = document.querySelector('.arriba');
+
 
 // Agrega un listener de evento al botón "arriba"
 botonArriba.addEventListener('click', function () {

@@ -3,6 +3,7 @@ import data from "./data/pokemon/pokemon.js";
 const pokemonContainer = document.querySelector(".pokemon-container");
 const kantoButton = document.querySelector(".kanto-button");
 const johtoButton = document.querySelector(".johto-button");
+const botonArriba = document.querySelector('.arriba');
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -109,8 +110,7 @@ function filterPokemonByRegion(region) {
 };
 
 
-// Obtén la referencia del botón "arriba"
-const botonArriba = document.querySelector('.arriba');
+
 
 // Agrega un listener de evento al botón "arriba"
 botonArriba.addEventListener('click', function () {

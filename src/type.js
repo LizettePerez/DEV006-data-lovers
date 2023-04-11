@@ -21,6 +21,8 @@ const rockButton = document.querySelector(".rock-button");
 const steelButton = document.querySelector(".steel-button");
 const waterButton = document.querySelector(".water-button");
 
+const botonArriba = document.querySelector('.arriba');
+
 //agregar imagen a cada elemento
 const typeImages = {
   grass: "./img/elementos/grass.png",
@@ -147,8 +149,6 @@ function filterPokemonByType(type) {
 
 
 
-// Obtén la referencia del botón "arriba"
-const botonArriba = document.querySelector('.arriba');
 
 // Agrega un listener de evento al botón "arriba"
 botonArriba.addEventListener('click', function () {

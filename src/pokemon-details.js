@@ -84,6 +84,7 @@ document.querySelector(".stats-defense").textContent = pokemon.stats["base-defen
 document.querySelector(".stats-stamina").textContent = pokemon.stats["base-stamina"];
 document.querySelector(".stats-cp").textContent = pokemon.stats["max-cp"];
 document.querySelector(".stats-hp").textContent = pokemon.stats["max-hp"];
+const botonArriba = document.querySelector('.arriba');
 
 const typesContainer = document.querySelector(".pokemon-types");
 
@@ -152,8 +153,6 @@ btnHamburger.addEventListener("click", function () {
   }
 });
 
-// Obtén la referencia del botón "arriba"
-const botonArriba = document.querySelector('.arriba');
 
 // Agrega un listener de evento al botón "arriba"
 botonArriba.addEventListener('click', function () {

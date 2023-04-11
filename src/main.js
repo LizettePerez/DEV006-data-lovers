@@ -138,6 +138,31 @@ sortSelect.addEventListener("change", () => {
 
 
 
+
+// Agrega un listener de evento al botón "arriba"
+botonArriba.addEventListener('click', function () {
+  // Usa la función "scrollTo" para moverte al inicio del documento
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+
+//Nav Hamburger
+const btnHamburger = document.getElementById("hamburger");
+btnHamburger.addEventListener("click", function () {
+  const navbar = document.getElementById("myNavbar");
+  if (navbar.classList.contains("navbar")) {
+    navbar.classList.add("responsive");
+  } else {
+    navbar.classList.remove("responsive");
+  }
+});
+
+
+
+
 /* eslint-disable no-console */
 console.log(data);
 /* eslint-enable no-console */

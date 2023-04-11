@@ -5,6 +5,7 @@ const pokemonContainer = document.querySelector(".pokemon-container");
 const normalButton = document.querySelector(".normal-button");
 const legendaryButton = document.querySelector(".legendary-button");
 const mythicButton = document.querySelector(".mythic-button");
+const botonArriba = document.querySelector('.arriba');
 
 
 //agregar imagen a cada elemento
@@ -113,8 +114,6 @@ function filterPokemonByRarity(rarity) {
 
 
 
-// Obtén la referencia del botón "arriba"
-const botonArriba = document.querySelector('.arriba');
 
 // Agrega un listener de evento al botón "arriba"
 botonArriba.addEventListener('click', function () {
