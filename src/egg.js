@@ -83,26 +83,17 @@ const goToPokemonDetails = (pokemonName) => {
 
 
 
-k2Button.addEventListener("click", () => {
-  filterPokemonByEgg("2 km");
-  pokemonContainer.classList.remove("hidden");
-});
+function filterPokemonByEggButton(button, egg) {
+  button.addEventListener("click", () => {
+    filterPokemonByEgg(egg);
+    pokemonContainer.classList.remove("hidden");
+  });
+}
 
-
-k5Button.addEventListener("click", () => {
-  filterPokemonByEgg("5 km");
-  pokemonContainer.classList.remove("hidden");
-});
-
-k7Button.addEventListener("click", () => {
-  filterPokemonByEgg("7 km");
-  pokemonContainer.classList.remove("hidden");
-});
-
-k10Button.addEventListener("click", () => {
-  filterPokemonByEgg("10 km");
-  pokemonContainer.classList.remove("hidden");
-});
+filterPokemonByEggButton(k2Button, "2 km");
+filterPokemonByEggButton(k5Button, "5 km");
+filterPokemonByEggButton(k7Button, "7 km");
+filterPokemonByEggButton(k10Button, "10 km");
 
 
 // Función para filtrar los Pokémon por región

@@ -93,97 +93,31 @@ const goToPokemonDetails = (pokemonName) => {
   window.location.href = pokemonDetailsUrl;
 };
 
+function addFilterButtonType(button, type) {
+  button.addEventListener("click", () => {
+    filterPokemonByType(type);
+    pokemonContainer.classList.remove("hidden");
+  });
+}
 
-
-bugButton.addEventListener("click", () => {
-  filterPokemonByType("bug");
-  pokemonContainer.classList.remove("hidden");
-});
-
-darkButton.addEventListener("click", () => {
-  filterPokemonByType("dark");
-  pokemonContainer.classList.remove("hidden");
-});
-
-dragonButton.addEventListener("click", () => {
-  filterPokemonByType("dragon");
-  pokemonContainer.classList.remove("hidden");
-});
-
-electricButton.addEventListener("click", () => {
-  filterPokemonByType("electric");
-  pokemonContainer.classList.remove("hidden");
-});
-
-fairyButton.addEventListener("click", () => {
-  filterPokemonByType("fairy");
-  pokemonContainer.classList.remove("hidden");
-});
-
-fightingButton.addEventListener("click", () => {
-  filterPokemonByType("fighting");
-  pokemonContainer.classList.remove("hidden");
-});
-
-fireButton.addEventListener("click", () => {
-  filterPokemonByType("fire");
-  pokemonContainer.classList.remove("hidden");
-});
-
-flyingButton.addEventListener("click", () => {
-  filterPokemonByType("flying");
-  pokemonContainer.classList.remove("hidden");
-});
-
-ghostButton.addEventListener("click", () => {
-  filterPokemonByType("ghost");
-  pokemonContainer.classList.remove("hidden");
-});
-
-grassButton.addEventListener("click", () => {
-  filterPokemonByType("grass");
-  pokemonContainer.classList.remove("hidden");
-});
-
-groundButton.addEventListener("click", () => {
-  filterPokemonByType("ground");
-  pokemonContainer.classList.remove("hidden");
-});
-
-iceButton.addEventListener("click", () => {
-  filterPokemonByType("ice");
-  pokemonContainer.classList.remove("hidden");
-});
-
-normButton.addEventListener("click", () => {
-  filterPokemonByType("normal");
-  pokemonContainer.classList.remove("hidden");
-});
-
-poisonButton.addEventListener("click", () => {
-  filterPokemonByType("poison");
-  pokemonContainer.classList.remove("hidden");
-});
-
-psychicButton.addEventListener("click", () => {
-  filterPokemonByType("psychic");
-  pokemonContainer.classList.remove("hidden");
-});
-
-rockButton.addEventListener("click", () => {
-  filterPokemonByType("rock");
-  pokemonContainer.classList.remove("hidden");
-});
-
-steelButton.addEventListener("click", () => {
-  filterPokemonByType("steel");
-  pokemonContainer.classList.remove("hidden");
-});
-
-waterButton.addEventListener("click", () => {
-  filterPokemonByType("water");
-  pokemonContainer.classList.remove("hidden");
-});
+addFilterButtonType(bugButton, "bug");
+addFilterButtonType(darkButton, "dark");
+addFilterButtonType(dragonButton, "dragon");
+addFilterButtonType(electricButton, "electric");
+addFilterButtonType(fairyButton, "fairy");
+addFilterButtonType(fightingButton, "fighting");
+addFilterButtonType(fireButton, "fire");
+addFilterButtonType(flyingButton, "flying");
+addFilterButtonType(ghostButton, "ghost");
+addFilterButtonType(grassButton, "grass");
+addFilterButtonType(groundButton, "ground");
+addFilterButtonType(iceButton, "ice");
+addFilterButtonType(normButton, "normal");
+addFilterButtonType(poisonButton, "poison");
+addFilterButtonType(psychicButton, "psychic");
+addFilterButtonType(rockButton, "rock");
+addFilterButtonType(steelButton, "steel");
+addFilterButtonType(waterButton, "water");
 
 
 // Función para filtrar los Pokémon por región

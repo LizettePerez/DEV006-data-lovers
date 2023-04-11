@@ -76,16 +76,16 @@ const goToPokemonDetails = (pokemonName) => {
   window.location.href = pokemonDetailsUrl;
 };
 
-// Agregar event listeners a los botones de región
-kantoButton.addEventListener("click", () => {
-  filterPokemonByRegion("kanto");
-  pokemonContainer.classList.remove("hidden");
-});
+function addFilterButtonRegion(button, type) {
+  button.addEventListener("click", () => {
+    filterPokemonByRegion(type);
+    pokemonContainer.classList.remove("hidden");
+  });
+}
 
-johtoButton.addEventListener("click", () => {
-  filterPokemonByRegion("johto");
-  pokemonContainer.classList.remove("hidden");
-});
+addFilterButtonRegion(kantoButton, "kanto");
+addFilterButtonRegion(johtoButton, "johto");
+
 
 // Función para filtrar los Pokémon por región
 const filterPokemonByRegion = (region) => {

@@ -80,22 +80,16 @@ const goToPokemonDetails = (pokemonName) => {
 };
 
 
+function addFilterButtonRarity(button, rarity) {
+  button.addEventListener("click", () => {
+    filterPokemonByRarity(rarity);
+    pokemonContainer.classList.remove("hidden");
+  });
+}
 
-normalButton.addEventListener("click", () => {
-  filterPokemonByRarity("normal");
-  pokemonContainer.classList.remove("hidden");
-});
-
-
-legendaryButton.addEventListener("click", () => {
-  filterPokemonByRarity("legendary");
-  pokemonContainer.classList.remove("hidden");
-});
-
-mythicButton.addEventListener("click", () => {
-  filterPokemonByRarity("mythic");
-  pokemonContainer.classList.remove("hidden");
-});
+addFilterButtonRarity(normalButton, "normal");
+addFilterButtonRarity(legendaryButton, "legendary");
+addFilterButtonRarity(mythicButton, "mythic");
 
 
 
