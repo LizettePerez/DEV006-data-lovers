@@ -86,7 +86,7 @@ function goToPokemonDetails(pokemonName) {
 
 
 function filterPokemonByEggButton(button, egg) {
-  button.addEventListener("click", () => {
+  button.addEventListener("click",function () {
     filterPokemonByEgg(egg);
     pokemonContainer.classList.remove("hidden");
   });
@@ -130,18 +130,15 @@ botonArriba.addEventListener('click', function () {
 
 
 //Nav Hamburger
-const btnHamburger = document.querySelector("#hamburger");
-btnHamburger.addEventListener("click", myFunction)
-
-function myFunction() {
-  var x = document.getElementById("myNavbar");
-  if (x.className === "navbar") {
-    x.className += " responsive";
+const btnHamburger = document.getElementById("hamburger");
+btnHamburger.addEventListener("click", function () {
+  const navbar = document.getElementById("myNavbar");
+  if (navbar.classList.contains("navbar")) {
+    navbar.classList.add("responsive");
   } else {
-    x.className = "navbar";
+    navbar.classList.remove("responsive");
   }
-};
-
+});
 
 
 

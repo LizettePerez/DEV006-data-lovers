@@ -100,7 +100,7 @@ function goToPokemonDetails(pokemonName) {
 
 // Funcion para filtrar por type
 function addFilterButtonType(button, type) {
-  button.addEventListener("click", () => {
+  button.addEventListener("click", function () {
     filterPokemonByType(type);
     pokemonContainer.classList.remove("hidden");
   });
@@ -130,18 +130,23 @@ addFilterButtonType(waterButton, "water");
 // Función para filtrar los Pokémon por type
 function filterPokemonByType(type) {
   const cards = document.querySelectorAll(".pokemon-card");
-  cards.forEach(function (card) {
+  for (let i = 0; i < cards.length; i++) {
+    const card = cards[i];
     const pokemonName = card.dataset.name;
-    const pokemonData = data.pokemon.find(function (pokemon) {
-      return pokemon.name === pokemonName;
-    });
+    let pokemonData = null;
+    for (let j = 0; j < data.pokemon.length; j++) {
+      if (data.pokemon[j].name === pokemonName) {
+        pokemonData = data.pokemon[j];
+        break;
+      }
+    }
     const pokemonType = pokemonData.type;
     if (pokemonType.includes(type)) {
       card.style.display = "block";
     } else {
       card.style.display = "none";
     }
-  });
+  }
 };
 
 
@@ -160,18 +165,15 @@ botonArriba.addEventListener('click', function () {
 
 
 //Nav Hamburger
-const btnHamburger = document.querySelector("#hamburger");
-btnHamburger.addEventListener("click", myFunction)
-
-function myFunction() {
-  var x = document.getElementById("myNavbar");
-  if (x.className === "navbar") {
-    x.className += " responsive";
+const btnHamburger = document.getElementById("hamburger");
+btnHamburger.addEventListener("click", function () {
+  const navbar = document.getElementById("myNavbar");
+  if (navbar.classList.contains("navbar")) {
+    navbar.classList.add("responsive");
   } else {
-    x.className = "navbar";
+    navbar.classList.remove("responsive");
   }
-};
-
+});
 
 
 
