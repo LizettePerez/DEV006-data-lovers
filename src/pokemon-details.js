@@ -283,7 +283,6 @@ if (pokemonData && pokemonData.evolution) {
         />
       `;
     }
-
     evolutionsHtml += `
       <div class="pokemon-evolution-detail">
         <img class="pokemon-evolution-img" src="${evolution.img}">
@@ -292,7 +291,7 @@ if (pokemonData && pokemonData.evolution) {
         <div class="pokemon-evolution-type">
           ${typesHtml}
         </div>
-      </div>
+        </div>
     `;
   }
 
