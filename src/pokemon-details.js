@@ -235,62 +235,84 @@ botonArriba.addEventListener('click', function () {
 //   document.querySelector(".pokemon-evolution").classList.add("hidden");
 // }
 
-const pokemonData = data.pokemon.find(pokemon => pokemon.name === pokemonName);
+const pokemonData = data.pokemon.find(function (pokemon) {
+  return pokemon.name === pokemonName;
+});
 
 if (pokemonData && pokemonData.evolution) {
   let evolution = pokemonData.evolution;
   let evolutions = [pokemonData]; // incluir el pokemon actual en la lista de evoluciones
+
   while (evolution && evolution["prev-evolution"]) {
     const prevEvolution = evolution["prev-evolution"][0];
-    const prevPokemon = data.pokemon.find(pokemon => pokemon.num === prevEvolution.num);
+    const prevPokemon = data.pokemon.find(function (pokemon) {
+      return pokemon.num === prevEvolution.num;
+    });
+
     evolutions.unshift(prevPokemon); // agregar la pre-evolución al inicio de la lista
     evolution = prevPokemon.evolution;
   }
+
   evolution = pokemonData.evolution;
   while (evolution && evolution["next-evolution"]) {
     const nextEvolution = evolution["next-evolution"][0];
-    const nextPokemon = data.pokemon.find(pokemon => pokemon.num === nextEvolution.num);
+    const nextPokemon = data.pokemon.find(function (pokemon) {
+      return pokemon.num === nextEvolution.num;
+    });
+
     evolutions.push(nextPokemon); // agregar la siguiente evolución al final de la lista
     evolution = nextPokemon.evolution;
   }
 
-  const evolutionContainer = document.querySelector(".pokemon-evolution");
-  evolutionContainer.innerHTML = `
-    ${evolutions.map(evolution => `
+  let evolutionContainer = document.querySelector(".pokemon-evolution");
+  let evolutionsHtml = "";
+
+  for (let i = 0; i < evolutions.length; i++) {
+    let evolution = evolutions[i];
+    let typesHtml = "";
+
+    for (let j = 0; j < evolution.type.length; j++) {
+      let type = evolution.type[j];
+      typesHtml += `
+        <img
+          src="${typeImages[type]}"
+          alt="${type}"
+          class="pokemon-type-img"
+          title="${type.charAt(0).toUpperCase() + type.slice(1)}"
+          style="width: 20px; height: 20px; display: inline-block; margin-right: 2px;"
+        />
+      `;
+    }
+
+    evolutionsHtml += `
       <div class="pokemon-evolution-detail">
         <img class="pokemon-evolution-img" src="${evolution.img}">
         <p class="pokemon-evolution-num">#${evolution.num}</p>
         <h2 class="pokemon-evolution-name">${evolution.name.charAt(0).toUpperCase() + evolution.name.slice(1)}</h2>
         <div class="pokemon-evolution-type">
-          ${evolution.type
-            .map((type) => {
-              return `
-                <img
-                  src="${typeImages[type]}"
-                  alt="${type}"
-                  class="pokemon-type-img"
-                  title="${type.charAt(0).toUpperCase() + type.slice(1)}"
-                  style="width: 20px; height: 20px; display: inline-block; margin-right: 2px;"
-                />
-              `;
-            })
-            .join("")}
+          ${typesHtml}
         </div>
       </div>
-    `).join("")}
-  `;
+    `;
+  }
 
-  const evolutionCards = document.querySelectorAll(".pokemon-evolution-detail");
-  evolutionCards.forEach(card => {
-    card.addEventListener('click', () => {
+  evolutionContainer.innerHTML = evolutionsHtml;
+
+  let evolutionCards = document.querySelectorAll(".pokemon-evolution-detail");
+
+  for (let i = 0; i < evolutionCards.length; i++) {
+    let card = evolutionCards[i];
+    card.addEventListener('click', function () {
       goToPokemonDetails(card.querySelector(".pokemon-evolution-name").textContent.toLowerCase());
     });
-  });
+  }
 
   evolutionContainer.classList.remove("hidden");
+
 } else {
   document.querySelector(".pokemon-evolution").classList.add("hidden");
 };
+
 
 // Función para redirigir a la página de detalles del Pokémon
 function goToPokemonDetails(pokemonName) {
