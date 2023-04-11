@@ -294,8 +294,8 @@ if (pokemonData && pokemonData.evolution) {
 };
 
 // Función para redirigir a la página de detalles del Pokémon
-const goToPokemonDetails = (pokemonName) => {
-  const pokemonDetailsUrl = `./pokemon-details.html?name=${pokemonName}`;
+function goToPokemonDetails(pokemonName) {
+  var pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
   window.location.href = pokemonDetailsUrl;
 };
 

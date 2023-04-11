@@ -33,7 +33,7 @@ const typeImages = {
 
 
 // Plantilla de cadena de texto para una tarjeta de Pokémon
-const cardTemplate = (pokemon) => {
+function cardTemplate(pokemon) {
   return `
     <div class="pokemon-card" data-name="${pokemon.name}">
       <div class="pokemon-img-container">
@@ -42,9 +42,8 @@ const cardTemplate = (pokemon) => {
       <p class="pokemon-num">#${pokemon.num}</p>
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
-        ${pokemon.type
-      .map((type) => {
-        return `
+        ${pokemon.type.map(function(type) {
+          return `
               <img
                 src="${typeImages[type]}"
                 alt="${type}"
@@ -53,33 +52,36 @@ const cardTemplate = (pokemon) => {
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
-      })
-      .join("")}
+        }).join("")}
       </div>
     </div>
   `;
-};
+}
 
-// Bucle forEach para crear las tarjetas de Pokémon
-data.pokemon.forEach((pokemon) => {
-  const card = document.createElement('div');
-  card.classList.add('pokemon-card');
-  card.dataset.name = pokemon.name;
+// Bucle para crear las tarjetas de Pokémon
+for (let i = 0; i < data.pokemon.length; i++) {
+  const pokemon = data.pokemon[i];
+  
+  const card = document.createElement("div");
+  card.className = "pokemon-card";
+  card.setAttribute("data-name", pokemon.name);
   card.innerHTML = cardTemplate(pokemon);
 
   // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-  card.addEventListener('click', () => {
+  card.addEventListener("click", function() {
     goToPokemonDetails(pokemon.name);
   });
 
   pokemonContainer.appendChild(card);
-});
+};
 
 // Función para redirigir a la página de detalles del Pokémon
-const goToPokemonDetails = (pokemonName) => {
-  const pokemonDetailsUrl = `./pokemon-details.html?name=${pokemonName}`;
+function goToPokemonDetails(pokemonName) {
+  var pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
   window.location.href = pokemonDetailsUrl;
 };
+
+
 
 
 
