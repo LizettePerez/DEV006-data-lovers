@@ -132,11 +132,12 @@ botonArriba.addEventListener('click', function () {
 });
 
 
+
 //Nav Hamburger
 const btnHamburger = document.querySelector("#hamburger");
-btnHamburger.addEventListener("click", myFunction);
+btnHamburger.addEventListener("click", burger);
 
-function myFunction() {
+function burger() {
   var x = document.getElementById("myNavbar");
   if (x.className === "navbar") {
     x.className += " responsive";

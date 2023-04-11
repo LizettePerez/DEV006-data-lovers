@@ -87,46 +87,46 @@ document.querySelector(".stats-hp").textContent = pokemon.stats["max-hp"];
 const botonArriba = document.querySelector('.arriba');
 
 const typesContainer = document.querySelector(".pokemon-types");
+const weaknessesContainer = document.querySelector(".pokemon-weaknesses-types");
+const resistancesContainer = document.querySelector(".pokemon-resistant-types");
 
-pokemon.type.forEach((type) => {
+for (let i = 0; i < pokemon.type.length; i++) {
   const typeParagraph = document.createElement("p");
   const typeImage = document.createElement("img");
-  typeImage.src = typeImages[type];
-  typeImage.alt = type;
-  typeImage.title = type.charAt(0).toUpperCase() + type.slice(1);
+  typeImage.src = typeImages[pokemon.type[i]];
+  typeImage.alt = pokemon.type[i];
+  typeImage.title = pokemon.type[i].charAt(0).toUpperCase() + pokemon.type[i].slice(1);
   typeParagraph.appendChild(typeImage);
   typesContainer.appendChild(typeParagraph);
-});
+};
 
-const weaknessesContainer = document.querySelector(".pokemon-weaknesses-types");
-pokemon.weaknesses.forEach((weakness) => {
+for (let i = 0; i < pokemon.weaknesses.length; i++) {
   const weaknessParagraph = document.createElement("p");
   const weaknessImage = document.createElement("img");
-  weaknessImage.src = weaknessImages[weakness];
-  weaknessImage.alt = weakness;
-  weaknessImage.title = weakness.charAt(0).toUpperCase() + weakness.slice(1);
+  weaknessImage.src = weaknessImages[pokemon.weaknesses[i]];
+  weaknessImage.alt = pokemon.weaknesses[i];
+  weaknessImage.title = pokemon.weaknesses[i].charAt(0).toUpperCase() + pokemon.weaknesses[i].slice(1);
   weaknessParagraph.appendChild(weaknessImage);
   weaknessesContainer.appendChild(weaknessParagraph);
-});
+};
 
-const resistancesContainer = document.querySelector(".pokemon-resistant-types");
-pokemon.resistant.forEach((resistance) => {
+for (let i = 0; i < pokemon.resistant.length; i++) {
   const resistanceParagraph = document.createElement("p");
   const resistanceImage = document.createElement("img");
-  resistanceImage.src = resistantImages[resistance];
-  resistanceImage.alt = resistance;
-  resistanceImage.title = resistance.charAt(0).toUpperCase() + resistance.slice(1);
+  resistanceImage.src = resistantImages[pokemon.resistant[i]];
+  resistanceImage.alt = pokemon.resistant[i];
+  resistanceImage.title = pokemon.resistant[i].charAt(0).toUpperCase() + pokemon.resistant[i].slice(1);
   resistanceParagraph.appendChild(resistanceImage);
   resistancesContainer.appendChild(resistanceParagraph);
-});
-
-function getPokemonByName(name) {
-  return pokemonListData.find((pokemon) => pokemon.name === name);
-}
+};
 
 
+// function getPokemonByName(name) {
+//   return pokemonListData.find((pokemon) => pokemon.name === name);
+// }
 
 
+// funcion boton volver
 const volver = document.getElementById("volver");
 volver.addEventListener("click", buttomVolver);
 
@@ -144,9 +144,9 @@ console.log(data);
 
 //Nav Hamburger
 const btnHamburger = document.querySelector("#hamburger");
-btnHamburger.addEventListener("click", myFunction);
+btnHamburger.addEventListener("click", burger);
 
-function myFunction() {
+function burger() {
   var x = document.getElementById("myNavbar");
   if (x.className === "navbar") {
     x.className += " responsive";
