@@ -144,32 +144,3 @@ btnHamburger.addEventListener("click", function () {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* eslint-disable no-console */
-console.log(data);
-/* eslint-enable no-console */
-
-// fetch("./data/pokemon/pokemon.json")
-// .then(response => {
-//    return response.json();
-// })
-// .then(jsondata => console.log(jsondata));

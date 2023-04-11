@@ -2,6 +2,9 @@ import data from "./data/pokemon/pokemon.js";
 
 const pokemonContainer = document.querySelector(".pokemon-container");
 const searchInput = document.querySelector("#search-input");
+const botonArriba = document.querySelector(".arriba");
+const sortSelect = document.querySelector("#sort-select");
+
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -77,10 +80,17 @@ function goToPokemonDetails(pokemonName) {
 };
 
 
+// Event listener para detectar el cambio en el input de búsqueda
+searchInput.addEventListener("input", function(search) {
+  const searchText = search.target.value.toLowerCase();
+  searchPokemon(searchText);
+});
+
 // Función para buscar Pokémon por nombre o número
-const searchPokemon = (searchText) => {
+function searchPokemon(searchText) {
   const cards = document.querySelectorAll(".pokemon-card");
-  cards.forEach((card) => {
+  for (let i = 0; i < cards.length; i++) {
+    const card = cards[i];
     const name = card.dataset.name.toLowerCase();
     const num = card.querySelector(".pokemon-num").textContent.toLowerCase();
     if (name.includes(searchText) || num.includes(searchText)) {
@@ -88,41 +98,9 @@ const searchPokemon = (searchText) => {
     } else {
       card.style.display = "none";
     }
-  });
-};
-
-// Event listener para detectar el cambio en el input de búsqueda
-searchInput.addEventListener("input", (e) => {
-  const searchText = e.target.value.toLowerCase();
-  searchPokemon(searchText);
-});
-
-// Obtén la referencia del botón "arriba"
-const botonArriba = document.querySelector(".arriba");
-
-// Agrega un listener de evento al botón "arriba"
-botonArriba.addEventListener("click", function () {
-  // Usa la función "scrollTo" para moverte al inicio del documento
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-});
-
-//Nav Hamburger
-const btnHamburger = document.getElementById("hamburger");
-btnHamburger.addEventListener("click", function () {
-  const navbar = document.getElementById("myNavbar");
-  if (navbar.classList.contains("navbar")) {
-    navbar.classList.add("responsive");
-  } else {
-    navbar.classList.remove("responsive");
   }
-});
+}
 
-//Función para el filtrado.
-
-const sortSelect = document.querySelector("#sort-select");
 
 // Ordenar por nombre o número, ascendente o descendente
 sortSelect.addEventListener("change", () => {
@@ -141,20 +119,24 @@ sortSelect.addEventListener("change", () => {
 
   // Limpiar la sección de tarjetas de Pokémon y volver a crearlas con el nuevo orden
   pokemonContainer.innerHTML = "";
-  sortedData.forEach((pokemon) => {
+  for (let i = 0; i < sortedData.length; i++) {
+    const pokemon = sortedData[i];
+    
     const card = document.createElement("div");
-    card.classList.add("pokemon-card");
-    card.dataset.name = pokemon.name;
+    card.className = "pokemon-card";
+    card.setAttribute("data-name", pokemon.name);
     card.innerHTML = cardTemplate(pokemon);
-
+  
     // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-    card.addEventListener("click", () => {
+    card.addEventListener("click", function() {
       goToPokemonDetails(pokemon.name);
     });
-
+  
     pokemonContainer.appendChild(card);
-  });
+  };
 });
+
+
 
 /* eslint-disable no-console */
 console.log(data);
