@@ -1,63 +1,69 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- FAVICON -->
+    <link rel="icon" type="" href="img/favicon.png" />
+    <!--Libreria icono hamburger menu-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- FONT BERLIN SANS -->
+    <link
+      href="https://fonts.cdnfonts.com/css/berlin-sans-fb-demi"
+      rel="stylesheet"
+    />
+    <!-- FONT ROBOTO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Pokédex</title>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <!-- FAVICON -->
-  <link rel="icon" type="" href="img/favicon.png" />
-  <!--Libreria icono hamburger menu-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- FONT BERLIN SANS -->
-  <link href="https://fonts.cdnfonts.com/css/berlin-sans-fb-demi" rel="stylesheet" />
-  <!-- FONT ROBOTO -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href
-="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <title>Pokédex</title>
-</head>
-
-<body>
-  <header class="logo">
-    <img src="img/header.png " />
-    <div class="navbar" id="myNavbar">
-      <a href="./region.html" class="active">Regions</a>
-      <a href="./index.html">Pokédex</a>
-      <a href="./type.html">Type</a>
-      <a href="./rarity.html">Rarity</a>
-      <a href="./egg.html">Egg</a>
-      <a href="javascript:void(0);" class="icon" id="hamburger">
-        <i class="fa fa-bars"></i>
-      </a>
-
-    </div>
-  </header>
-
-  <main>
-    <div class="region-buttons">
-      <div class="kanto">
-        <img src="./img/kanto.png" alt="kanto">
-        <button class="kanto-button">KANTO</button>
+  <body>
+    <header class="logo">
+      <a href="./index.html"> <img src="img/header.png" /></a>
+      <div class="navbar" id="myNavbar">
+        <a href="./region.html" class="active">Regions</a>
+        <a href="./index.html">Pokédex</a>
+        <a href="./type.html">Type</a>
+        <a href="./rarity.html">Rarity</a>
+        <a href="./egg.html">Egg</a>
+        <a href="javascript:void(0);" class="icon" id="hamburger">
+          <i class="fa fa-bars"></i>
+        </a>
       </div>
-      <div class="johto">
-        <img src="./img/johto.png" alt="johto">
-        <button class="johto-button">JOHTO</button>
+    </header>
+
+    <main>
+      <div class="region-buttons">
+        <div class="kanto">
+          <img src="./img/kanto.png" alt="kanto" />
+          <button class="kanto-button">KANTO</button>
+        </div>
+        <div class="johto">
+          <img src="./img/johto.png" alt="johto" />
+          <button class="johto-button">JOHTO</button>
+        </div>
+
+        <div>
+          <h2>Kanto: <span id="kantoPercentage"></span>%</h2>
+          <h2>Johto: <span id="johtoPercentage"></span>%</h2>
+        </div>
       </div>
-      
-    </div>
-  
 
-    <div class="pokemon-container hidden">
-    </div>
+      <div class="pokemon-container hidden"></div>
+    </main>
+    <img src="img/up.png" alt="Subir" class="arriba" />
 
-  </main>
-  <img src="img/up.png" alt="Subir" class="arriba">
-
-  <div id="root"></div>
-  <script src="region.js" type="module"></script>
-</body>
-
+    <div id="root"></div>
+    <script src="region.js" type="module"></script>
+  </body>
 </html>

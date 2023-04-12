@@ -3,7 +3,7 @@ import data from "./data/pokemon/pokemon.js";
 const pokemonContainer = document.querySelector(".pokemon-container");
 const kantoButton = document.querySelector(".kanto-button");
 const johtoButton = document.querySelector(".johto-button");
-const botonArriba = document.querySelector('.arriba');
+const botonArriba = document.querySelector(".arriba");
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -27,7 +27,6 @@ const typeImages = {
   steel: "./img/elementos/steel.png",
 };
 
-
 // Plantilla de cadena de texto para una tarjeta de Pokémon
 function cardTemplate(pokemon) {
   return `
@@ -38,8 +37,9 @@ function cardTemplate(pokemon) {
       <p class="pokemon-num">#${pokemon.num}</p>
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
-        ${pokemon.type.map(function (type) {
-    return `
+        ${pokemon.type
+          .map(function (type) {
+            return `
               <img
                 src="${typeImages[type]}"
                 alt="${type}"
@@ -48,12 +48,12 @@ function cardTemplate(pokemon) {
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
-  }).join("")}
+          })
+          .join("")}
       </div>
     </div>
   `;
 }
-
 
 // Bucle para crear las tarjetas de Pokémon
 for (let i = 0; i < data.pokemon.length; i++) {
@@ -70,15 +70,13 @@ for (let i = 0; i < data.pokemon.length; i++) {
   });
 
   pokemonContainer.appendChild(card);
-};
-
+}
 
 // Función para redirigir a la página de detalles del Pokémon
 function goToPokemonDetails(pokemonName) {
   var pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
   window.location.href = pokemonDetailsUrl;
-};
-
+}
 
 // Funcion para filtrar por region
 function addFilterButtonRegion(button, region) {
@@ -89,7 +87,6 @@ function addFilterButtonRegion(button, region) {
 }
 addFilterButtonRegion(kantoButton, "kanto");
 addFilterButtonRegion(johtoButton, "johto");
-
 
 // Función para filtrar los Pokémon por region
 function filterPokemonByRegion(region) {
@@ -107,21 +104,42 @@ function filterPokemonByRegion(region) {
       card.style.display = "none";
     }
   }
+}
+
+const pokemonByRegion = () => {
+  let kantoCount = 0;
+  let johtoCount = 0;
+  for (const pokemon of data.pokemon) {
+    if (pokemon.generation.name === "kanto") {
+      kantoCount++;
+    } else if (pokemon.generation.name === "johto") {
+      johtoCount++;
+    }
+  }
+  const total = kantoCount + johtoCount;
+  const kantoPercentage =
+    kantoCount > 0 ? ((kantoCount / total) * 100).toFixed(2) : 0;
+  const johtoPercentage =
+    johtoCount > 0 ? ((johtoCount / total) * 100).toFixed(2) : 0;
+  return { kantoPercentage, johtoPercentage };
 };
 
+const { kantoPercentage, johtoPercentage } = pokemonByRegion();
 
+const kantoPercentageElement = document.getElementById("kantoPercentage");
+const johtoPercentageElement = document.getElementById("johtoPercentage");
 
+kantoPercentageElement.textContent = kantoPercentage;
+johtoPercentageElement.textContent = johtoPercentage;
 
 // Agrega un listener de evento al botón "arriba"
-botonArriba.addEventListener('click', function () {
+botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 });
-
-
 
 //Nav Hamburger
 const btnHamburger = document.querySelector("#hamburger");
