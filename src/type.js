@@ -100,6 +100,7 @@ function goToPokemonDetails(pokemonName) {
 
 
 
+
 // Funcion para filtrar por type
 function addFilterButtonType(button, type) {
   button.addEventListener("click", function () {

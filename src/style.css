@@ -117,7 +117,7 @@ main {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.pokemon-img-container :hover {
+.pokemon-img-container:hover, .pokemon-evolution-img:hover {
   cursor: pointer;
   transform: scale(1.05);
   animation: rotate 4s linear infinite;
@@ -143,6 +143,14 @@ h1 {
   right: 20px;
   padding: 10px;
   cursor: pointer;
+}
+
+.sort {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding-bottom: 30px;
 }
 
 @media screen and (max-width: 768px) {
@@ -614,4 +622,36 @@ td {
 
 .water-button {
   background-image: url(./img/elementos/water.png);
+}
+
+.bug-button:hover,
+.dark-button:hover,
+.dragon-button:hover,
+.electric-button:hover,
+.fairy-button:hover,
+.fighting-button:hover,
+.fire-button:hover,
+.flying-button:hover,
+.ghost-button:hover,
+.grass-button:hover,
+.ground-button:hover,
+.grass-button:hover,
+.ice-button:hover,
+.norm-button:hover,
+.poison-button:hover,
+.psychic-button:hover,
+.rock-button:hover,
+.steel-button:hover,
+.water-button:hover {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  margin: 10px 25px;
+  cursor: pointer;
+  transform: scale(1.05);
+  animation: rotate 4s linear infinite;
 }
