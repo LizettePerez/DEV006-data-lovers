@@ -1,10 +1,11 @@
 import data from "./data/pokemon/pokemon.js";
+import { searchPokemon } from "./data.js";
 
 const pokemonContainer = document.querySelector(".pokemon-container");
 const searchInput = document.querySelector("#search-input");
 const botonArriba = document.querySelector(".arriba");
 const sortSelect = document.querySelector("#sort-select");
-
+const menuLinks = document.querySelectorAll(".rarity");
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -38,8 +39,9 @@ function cardTemplate(pokemon) {
       <p class="pokemon-num">#${pokemon.num}</p>
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
-        ${pokemon.type.map(function(type) {
-          return `
+        ${pokemon.type
+          .map(function (type) {
+            return `
               <img
                 src="${typeImages[type]}"
                 alt="${type}"
@@ -48,59 +50,41 @@ function cardTemplate(pokemon) {
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
-        }).join("")}
+          })
+          .join("")}
       </div>
     </div>
   `;
 }
 
-
 // Bucle para crear las tarjetas de Pokémon
 for (let i = 0; i < data.pokemon.length; i++) {
   const pokemon = data.pokemon[i];
-  
+
   const card = document.createElement("div");
   card.className = "pokemon-card";
   card.setAttribute("data-name", pokemon.name);
   card.innerHTML = cardTemplate(pokemon);
 
   // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-  card.addEventListener("click", function() {
+  card.addEventListener("click", function () {
     goToPokemonDetails(pokemon.name);
   });
 
   pokemonContainer.appendChild(card);
-};
-
+}
 
 // Función para redirigir a la página de detalles del Pokémon
 function goToPokemonDetails(pokemonName) {
   var pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
   window.location.href = pokemonDetailsUrl;
-};
-
+}
 
 // Event listener para detectar el cambio en el input de búsqueda
-searchInput.addEventListener("input", function(search) {
+searchInput.addEventListener("input", function (search) {
   const searchText = search.target.value.toLowerCase();
   searchPokemon(searchText);
 });
-
-// Función para buscar Pokémon por nombre o número
-function searchPokemon(searchText) {
-  const cards = document.querySelectorAll(".pokemon-card");
-  for (let i = 0; i < cards.length; i++) {
-    const card = cards[i];
-    const name = card.dataset.name.toLowerCase();
-    const num = card.querySelector(".pokemon-num").textContent.toLowerCase();
-    if (name.includes(searchText) || num.includes(searchText)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  }
-}
-
 
 // Ordenar por nombre o número, ascendente o descendente
 sortSelect.addEventListener("change", () => {
@@ -121,34 +105,29 @@ sortSelect.addEventListener("change", () => {
   pokemonContainer.innerHTML = "";
   for (let i = 0; i < sortedData.length; i++) {
     const pokemon = sortedData[i];
-    
+
     const card = document.createElement("div");
     card.className = "pokemon-card";
     card.setAttribute("data-name", pokemon.name);
     card.innerHTML = cardTemplate(pokemon);
-  
+
     // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-    card.addEventListener("click", function() {
+    card.addEventListener("click", function () {
       goToPokemonDetails(pokemon.name);
     });
-  
+
     pokemonContainer.appendChild(card);
-  };
+  }
 });
 
-
-
-
 // Agrega un listener de evento al botón "arriba"
-botonArriba.addEventListener('click', function () {
+botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 });
-
-
 
 //Nav Hamburger
 const btnHamburger = document.querySelector("#hamburger");
@@ -162,9 +141,6 @@ function burger() {
     x.className = "navbar";
   }
 }
-
-
-
 
 /* eslint-disable no-console */
 console.log(data);
