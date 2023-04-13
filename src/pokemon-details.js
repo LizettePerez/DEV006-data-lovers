@@ -330,16 +330,72 @@ console.log(pokemonData);
 
 
 
+// // Obtener el elemento div donde se mostrará el resultado
+// const maxBaseAttackElement = document.getElementById("max-base-attack");
+
+// // Llamar a la función maxBaseAttack() con la base de datos
+// const maxBaseDefenseValue = maxBaseDefense(data);
+
+// // Actualizar el contenido del elemento div con el resultado de la función
+// maxBaseAttackElement.textContent = `El valor máximo de base-attack es: ${maxBaseAttackValue} ${maxBaseDefenseValue}`;
 
 
 
 
+function maxBaseAttack(data) {
+  let max = 0;
+  for (let i = 0; i < data.pokemon.length; i++) {
+    const baseAttack = parseInt(data.pokemon[i].stats["base-attack"]);
+    if (baseAttack > max) {
+      max = baseAttack;
+    }
+  }
+  return max;
+}
+
+function maxBaseDefense(data) {
+  let max = 0;
+  for (let i = 0; i < data.pokemon.length; i++) {
+    const baseDefense = parseInt(data.pokemon[i].stats["base-defense"]);
+    if (baseDefense > max) {
+      max = baseDefense;
+    }
+  }
+  return max;
+}
 
 
 
 
+// Obtener el elemento div donde se mostrarán las barras
+const pokemonBarsElement = document.getElementById("pokemon-bars");
 
+// Obtener el valor máximo de base-attack
+const maxBaseAttackValue = maxBaseAttack(data);
 
+// Crear una barra para cada Pokémon
+for (let i = 0; i < data.pokemon.length; i++) {
+  const pokemon = data.pokemon[i];
+  const baseAttack = parseInt(pokemon.stats["base-attack"]);
 
+  // Calcular el ancho de la barra en proporción al valor máximo
+  const width = (baseAttack / maxBaseAttackValue) * 100;
+
+  // Crear un elemento div para la barra de ataque
+  const attackBarElement = document.createElement("div");
+  attackBarElement.classList.add("base-attack");
+  attackBarElement.textContent = baseAttack;
+
+  // Crear un elemento div para la barra
+  const barElement = document.createElement("div");
+  barElement.classList.add("pokemon-attack-bar");
+  barElement.style.width = `${width}%`;
+
+  // Agregar la barra de ataque a la barra principal
+  barElement.appendChild(attackBarElement);
+
+  // Agregar la barra al contenedor
+  pokemonBarsElement.appendChild(barElement);
+}
 
 
