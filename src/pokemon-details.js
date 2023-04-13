@@ -167,74 +167,6 @@ botonArriba.addEventListener('click', function () {
 
 
 
-
-// const pokemonData = data.pokemon.find(pokemon => pokemon.name === pokemonName);
-
-// if (pokemonData.evolution) {
-//   const nextEvolution = pokemonData.evolution["next-evolution"][0];
-
-//   document.querySelector(".pokemon-evolution-img").src = data.pokemon.find(pokemon => pokemon.num === nextEvolution.num).img;
-//   document.querySelector(".pokemon-evolution-num").textContent = `#${nextEvolution.num}`;
-//   document.querySelector(".pokemon-evolution-name").textContent = nextEvolution.name;
-//   document.querySelector(".pokemon-evolution-type").textContent = data.pokemon.find(pokemon => pokemon.name === nextEvolution.name).type.join(" / ");
-//   document.querySelector(".pokemon-evolution-candy").textContent = `${nextEvolution["candy-cost"]} ${pokemonData.evolution.candy}`;
-
-//   document.querySelector(".pokemon-evolution").classList.remove("hidden");
-// } else {
-//   document.querySelector(".pokemon-evolution").classList.add("hidden");
-// }
-
-
-
-// const pokemonData = data.pokemon.find(pokemon => pokemon.name === pokemonName);
-
-// if (pokemonData.evolution) {
-//   let evolution = pokemonData.evolution;
-//   let evolutions = [];
-//   while (evolution) {
-//     const nextEvolution = evolution["next-evolution"] && evolution["next-evolution"][0];
-//     if (nextEvolution) {
-//       const nextPokemon = data.pokemon.find(pokemon => pokemon.num === nextEvolution.num);
-//       evolutions.push(nextPokemon);
-//       evolution = nextPokemon.evolution;
-//     } else {
-//       evolution = null;
-//     }
-//   }
-
-//   const evolutionContainer = document.querySelector(".pokemon-evolution");
-//   evolutionContainer.innerHTML = `
-//     ${evolutions.map(evolution => `
-//       <div class="pokemon-evolution-detail">
-//         <img class="pokemon-evolution-img" src="${evolution.img}">
-//         <p class="pokemon-evolution-num">#${evolution.num}</p>
-//         <h2 class="pokemon-evolution-name">${evolution.name}</h2>
-//         <div class="pokemon-evolution-type">
-//           ${evolution.type
-//             .map((type) => {
-//               return `
-//               <img
-//                 src="${typeImages[type]}"
-//                 alt="${type}"
-//                 class="pokemon-type-img"
-//                 title="${type.charAt(0).toUpperCase() + type.slice(1)}"
-//                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
-//               />
-//             `;
-//           })
-//           .join("")}
-//         </div>
-//         <p class="pokemon-evolution-candy-amount">${evolution["candy-cost"]}</p>
-//         <p class="pokemon-evolution-candy-name">${pokemonData.evolution.candy}</p>
-//       </div>
-//     `).join("")}
-//   `;
-
-//   evolutionContainer.classList.remove("hidden");
-// } else {
-//   document.querySelector(".pokemon-evolution").classList.add("hidden");
-// }
-
 const pokemonData = data.pokemon.find(function (pokemon) {
   return pokemon.name === pokemonName;
 });
@@ -373,29 +305,58 @@ const pokemonBarsElement = document.getElementById("pokemon-bars");
 // Obtener el valor máximo de base-attack
 const maxBaseAttackValue = maxBaseAttack(data);
 
-// Crear una barra para cada Pokémon
-for (let i = 0; i < data.pokemon.length; i++) {
-  const pokemon = data.pokemon[i];
-  const baseAttack = parseInt(pokemon.stats["base-attack"]);
 
-  // Calcular el ancho de la barra en proporción al valor máximo
-  const width = (baseAttack / maxBaseAttackValue) * 100;
 
+// // Crear una barra para cada Pokémon
+// for (let i = 0; i < data.pokemon.length; i++) {
+//   const pokemon = data.pokemon[i];
+//   const baseAttack = parseInt(pokemon.stats["base-attack"]);
+
+//   // Calcular el ancho de la barra en proporción al valor máximo
+//   const width = (baseAttack / maxBaseAttackValue) * 100;
+
+//   // Crear un elemento div para la barra de ataque
+//   const attackBarElement = document.createElement("div");
+//   attackBarElement.classList.add("base-attack");
+//   attackBarElement.textContent = baseAttack;
+
+//   // Crear un elemento div para la barra
+//   const barElement = document.createElement("div");
+//   barElement.classList.add("pokemon-attack-bar");
+//   barElement.style.width = `${width}%`;
+
+//   // Agregar la barra de ataque a la barra principal
+//   barElement.appendChild(attackBarElement);
+
+//   // Agregar la barra al contenedor
+//   pokemonBarsElement.appendChild(barElement);
+// }
+
+function createPokemonAttackBar(pokemon, maxBaseAttackValue) {
+  const baseAttack = parseInt(pokemon.stats["base-attack"]); // Obtener el valor de base-attack del objeto pokemon
+  const widthAttack = (baseAttack / maxBaseAttackValue) * 100; // Calcular el ancho de la barra en proporción al valor máximo
+  
   // Crear un elemento div para la barra de ataque
   const attackBarElement = document.createElement("div");
   attackBarElement.classList.add("base-attack");
-  attackBarElement.textContent = baseAttack;
+  attackBarElement.textContent = pokemon.stats["base-attack"];
 
   // Crear un elemento div para la barra
   const barElement = document.createElement("div");
   barElement.classList.add("pokemon-attack-bar");
-  barElement.style.width = `${width}%`;
+  barElement.style.width = `${widthAttack}%`;
 
   // Agregar la barra de ataque a la barra principal
   barElement.appendChild(attackBarElement);
 
-  // Agregar la barra al contenedor
-  pokemonBarsElement.appendChild(barElement);
+  return barElement;
 }
 
 
+const currentPokemon = data.pokemon[0];
+
+// Crear la barra de ataque del Pokémon actual
+const currentPokemonAttackBar = createPokemonAttackBar(currentPokemon, maxBaseAttackValue);
+
+// Agregar la barra al contenedor pokemon-bars
+pokemonBarsElement.appendChild(currentPokemonAttackBar);
