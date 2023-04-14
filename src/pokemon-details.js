@@ -325,27 +325,27 @@ function createPokemonStatsBar() {
   // Crear div para la barra de ataque
   const attackBarElement = document.createElement("div");
   attackBarElement.classList.add("base-attack");
-  attackBarElement.textContent = "Base Attack: " + pokemon.stats["base-attack"];
+  attackBarElement.textContent = "Base Attack " + pokemon.stats["base-attack"];
 
   // Crear div para la barra de defensa
   const defenseBarElement = document.createElement("div");
   defenseBarElement.classList.add("base-defense");
-  defenseBarElement.textContent = "Base Defense: " + pokemon.stats["base-defense"];
+  defenseBarElement.textContent = "Base Defense " + pokemon.stats["base-defense"];
 
   // Crear div para la barra de stamina
   const staminaBarElement = document.createElement("div");
   staminaBarElement.classList.add("base-stamina");
-  staminaBarElement.textContent = "Base Stamina: " + pokemon.stats["base-stamina"];
+  staminaBarElement.textContent = "Base Stamina " + pokemon.stats["base-stamina"];
 
   // Crear div para la barra de cp
   const cpBarElement = document.createElement("div");
   cpBarElement.classList.add("max-cp");
-  cpBarElement.textContent = "Max CP: " + pokemon.stats["max-cp"];
+  cpBarElement.textContent = "Max CP " + pokemon.stats["max-cp"];
 
   // Crear div para la barra de hp
   const hpBarElement = document.createElement("div");
   hpBarElement.classList.add("max-hp");
-  hpBarElement.textContent = "Max HP: " + pokemon.stats["max-hp"];
+  hpBarElement.textContent = "Max HP " + pokemon.stats["max-hp"];
 
 
 

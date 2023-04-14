@@ -666,31 +666,32 @@ td {
   border-bottom-right-radius: 14px;
   color: #4f6764;
   text-align: left;
+  font-weight: bold;
 }
 
 .pokemon-attack-bar {
-  background-color: #e3bfdb;
+  background-color: #aecdf2;
   border-top-left-radius: 14px;
   margin-bottom: 4px;
 }
 
 .pokemon-defense-bar {
-  background-color: #dadaf6;
+  background-color: #ffa450;
   margin-bottom: 4px;
 }
 
 .pokemon-stamina-bar {
-  background-color: #f6d7c2;
+  background-color: #a5d684;
   margin-bottom: 4px;
 }
 
 .pokemon-cp-bar {
-  background-color: #b4dbf8;
+  background-color: #ffe876;
   margin-bottom: 4px;
 }
 
 .pokemon-hp-bar {
-  background-color: #a1eccd;
+  background-color: #f9b6c7;
   border-bottom-left-radius: 14px;
 }
 
