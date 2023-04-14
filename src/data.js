@@ -30,3 +30,20 @@ export function goToPokemonDetails(pokemonName) {
 };
 
 
+// Función para ordenar los Pokémon por nombre o número
+export function sortPokemon(optionValue) {
+  let sortedData;
+
+  if (optionValue === "name-asc") {
+    sortedData = data.pokemon.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (optionValue === "name-desc") {
+    sortedData = data.pokemon.sort((a, b) => b.name.localeCompare(a.name));
+  } else if (optionValue === "num-asc") {
+    sortedData = data.pokemon.sort((a, b) => a.num - b.num);
+  } else if (optionValue === "num-desc") {
+    sortedData = data.pokemon.sort((a, b) => b.num - a.num);
+  }
+
+  return sortedData;
+}
+

@@ -79,7 +79,6 @@ for (let i = 0; i < data.pokemon.length; i++) {
 };
 
 
-
 // Event listener para detectar el cambio en el input de búsqueda
 searchInput.addEventListener("input", function(search) {
   const searchText = search.target.value.toLowerCase();
