@@ -1,9 +1,15 @@
-import data from "./data/pokemon/pokemon.js";
+import data from './data/pokemon/pokemon.js';
+import { btnHamburger, burgerDisplay } from './data.js';
+import { botonArriba } from './data.js';
+import { goToPokemonDetails } from './data.js';
+
+
+//EVENTO HAMBURGER
+btnHamburger.addEventListener("click", burgerDisplay);
 
 const pokemonContainer = document.querySelector(".pokemon-container");
 const kantoButton = document.querySelector(".kanto-button");
 const johtoButton = document.querySelector(".johto-button");
-const botonArriba = document.querySelector('.arriba');
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -73,13 +79,6 @@ for (let i = 0; i < data.pokemon.length; i++) {
 };
 
 
-// Función para redirigir a la página de detalles del Pokémon
-function goToPokemonDetails(pokemonName) {
-  var pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
-  window.location.href = pokemonDetailsUrl;
-};
-
-
 // Funcion para filtrar por region
 function addFilterButtonRegion(button, region) {
   button.addEventListener("click", function () {
@@ -109,29 +108,3 @@ function filterPokemonByRegion(region) {
   }
 };
 
-
-
-
-// Agrega un listener de evento al botón "arriba"
-botonArriba.addEventListener('click', function () {
-  // Usa la función "scrollTo" para moverte al inicio del documento
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
-
-
-
-//Nav Hamburger
-const btnHamburger = document.getElementById("hamburger");
-btnHamburger.addEventListener("click", burgerDisplay);
-
-function burgerDisplay() {
-  let navbarElement  = document.getElementById("myNavbar");
-  if (navbarElement.classList.contains("responsive")) {
-    navbarElement.classList.remove("responsive");
-  } else {
-    navbarElement.classList.add("responsive");
-  }
-}

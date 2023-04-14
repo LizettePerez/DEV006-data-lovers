@@ -1,4 +1,34 @@
-import data from "./data/pokemon/pokemon.js";
+import data from './data/pokemon/pokemon.js';
+import { btnHamburger, burgerDisplay } from './data.js';
+import { botonArriba } from './data.js';
+import { volver, buttomVolver } from './data.js';
+import { goToPokemonDetails } from './data.js';
+
+
+// EVENTO BOTON VOLVER
+volver.addEventListener("click", buttomVolver);
+
+//EVENTO HAMBURGER
+btnHamburger.addEventListener("click", burgerDisplay);
+
+
+const pokemonName = new URLSearchParams(window.location.search).get("name");
+const pokemon = data.pokemon.find((p) => p.name === pokemonName);
+
+document.querySelector(".pokemon-name").textContent = pokemon.name;
+document.querySelector(".pokemon-number").textContent = `#${pokemon.num}`;
+document.querySelector(".pokemon-image").src = pokemon.img;
+document.querySelector(".pokemon-description").textContent = pokemon.about;
+document.querySelector(".pokemon-height").textContent = pokemon.size.height;
+document.querySelector(".pokemon-weight").textContent = pokemon.size.weight;
+document.querySelector(".pokemon-rarity").textContent = pokemon["pokemon-rarity"];
+document.querySelector(".pokemon-region").textContent = pokemon.generation.name;
+// document.querySelector(".stats-attack").textContent = pokemon.stats["base-attack"];
+// document.querySelector(".stats-defense").textContent = pokemon.stats["base-defense"];
+// document.querySelector(".stats-stamina").textContent = pokemon.stats["base-stamina"];
+// document.querySelector(".stats-cp").textContent = pokemon.stats["max-cp"];
+// document.querySelector(".stats-hp").textContent = pokemon.stats["max-hp"];
+
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -22,156 +52,31 @@ const typeImages = {
   steel: "./img/elementos/steel.png",
 };
 
-//agregar imagen a cada elemento
-const resistantImages = {
-  grass: "./img/elementos/grass.png",
-  poison: "./img/elementos/poison.png",
-  fire: "./img/elementos/fire.png",
-  flying: "./img/elementos/flying.png",
-  water: "./img/elementos/water.png",
-  bug: "./img/elementos/bug.png",
-  normal: "./img/elementos/normal.png",
-  electric: "./img/elementos/electric.png",
-  ground: "./img/elementos/ground.png",
-  fighting: "./img/elementos/fight.png",
-  psychic: "./img/elementos/psychic.png",
-  rock: "./img/elementos/rock.png",
-  ice: "./img/elementos/ice.png",
-  ghost: "./img/elementos/ghost.png",
-  dragon: "./img/elementos/dragon.png",
-  fairy: "./img/elementos/fairy.png",
-  dark: "./img/elementos/dark.png",
-  steel: "./img/elementos/steel.png",
-};
-
-
-//agregar imagen a cada elemento
-const weaknessImages = {
-  grass: "./img/elementos/grass.png",
-  poison: "./img/elementos/poison.png",
-  fire: "./img/elementos/fire.png",
-  flying: "./img/elementos/flying.png",
-  water: "./img/elementos/water.png",
-  bug: "./img/elementos/bug.png",
-  normal: "./img/elementos/normal.png",
-  electric: "./img/elementos/electric.png",
-  ground: "./img/elementos/ground.png",
-  fighting: "./img/elementos/fight.png",
-  psychic: "./img/elementos/psychic.png",
-  rock: "./img/elementos/rock.png",
-  ice: "./img/elementos/ice.png",
-  ghost: "./img/elementos/ghost.png",
-  dragon: "./img/elementos/dragon.png",
-  fairy: "./img/elementos/fairy.png",
-  dark: "./img/elementos/dark.png",
-  steel: "./img/elementos/steel.png",
-};
-
-const pokemonName = new URLSearchParams(window.location.search).get("name");
-const pokemon = data.pokemon.find((p) => p.name === pokemonName);
-
-// Función para redirigir a la página de detalles del Pokémon
-function goToPokemonDetails(pokemonName) {
-  var pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
-  window.location.href = pokemonDetailsUrl;
-};
-
-document.querySelector(".pokemon-name").textContent = pokemon.name;
-document.querySelector(".pokemon-number").textContent = `#${pokemon.num}`;
-document.querySelector(".pokemon-image").src = pokemon.img;
-document.querySelector(".pokemon-description").textContent = pokemon.about;
-document.querySelector(".pokemon-height").textContent = pokemon.size.height;
-document.querySelector(".pokemon-weight").textContent = pokemon.size.weight;
-document.querySelector(".pokemon-rarity").textContent = pokemon["pokemon-rarity"];
-document.querySelector(".pokemon-region").textContent = pokemon.generation.name;
-// document.querySelector(".stats-attack").textContent = pokemon.stats["base-attack"];
-// document.querySelector(".stats-defense").textContent = pokemon.stats["base-defense"];
-// document.querySelector(".stats-stamina").textContent = pokemon.stats["base-stamina"];
-// document.querySelector(".stats-cp").textContent = pokemon.stats["max-cp"];
-// document.querySelector(".stats-hp").textContent = pokemon.stats["max-hp"];
-
+function createTypeElements(container, types, className) {
+  for (let i = 0; i < types.length; i++) {
+    const typeParagraph = document.createElement("p");
+    const typeImage = document.createElement("img");
+    typeImage.src = typeImages[types[i]];
+    typeImage.alt = types[i];
+    typeImage.title = types[i].charAt(0).toUpperCase() + types[i].slice(1);
+    typeParagraph.appendChild(typeImage);
+    typeParagraph.classList.add(className);
+    container.appendChild(typeParagraph);
+  }
+}
 const typesContainer = document.querySelector(".pokemon-types");
-for (let i = 0; i < pokemon.type.length; i++) {
-  const typeParagraph = document.createElement("p");
-  const typeImage = document.createElement("img");
-  typeImage.src = typeImages[pokemon.type[i]];
-  typeImage.alt = pokemon.type[i];
-  typeImage.title = pokemon.type[i].charAt(0).toUpperCase() + pokemon.type[i].slice(1);
-  typeParagraph.appendChild(typeImage);
-  typesContainer.appendChild(typeParagraph);
-};
-
+createTypeElements(typesContainer, pokemon.type, "pokemon-type");
 
 const weaknessesContainer = document.querySelector(".pokemon-weaknesses-types");
-for (let i = 0; i < pokemon.weaknesses.length; i++) {
-  const weaknessParagraph = document.createElement("p");
-  const weaknessImage = document.createElement("img");
-  weaknessImage.src = weaknessImages[pokemon.weaknesses[i]];
-  weaknessImage.alt = pokemon.weaknesses[i];
-  weaknessImage.title = pokemon.weaknesses[i].charAt(0).toUpperCase() + pokemon.weaknesses[i].slice(1);
-  weaknessParagraph.appendChild(weaknessImage);
-  weaknessesContainer.appendChild(weaknessParagraph);
-};
-
+createTypeElements(weaknessesContainer, pokemon.weaknesses, "pokemon-weakness");
 
 const resistancesContainer = document.querySelector(".pokemon-resistant-types");
-for (let i = 0; i < pokemon.resistant.length; i++) {
-  const resistanceParagraph = document.createElement("p");
-  const resistanceImage = document.createElement("img");
-  resistanceImage.src = resistantImages[pokemon.resistant[i]];
-  resistanceImage.alt = pokemon.resistant[i];
-  resistanceImage.title = pokemon.resistant[i].charAt(0).toUpperCase() + pokemon.resistant[i].slice(1);
-  resistanceParagraph.appendChild(resistanceImage);
-  resistancesContainer.appendChild(resistanceParagraph);
-};
+createTypeElements(resistancesContainer, pokemon.resistant, "pokemon-resistance");
 
 
 // function getPokemonByName(name) {
 //   return pokemonListData.find((pokemon) => pokemon.name === name);
 // }
-
-
-// funcion boton volver
-const volver = document.getElementById("volver");
-volver.addEventListener("click", buttomVolver);
-
-function buttomVolver() {
-  history.back();
-  return false;
-}
-
-
-
-
-/* eslint-disable no-console */
-console.log(data);
-/* eslint-enable no-console */
-
-
-//Nav Hamburger
-const btnHamburger = document.getElementById("hamburger");
-btnHamburger.addEventListener("click", burgerDisplay);
-
-function burgerDisplay() {
-  let navbarElement  = document.getElementById("myNavbar");
-  if (navbarElement.classList.contains("responsive")) {
-    navbarElement.classList.remove("responsive");
-  } else {
-    navbarElement.classList.add("responsive");
-  }
-}
-
-
-const botonArriba = document.querySelector('.arriba');
-botonArriba.addEventListener('click', function () {
-  // Usa la función "scrollTo" para moverte al inicio del documento
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
-
-
 
 
 if (pokemon && pokemon.evolution) {
@@ -251,15 +156,6 @@ if (pokemon && pokemon.evolution) {
 
 
 
-
-
-
-
-
-console.log(pokemon);
-
-
-
 function getMaxBaseValue(statName) {
   let max = 0;
   for (let i = 0; i < data.pokemon.length; i++) {
@@ -269,7 +165,8 @@ function getMaxBaseValue(statName) {
     }
   }
   return max;
-}
+};
+
 
 const maxBaseAttackValue = getMaxBaseValue("base-attack");
 const maxBaseDefenseValue = getMaxBaseValue("base-defense");
@@ -397,3 +294,10 @@ const currentPokemonAttackBar = createPokemonStatsBar(pokemon, maxBaseAttackValu
 
 // Agregar la barra al contenedor pokemon-bars
 pokemonBarsElement.appendChild(currentPokemonAttackBar);
+
+
+
+/* eslint-disable no-console */
+console.log(pokemon);
+console.log(data);
+/* eslint-enable no-console */

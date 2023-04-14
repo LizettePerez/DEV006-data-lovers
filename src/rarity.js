@@ -1,11 +1,18 @@
-import data from "./data/pokemon/pokemon.js";
+import data from './data/pokemon/pokemon.js';
+import { btnHamburger, burgerDisplay } from './data.js';
+import { botonArriba } from './data.js';
+import { goToPokemonDetails } from './data.js';
+
+
+//EVENTO HAMBURGER
+btnHamburger.addEventListener("click", burgerDisplay);
 
 const pokemonContainer = document.querySelector(".pokemon-container");
 
 const normalButton = document.querySelector(".normal-button");
 const legendaryButton = document.querySelector(".legendary-button");
 const mythicButton = document.querySelector(".mythic-button");
-const botonArriba = document.querySelector('.arriba');
+
 
 
 //agregar imagen a cada elemento
@@ -73,11 +80,6 @@ data.pokemon.forEach((pokemon) => {
   pokemonContainer.appendChild(card);
 });
 
-// Función para redirigir a la página de detalles del Pokémon
-const goToPokemonDetails = (pokemonName) => {
-  const pokemonDetailsUrl = `./pokemon-details.html?name=${pokemonName}`;
-  window.location.href = pokemonDetailsUrl;
-};
 
 
 function addFilterButtonRarity(button, rarity) {
@@ -110,33 +112,6 @@ function filterPokemonByRarity(rarity) {
     }
   }
 };
-
-
-
-
-
-// Agrega un listener de evento al botón "arriba"
-botonArriba.addEventListener('click', function () {
-  // Usa la función "scrollTo" para moverte al inicio del documento
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
-
-
-//Nav Hamburger
-const btnHamburger = document.getElementById("hamburger");
-btnHamburger.addEventListener("click", burgerDisplay);
-
-function burgerDisplay() {
-  let navbarElement  = document.getElementById("myNavbar");
-  if (navbarElement.classList.contains("responsive")) {
-    navbarElement.classList.remove("responsive");
-  } else {
-    navbarElement.classList.add("responsive");
-  }
-}
 
 
 
