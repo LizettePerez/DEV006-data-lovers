@@ -132,6 +132,22 @@ const johtoPercentageElement = document.getElementById("johtoPercentage");
 kantoPercentageElement.textContent = kantoPercentage;
 johtoPercentageElement.textContent = johtoPercentage;
 
+const ctx = document.getElementById("myChart").getContext("2d");
+const myChart = new Chart(ctx, {
+  type: "pie",
+  data: {
+    labels: ["Kanto", "Johto"],
+    datasets: [
+      {
+        label: "Porcentaje por region",
+        data: [kantoPercentage, johtoPercentage],
+        backgroundColor: ["#FF6384", "#36A2EB"],
+        borderWidth: 1,
+      },
+    ],
+  },
+});
+
 // Agrega un listener de evento al botón "arriba"
 botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento

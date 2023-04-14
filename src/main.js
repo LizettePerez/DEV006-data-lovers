@@ -120,6 +120,40 @@ sortSelect.addEventListener("change", () => {
   }
 });
 
+// Ordenar por nombre o número, ascendente o descendente
+// sortSelect.addEventListener("change", () => {
+//   const optionValue = sortSelect.value;
+//   let sortedData;
+
+//   if (optionValue === "name-asc") {
+//     sortedData = data.pokemon.sort((a, b) => a.name.localeCompare(b.name));
+//   } else if (optionValue === "name-desc") {
+//     sortedData = data.pokemon.sort((a, b) => b.name.localeCompare(a.name));
+//   } else if (optionValue === "num-asc") {
+//     sortedData = data.pokemon.sort((a, b) => a.num - b.num);
+//   } else if (optionValue === "num-desc") {
+//     sortedData = data.pokemon.sort((a, b) => b.num - a.num);
+//   }
+
+//   // Limpiar la sección de tarjetas de Pokémon y volver a crearlas con el nuevo orden
+//   pokemonContainer.innerHTML = "";
+//   for (let i = 0; i < sortedData.length; i++) {
+//     const pokemon = sortedData[i];
+
+//     const card = document.createElement("div");
+//     card.className = "pokemon-card";
+//     card.setAttribute("data-name", pokemon.name);
+//     card.innerHTML = cardTemplate(pokemon);
+
+//     // Agregar un event listener al hacer clic en la tarjeta de Pokémon
+//     card.addEventListener("click", function () {
+//       goToPokemonDetails(pokemon.name);
+//     });
+
+//     pokemonContainer.appendChild(card);
+//   }
+// });
+
 // Agrega un listener de evento al botón "arriba"
 botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
