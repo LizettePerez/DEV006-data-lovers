@@ -126,18 +126,17 @@ botonArriba.addEventListener('click', function () {
 
 
 //Nav Hamburger
-const btnHamburger = document.querySelector("#hamburger");
-btnHamburger.addEventListener("click", myFunction);
+const btnHamburger = document.getElementById("hamburger");
+btnHamburger.addEventListener("click", burgerDisplay);
 
-function myFunction() {
-  var x = document.getElementById("myNavbar");
-  if (x.className === "navbar") {
-    x.className += " responsive";
+function burgerDisplay() {
+  let navbarElement  = document.getElementById("myNavbar");
+  if (navbarElement.classList.contains("responsive")) {
+    navbarElement.classList.remove("responsive");
   } else {
-    x.className = "navbar";
+    navbarElement.classList.add("responsive");
   }
 }
-
 
 
 

@@ -70,6 +70,11 @@ const weaknessImages = {
 const pokemonName = new URLSearchParams(window.location.search).get("name");
 const pokemon = data.pokemon.find((p) => p.name === pokemonName);
 
+// Función para redirigir a la página de detalles del Pokémon
+function goToPokemonDetails(pokemonName) {
+  var pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
+  window.location.href = pokemonDetailsUrl;
+};
 
 document.querySelector(".pokemon-name").textContent = pokemon.name;
 document.querySelector(".pokemon-number").textContent = `#${pokemon.num}`;
@@ -84,12 +89,8 @@ document.querySelector(".pokemon-region").textContent = pokemon.generation.name;
 // document.querySelector(".stats-stamina").textContent = pokemon.stats["base-stamina"];
 // document.querySelector(".stats-cp").textContent = pokemon.stats["max-cp"];
 // document.querySelector(".stats-hp").textContent = pokemon.stats["max-hp"];
-const botonArriba = document.querySelector('.arriba');
 
 const typesContainer = document.querySelector(".pokemon-types");
-const weaknessesContainer = document.querySelector(".pokemon-weaknesses-types");
-const resistancesContainer = document.querySelector(".pokemon-resistant-types");
-
 for (let i = 0; i < pokemon.type.length; i++) {
   const typeParagraph = document.createElement("p");
   const typeImage = document.createElement("img");
@@ -100,6 +101,8 @@ for (let i = 0; i < pokemon.type.length; i++) {
   typesContainer.appendChild(typeParagraph);
 };
 
+
+const weaknessesContainer = document.querySelector(".pokemon-weaknesses-types");
 for (let i = 0; i < pokemon.weaknesses.length; i++) {
   const weaknessParagraph = document.createElement("p");
   const weaknessImage = document.createElement("img");
@@ -110,6 +113,8 @@ for (let i = 0; i < pokemon.weaknesses.length; i++) {
   weaknessesContainer.appendChild(weaknessParagraph);
 };
 
+
+const resistancesContainer = document.querySelector(".pokemon-resistant-types");
 for (let i = 0; i < pokemon.resistant.length; i++) {
   const resistanceParagraph = document.createElement("p");
   const resistanceImage = document.createElement("img");
@@ -144,20 +149,20 @@ console.log(data);
 
 
 //Nav Hamburger
-const btnHamburger = document.querySelector("#hamburger");
-btnHamburger.addEventListener("click", burger);
+const btnHamburger = document.getElementById("hamburger");
+btnHamburger.addEventListener("click", burgerDisplay);
 
-function burger() {
-  var x = document.getElementById("myNavbar");
-  if (x.className === "navbar") {
-    x.className += " responsive";
+function burgerDisplay() {
+  let navbarElement  = document.getElementById("myNavbar");
+  if (navbarElement.classList.contains("responsive")) {
+    navbarElement.classList.remove("responsive");
   } else {
-    x.className = "navbar";
+    navbarElement.classList.add("responsive");
   }
 }
 
 
-// Agrega un listener de evento al botón "arriba"
+const botonArriba = document.querySelector('.arriba');
 botonArriba.addEventListener('click', function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
   window.scrollTo({
@@ -168,13 +173,10 @@ botonArriba.addEventListener('click', function () {
 
 
 
-const pokemonData = data.pokemon.find(function (pokemon) {
-  return pokemon.name === pokemonName;
-});
 
-if (pokemonData && pokemonData.evolution) {
-  let evolution = pokemonData.evolution;
-  let evolutions = [pokemonData]; // incluir el pokemon actual en la lista de evoluciones
+if (pokemon && pokemon.evolution) {
+  let evolution = pokemon.evolution;
+  let evolutions = [pokemon]; // incluir el pokemon actual en la lista de evoluciones
 
   while (evolution && evolution["prev-evolution"]) {
     const prevEvolution = evolution["prev-evolution"][0];
@@ -186,7 +188,7 @@ if (pokemonData && pokemonData.evolution) {
     evolution = prevPokemon.evolution;
   }
 
-  evolution = pokemonData.evolution;
+  evolution = pokemon.evolution;
   while (evolution && evolution["next-evolution"]) {
     const nextEvolution = evolution["next-evolution"][0];
     const nextPokemon = data.pokemon.find(function (pokemon) {
@@ -246,11 +248,6 @@ if (pokemonData && pokemonData.evolution) {
 };
 
 
-// Función para redirigir a la página de detalles del Pokémon
-function goToPokemonDetails(pokemonName) {
-  var pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
-  window.location.href = pokemonDetailsUrl;
-};
 
 
 
@@ -258,19 +255,9 @@ function goToPokemonDetails(pokemonName) {
 
 
 
-console.log(pokemonData);
 
+console.log(pokemon);
 
-
-
-// // Obtener el elemento div donde se mostrará el resultado
-// const maxBaseAttackElement = document.getElementById("max-base-attack");
-
-// // Llamar a la función maxBaseAttack() con la base de datos
-// const maxBaseDefenseValue = maxBaseDefense(data);
-
-// // Actualizar el contenido del elemento div con el resultado de la función
-// maxBaseAttackElement.textContent = `El valor máximo de base-attack es: ${maxBaseAttackValue} ${maxBaseDefenseValue}`;
 
 
 function getMaxBaseValue(statName) {
