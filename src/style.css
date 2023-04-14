@@ -289,6 +289,8 @@ h4 {
   padding-bottom: 5px;
   text-transform: uppercase;
   color: #4f6764;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
 }
 
 .pokemon-stats {
@@ -324,7 +326,6 @@ td {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .pokemon-resistant-types,
@@ -346,7 +347,6 @@ td {
 .evolution-tittle {
   margin-top: 20px;
   margin-bottom: -45px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .pokemon-evolution {
@@ -659,31 +659,51 @@ td {
 
 
 
-#pokemon-attack-bars {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.pokemon-attack-bar, .pokemon-defense-bar, .pokemon-stamina-bar, .pokemon-cp-bar, .pokemon-hp-bar {
+  padding: 10px 5px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+  color: #4f6764;
+  text-align: left;
 }
 
 .pokemon-attack-bar {
+  background-color: #e3bfdb;
+  border-top-left-radius: 14px;
+  margin-bottom: 4px;
+}
+
+.pokemon-defense-bar {
+  background-color: #dadaf6;
+  margin-bottom: 4px;
+}
+
+.pokemon-stamina-bar {
+  background-color: #f6d7c2;
+  margin-bottom: 4px;
+}
+
+.pokemon-cp-bar {
+  background-color: #b4dbf8;
+  margin-bottom: 4px;
+}
+
+.pokemon-hp-bar {
+  background-color: #a1eccd;
+  border-bottom-left-radius: 14px;
+}
+
+
+.pokemon-stats-bar-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  padding: 5px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-}
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10px 20px 30px 20px;
+  background-color: #eaf8e3;
+  padding-right: 10px;
+  border-radius: 16px;
+  border: 2px solid #4f6764;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
-.pokemon-name {
-  margin-right: 10px;
-  font-weight: bold;
-}
-
-.pokemon-attack-bar::before {
-  content: "";
-  display: block;
-  height: 20px;
-  background-color: #ffcc00;
-  border-radius: 5px;
 }

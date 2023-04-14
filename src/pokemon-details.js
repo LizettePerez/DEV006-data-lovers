@@ -79,11 +79,11 @@ document.querySelector(".pokemon-height").textContent = pokemon.size.height;
 document.querySelector(".pokemon-weight").textContent = pokemon.size.weight;
 document.querySelector(".pokemon-rarity").textContent = pokemon["pokemon-rarity"];
 document.querySelector(".pokemon-region").textContent = pokemon.generation.name;
-document.querySelector(".stats-attack").textContent = pokemon.stats["base-attack"];
-document.querySelector(".stats-defense").textContent = pokemon.stats["base-defense"];
-document.querySelector(".stats-stamina").textContent = pokemon.stats["base-stamina"];
-document.querySelector(".stats-cp").textContent = pokemon.stats["max-cp"];
-document.querySelector(".stats-hp").textContent = pokemon.stats["max-hp"];
+// document.querySelector(".stats-attack").textContent = pokemon.stats["base-attack"];
+// document.querySelector(".stats-defense").textContent = pokemon.stats["base-defense"];
+// document.querySelector(".stats-stamina").textContent = pokemon.stats["base-stamina"];
+// document.querySelector(".stats-cp").textContent = pokemon.stats["max-cp"];
+// document.querySelector(".stats-hp").textContent = pokemon.stats["max-hp"];
 const botonArriba = document.querySelector('.arriba');
 
 const typesContainer = document.querySelector(".pokemon-types");
@@ -134,6 +134,7 @@ function buttomVolver() {
   history.back();
   return false;
 }
+
 
 
 
@@ -272,29 +273,22 @@ console.log(pokemonData);
 // maxBaseAttackElement.textContent = `El valor máximo de base-attack es: ${maxBaseAttackValue} ${maxBaseDefenseValue}`;
 
 
-
-
-function maxBaseAttack(data) {
+function getMaxBaseValue(statName) {
   let max = 0;
   for (let i = 0; i < data.pokemon.length; i++) {
-    const baseAttack = parseInt(data.pokemon[i].stats["base-attack"]);
-    if (baseAttack > max) {
-      max = baseAttack;
+    const statValue = parseInt(data.pokemon[i].stats[statName]);
+    if (statValue > max) {
+      max = statValue;
     }
   }
   return max;
 }
 
-function maxBaseDefense(data) {
-  let max = 0;
-  for (let i = 0; i < data.pokemon.length; i++) {
-    const baseDefense = parseInt(data.pokemon[i].stats["base-defense"]);
-    if (baseDefense > max) {
-      max = baseDefense;
-    }
-  }
-  return max;
-}
+const maxBaseAttackValue = getMaxBaseValue("base-attack");
+const maxBaseDefenseValue = getMaxBaseValue("base-defense");
+const maxBaseStaminaValue = getMaxBaseValue("base-stamina");
+const maxMaxCPValue = getMaxBaseValue("max-cp");
+const maxMaxHPValue = getMaxBaseValue("max-hp");
 
 
 
@@ -302,61 +296,117 @@ function maxBaseDefense(data) {
 // Obtener el elemento div donde se mostrarán las barras
 const pokemonBarsElement = document.getElementById("pokemon-bars");
 
-// Obtener el valor máximo de base-attack
-const maxBaseAttackValue = maxBaseAttack(data);
 
 
-
-// // Crear una barra para cada Pokémon
-// for (let i = 0; i < data.pokemon.length; i++) {
-//   const pokemon = data.pokemon[i];
-//   const baseAttack = parseInt(pokemon.stats["base-attack"]);
-
-//   // Calcular el ancho de la barra en proporción al valor máximo
-//   const width = (baseAttack / maxBaseAttackValue) * 100;
-
-//   // Crear un elemento div para la barra de ataque
-//   const attackBarElement = document.createElement("div");
-//   attackBarElement.classList.add("base-attack");
-//   attackBarElement.textContent = baseAttack;
-
-//   // Crear un elemento div para la barra
-//   const barElement = document.createElement("div");
-//   barElement.classList.add("pokemon-attack-bar");
-//   barElement.style.width = `${width}%`;
-
-//   // Agregar la barra de ataque a la barra principal
-//   barElement.appendChild(attackBarElement);
-
-//   // Agregar la barra al contenedor
-//   pokemonBarsElement.appendChild(barElement);
-// }
-
-function createPokemonAttackBar(pokemon, maxBaseAttackValue) {
+function createPokemonStatsBar() {
   const baseAttack = parseInt(pokemon.stats["base-attack"]); // Obtener el valor de base-attack del objeto pokemon
   const widthAttack = (baseAttack / maxBaseAttackValue) * 100; // Calcular el ancho de la barra en proporción al valor máximo
-  
-  // Crear un elemento div para la barra de ataque
+
+  const baseDefense = parseInt(pokemon.stats["base-defense"]);
+  const widthDefense = (baseDefense / maxBaseDefenseValue) * 100;
+
+  const baseStamina = parseInt(pokemon.stats["base-stamina"]);
+  const widthStamina = (baseStamina / maxBaseStaminaValue) * 100;
+
+  const baseCP = parseInt(pokemon.stats["max-cp"]);
+  const widthCP = (baseCP / maxMaxCPValue) * 100;
+
+  const baseHP = parseInt(pokemon.stats["max-hp"]);
+  const widthHP = (baseHP / maxMaxHPValue) * 100;
+
+
+
+  // Crear contenedor para barras
+  const statsBarContainer = document.createElement("div");
+  statsBarContainer.classList.add("pokemon-stats-bar-container");
+
+
+
+  // Crear div para la barra de ataque
   const attackBarElement = document.createElement("div");
   attackBarElement.classList.add("base-attack");
-  attackBarElement.textContent = pokemon.stats["base-attack"];
+  attackBarElement.textContent = "Base Attack: " + pokemon.stats["base-attack"];
 
-  // Crear un elemento div para la barra
-  const barElement = document.createElement("div");
-  barElement.classList.add("pokemon-attack-bar");
-  barElement.style.width = `${widthAttack}%`;
+  // Crear div para la barra de defensa
+  const defenseBarElement = document.createElement("div");
+  defenseBarElement.classList.add("base-defense");
+  defenseBarElement.textContent = "Base Defense: " + pokemon.stats["base-defense"];
+
+  // Crear div para la barra de stamina
+  const staminaBarElement = document.createElement("div");
+  staminaBarElement.classList.add("base-stamina");
+  staminaBarElement.textContent = "Base Stamina: " + pokemon.stats["base-stamina"];
+
+  // Crear div para la barra de cp
+  const cpBarElement = document.createElement("div");
+  cpBarElement.classList.add("max-cp");
+  cpBarElement.textContent = "Max CP: " + pokemon.stats["max-cp"];
+
+  // Crear div para la barra de hp
+  const hpBarElement = document.createElement("div");
+  hpBarElement.classList.add("max-hp");
+  hpBarElement.textContent = "Max HP: " + pokemon.stats["max-hp"];
+
+
+
+
+  // Crear una barra de ataque
+  const attackBar = document.createElement("div");
+  attackBar.classList.add("pokemon-attack-bar");
+  attackBar.style.width = `${widthAttack}%`;
+
+  // Crear una barra de defensa
+  const defenseBar = document.createElement("div");
+  defenseBar.classList.add("pokemon-defense-bar");
+  defenseBar.style.width = `${widthDefense}%`;
+
+  // Crear una barra de stamina
+  const staminaBar = document.createElement("div");
+  staminaBar.classList.add("pokemon-stamina-bar");
+  staminaBar.style.width = `${widthStamina}%`;
+
+  // Crear una barra de cp
+  const cpBar = document.createElement("div");
+  cpBar.classList.add("pokemon-cp-bar");
+  cpBar.style.width = `${widthCP}%`;
+
+  // Crear una barra de hp
+  const hpBar = document.createElement("div");
+  hpBar.classList.add("pokemon-hp-bar");
+  hpBar.style.width = `${widthHP}%`;
+
+
+
 
   // Agregar la barra de ataque a la barra principal
-  barElement.appendChild(attackBarElement);
+  attackBar.appendChild(attackBarElement);
+  statsBarContainer.appendChild(attackBar);
 
-  return barElement;
+  // Agregar la barra de defensa a la barra principal
+  defenseBar.appendChild(defenseBarElement);
+  statsBarContainer.appendChild(defenseBar);
+
+  // Agregar la barra de stamina a la barra principal
+  staminaBar.appendChild(staminaBarElement);
+  statsBarContainer.appendChild(staminaBar);
+
+  // Agregar la barra de cp a la barra principal
+  cpBar.appendChild(cpBarElement);
+  statsBarContainer.appendChild(cpBar);
+
+  // Agregar la barra de hp a la barra principal
+  hpBar.appendChild(hpBarElement);
+  statsBarContainer.appendChild(hpBar);
+
+
+
+  return statsBarContainer;
 }
 
 
-const currentPokemon = data.pokemon[0];
 
 // Crear la barra de ataque del Pokémon actual
-const currentPokemonAttackBar = createPokemonAttackBar(currentPokemon, maxBaseAttackValue);
+const currentPokemonAttackBar = createPokemonStatsBar(pokemon, maxBaseAttackValue, maxBaseDefenseValue);
 
 // Agregar la barra al contenedor pokemon-bars
 pokemonBarsElement.appendChild(currentPokemonAttackBar);
