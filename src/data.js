@@ -1,5 +1,4 @@
 import  data  from './data/pokemon/pokemon.js';
-import { createPokemonCards } from '../src/main.js'
 
 // Función para ordenar los Pokémon por nombre o número
 export function sortPokemon(optionValue) {
@@ -20,11 +19,11 @@ export function sortPokemon(optionValue) {
 
 export function searchPokemon(searchText) {
   const pokemonData = data.pokemon;
-  const filteredPokemon = pokemonData.filter(pokemon => {
+  const filteredPokemon = pokemonData.filter(function(pokemon) {
     const name = pokemon.name.toLowerCase();
     const num = pokemon.num.toString().toLowerCase();
     return name.includes(searchText) || num.includes(searchText);
   });
 
-  return createPokemonCards(filteredPokemon);
+  return filteredPokemon;
 }

@@ -1,5 +1,3 @@
-
-
 import { sortPokemon } from '../src/data.js';
 
 describe('sortPokemon', () => {
