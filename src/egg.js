@@ -1,11 +1,5 @@
 import data from './data/pokemon/pokemon.js';
-import { btnHamburger, burgerDisplay } from './data.js';
-import { botonArriba } from './data.js';
-import { goToPokemonDetails } from './data.js';
 
-
-//EVENTO HAMBURGER
-btnHamburger.addEventListener("click", burgerDisplay);
 const pokemonContainer = document.querySelector(".pokemon-container");
 
 const k2Button = document.querySelector(".k2-button");
@@ -48,8 +42,8 @@ function cardTemplate(pokemon) {
       <p class="pokemon-num">#${pokemon.num}</p>
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
-        ${pokemon.type.map(function(type) {
-          return `
+        ${pokemon.type.map(function (type) {
+    return `
               <img
                 src="${typeImages[type]}"
                 alt="${type}"
@@ -58,7 +52,7 @@ function cardTemplate(pokemon) {
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
-        }).join("")}
+  }).join("")}
       </div>
     </div>
   `;
@@ -67,25 +61,25 @@ function cardTemplate(pokemon) {
 // Bucle para crear las tarjetas de Pokémon
 for (let i = 0; i < data.pokemon.length; i++) {
   const pokemon = data.pokemon[i];
-  
+
   const card = document.createElement("div");
   card.className = "pokemon-card";
   card.setAttribute("data-name", pokemon.name);
   card.innerHTML = cardTemplate(pokemon);
 
   // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-  card.addEventListener("click", function() {
+  card.addEventListener("click", function () {
     goToPokemonDetails(pokemon.name);
   });
 
   pokemonContainer.appendChild(card);
-};
+}
 
 
 
 
 function filterPokemonByEggButton(button, egg) {
-  button.addEventListener("click",function () {
+  button.addEventListener("click", function () {
     filterPokemonByEgg(egg);
     pokemonContainer.classList.remove("hidden");
   });
@@ -113,8 +107,33 @@ function filterPokemonByEgg(egg) {
       card.style.display = "none";
     }
   }
-};
+}
 
+function goToPokemonDetails(pokemonName) {
+  const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
+  window.location.href = pokemonDetailsUrl;
+}
+
+const botonArriba = document.querySelector('.arriba');
+botonArriba.addEventListener('click', function () {
+  // Usa la función "scrollTo" para moverte al inicio del documento
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+//EVENTO HAMBURGER
+const btnHamburger = document.getElementById("hamburger");
+btnHamburger.addEventListener("click", burgerDisplay);
+function burgerDisplay() {
+  const navbarElement  = document.getElementById("myNavbar");
+  if (navbarElement.classList.contains("responsive")) {
+    navbarElement.classList.remove("responsive");
+  } else {
+    navbarElement.classList.add("responsive");
+  }
+}
 
 
 

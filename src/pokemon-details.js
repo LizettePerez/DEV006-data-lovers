@@ -1,15 +1,8 @@
 import data from './data/pokemon/pokemon.js';
-import { btnHamburger, burgerDisplay } from './data.js';
-import { botonArriba } from './data.js';
-import { volver, buttomVolver } from './data.js';
-import { goToPokemonDetails } from './data.js';
 
 
-// EVENTO BOTON VOLVER
-volver.addEventListener("click", buttomVolver);
 
-//EVENTO HAMBURGER
-btnHamburger.addEventListener("click", burgerDisplay);
+
 
 
 const pokemonName = new URLSearchParams(window.location.search).get("name");
@@ -28,6 +21,8 @@ document.querySelector(".pokemon-region").textContent = pokemon.generation.name;
 // document.querySelector(".stats-stamina").textContent = pokemon.stats["base-stamina"];
 // document.querySelector(".stats-cp").textContent = pokemon.stats["max-cp"];
 // document.querySelector(".stats-hp").textContent = pokemon.stats["max-hp"];
+
+
 
 
 //agregar imagen a cada elemento
@@ -81,7 +76,7 @@ createTypeElements(resistancesContainer, pokemon.resistant, "pokemon-resistance"
 
 if (pokemon && pokemon.evolution) {
   let evolution = pokemon.evolution;
-  let evolutions = [pokemon]; // incluir el pokemon actual en la lista de evoluciones
+  const evolutions = [pokemon]; // incluir el pokemon actual en la lista de evoluciones
 
   while (evolution && evolution["prev-evolution"]) {
     const prevEvolution = evolution["prev-evolution"][0];
@@ -104,15 +99,15 @@ if (pokemon && pokemon.evolution) {
     evolution = nextPokemon.evolution;
   }
 
-  let evolutionContainer = document.querySelector(".pokemon-evolution");
+  const evolutionContainer = document.querySelector(".pokemon-evolution");
   let evolutionsHtml = "";
 
   for (let i = 0; i < evolutions.length; i++) {
-    let evolution = evolutions[i];
+    const evolution = evolutions[i];
     let typesHtml = "";
 
     for (let j = 0; j < evolution.type.length; j++) {
-      let type = evolution.type[j];
+      const type = evolution.type[j];
       typesHtml += `
         <img
           src="${typeImages[type]}"
@@ -137,10 +132,10 @@ if (pokemon && pokemon.evolution) {
 
   evolutionContainer.innerHTML = evolutionsHtml;
 
-  let evolutionCards = document.querySelectorAll(".pokemon-evolution-detail");
+  const evolutionCards = document.querySelectorAll(".pokemon-evolution-detail");
 
   for (let i = 0; i < evolutionCards.length; i++) {
-    let card = evolutionCards[i];
+    const card = evolutionCards[i];
     card.addEventListener('click', function () {
       goToPokemonDetails(card.querySelector(".pokemon-evolution-name").textContent.toLowerCase());
     });
@@ -150,7 +145,7 @@ if (pokemon && pokemon.evolution) {
 
 } else {
   document.querySelector(".pokemon-evolution").classList.add("hidden");
-};
+}
 
 
 
@@ -165,7 +160,7 @@ function getMaxBaseValue(statName) {
     }
   }
   return max;
-};
+}
 
 
 const maxBaseAttackValue = getMaxBaseValue("base-attack");
@@ -295,6 +290,40 @@ const currentPokemonAttackBar = createPokemonStatsBar(pokemon, maxBaseAttackValu
 // Agregar la barra al contenedor pokemon-bars
 pokemonBarsElement.appendChild(currentPokemonAttackBar);
 
+function goToPokemonDetails(pokemonName) {
+  const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
+  window.location.href = pokemonDetailsUrl;
+}
+
+
+// EVENTO BOTON VOLVER
+volver.addEventListener("click", buttomVolver);
+const volver = document.getElementById("volver");
+function buttomVolver() {
+  history.back();
+  return false;
+}
+
+const botonArriba = document.querySelector('.arriba');
+botonArriba.addEventListener('click', function () {
+  // Usa la función "scrollTo" para moverte al inicio del documento
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+//EVENTO HAMBURGER
+const btnHamburger = document.getElementById("hamburger");
+btnHamburger.addEventListener("click", burgerDisplay);
+function burgerDisplay() {
+  const navbarElement  = document.getElementById("myNavbar");
+  if (navbarElement.classList.contains("responsive")) {
+    navbarElement.classList.remove("responsive");
+  } else {
+    navbarElement.classList.add("responsive");
+  }
+}
 
 
 /* eslint-disable no-console */

@@ -1,11 +1,6 @@
 import data from './data/pokemon/pokemon.js';
-import { btnHamburger, burgerDisplay } from './data.js';
-import { botonArriba } from './data.js';
-import { goToPokemonDetails } from './data.js';
 
 
-//EVENTO HAMBURGER
-btnHamburger.addEventListener("click", burgerDisplay);
 
 const pokemonContainer = document.querySelector(".pokemon-container");
 const kantoButton = document.querySelector(".kanto-button");
@@ -76,7 +71,7 @@ for (let i = 0; i < data.pokemon.length; i++) {
   });
 
   pokemonContainer.appendChild(card);
-};
+}
 
 
 // Funcion para filtrar por region
@@ -106,5 +101,31 @@ function filterPokemonByRegion(region) {
       card.style.display = "none";
     }
   }
-};
+}
+
+function goToPokemonDetails(pokemonName) {
+  const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
+  window.location.href = pokemonDetailsUrl;
+}
+
+const botonArriba = document.querySelector('.arriba');
+botonArriba.addEventListener('click', function () {
+  // Usa la función "scrollTo" para moverte al inicio del documento
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+//EVENTO HAMBURGER
+const btnHamburger = document.getElementById("hamburger");
+btnHamburger.addEventListener("click", burgerDisplay);
+function burgerDisplay() {
+  const navbarElement  = document.getElementById("myNavbar");
+  if (navbarElement.classList.contains("responsive")) {
+    navbarElement.classList.remove("responsive");
+  } else {
+    navbarElement.classList.add("responsive");
+  }
+}
 
