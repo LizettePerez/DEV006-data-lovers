@@ -22,7 +22,13 @@ document.querySelector(".pokemon-region").textContent = pokemon.generation.name;
 // document.querySelector(".stats-cp").textContent = pokemon.stats["max-cp"];
 // document.querySelector(".stats-hp").textContent = pokemon.stats["max-hp"];
 
+const volver = document.getElementById("volver");
+volver.addEventListener("click", buttomVolver);
 
+function buttomVolver() {
+  history.back();
+  return false;
+}
 
 
 //agregar imagen a cada elemento
@@ -296,13 +302,6 @@ function goToPokemonDetails(pokemonName) {
 }
 
 
-// EVENTO BOTON VOLVER
-volver.addEventListener("click", buttomVolver);
-const volver = document.getElementById("volver");
-function buttomVolver() {
-  history.back();
-  return false;
-}
 
 const botonArriba = document.querySelector('.arriba');
 botonArriba.addEventListener('click', function () {
