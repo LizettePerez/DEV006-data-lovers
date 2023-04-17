@@ -1,4 +1,5 @@
 import data from './data/pokemon/pokemon.js';
+import { filterPokemonByRegion } from './data.js';
 
 
 
@@ -56,52 +57,42 @@ function cardTemplate(pokemon) {
 }
 
 
-// Bucle para crear las tarjetas de Pokémon
-for (let i = 0; i < data.pokemon.length; i++) {
-  const pokemon = data.pokemon[i];
+// Crear card de cada pokemon
+function createPokemonCards(pokemonList) {
+  pokemonContainer.innerHTML = "";
 
-  const card = document.createElement("div");
-  card.className = "pokemon-card";
-  card.setAttribute("data-name", pokemon.name);
-  card.innerHTML = cardTemplate(pokemon);
+  for (let i = 0; i < pokemonList.length; i++) {
+    const pokemon = pokemonList[i];
 
-  // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-  card.addEventListener("click", function () {
-    goToPokemonDetails(pokemon.name);
-  });
+    const card = document.createElement("div");
+    card.className = "pokemon-card";
+    card.setAttribute("data-name", pokemon.name);
+    card.innerHTML = cardTemplate(pokemon);
 
-  pokemonContainer.appendChild(card);
+    // Agregar un event listener al hacer clic en la tarjeta de Pokémon
+    card.addEventListener("click", function () {
+      goToPokemonDetails(pokemon.name);
+    });
+
+    pokemonContainer.appendChild(card);
+  }
 }
 
 
-// Funcion para filtrar por region
 function addFilterButtonRegion(button, region) {
   button.addEventListener("click", function () {
-    filterPokemonByRegion(region);
+    const filteredPokemon = filterPokemonByRegion(region);
+    createPokemonCards(filteredPokemon);
     pokemonContainer.classList.remove("hidden");
   });
 }
+
 addFilterButtonRegion(kantoButton, "kanto");
 addFilterButtonRegion(johtoButton, "johto");
 
 
-// Función para filtrar los Pokémon por region
-function filterPokemonByRegion(region) {
-  const cards = document.querySelectorAll(".pokemon-card");
-  for (let i = 0; i < cards.length; i++) {
-    const card = cards[i];
-    const pokemonName = card.dataset.name;
-    const pokemon = data.pokemon.find(function (pokemon) {
-      return pokemon.name === pokemonName;
-    });
-    const pokemonRegion = pokemon.generation.name.toLowerCase();
-    if (pokemonRegion === region) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  }
-}
+
+
 
 function goToPokemonDetails(pokemonName) {
   const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;

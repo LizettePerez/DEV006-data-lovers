@@ -48,3 +48,12 @@ export function filterPokemonByType(type) {
 
   return filteredPokemon;
 }
+
+// Función para filtrar los Pokémon por region
+export function filterPokemonByRegion(region) {
+  const pokemonByRegion = data.pokemon.filter(function (pokemon) {
+    return pokemon.generation.name === region;
+  });
+  return pokemonByRegion;
+}
+

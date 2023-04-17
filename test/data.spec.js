@@ -4,30 +4,30 @@ describe("sortPokemon", () => {
   it("Ordenar los Pokémon por nombre de forma ascendente", () => {
     const optionValue = "name-asc";
     const unSortedData = [
-      { name: "Pikachu" },
-      { name: "Bulbasaur" },
-      { name: "Charizard" },
+      { name: "pikachu" },
+      { name: "bulbasaur" },
+      { name: "charizard" },
     ];
     const sortedData = unSortedData.sort(sortPokemon(optionValue));
     expect(sortedData).toStrictEqual([
-      { name: "Bulbasaur" },
-      { name: "Charizard" },
-      { name: "Pikachu" },
+      { name: "bulbasaur" },
+      { name: "charizard" },
+      { name: "pikachu" },
     ]);
   });
 
   it("Ordenar los Pokémon por nombre de forma descendente", () => {
     const optionValue = "name-desc";
     const unSortedData = [
-      { name: "Pikachu" },
-      { name: "Bulbasaur" },
-      { name: "Charizard" },
+      { name: "pikachu" },
+      { name: "bulbasaur" },
+      { name: "charizard" },
     ];
     const sortedData = unSortedData.sort(sortPokemon(optionValue));
     expect(sortedData).toStrictEqual([
-      { name: "Pikachu" },
-      { name: "Charizard" },
-      { name: "Bulbasaur" },
+      { name: "pikachu" },
+      { name: "charizard" },
+      { name: "bulbasaur" },
     ]);
   });
 
@@ -122,12 +122,38 @@ describe("getMaxBaseValue", () => {
   });
 });
 
-// describe('anotherExample', () => {
-//   it('is a function', () => {
-//     expect(typeof anotherExample).toBe('function');
-//   });
+// import { filterPokemonByType } from "../src/data.js";
 
-//   it('returns `anotherExample`', () => {
-//     expect(anotherExample()).toBe('OMG');
+// describe("filterPokemonByType", () => {
+//   it("Mostrar Pokémon que incluyan el elemento Bug", () => {
+//     const type = "bug";
+//     const typePokemon = [
+//       { name: "pikachu", type: "electric"},
+//       { name: "paras", type: ["bug", "grass"]},
+//       { name: "butterfree", type: ["bug","flying"]}
+//     ];
+//     const typeFilter = filterPokemonByType(type, typePokemon);
+//     expect(typeFilter).toStrictEqual([
+//       { name: "paras", type: ["bug", "grass"]},
+//       { name: "butterfree", type: ["bug","flying"]}
+//     ]);
 //   });
 // });
+
+
+import { filterPokemonByRegion } from "../src/data.js";
+
+describe("filterPokemonByRegion", () => {
+  it("Mostrar Pokémon de region Kanto", () => {
+    const region = "kanto";
+    const regionPokemon = [
+      { name: "pikachu",  generation: { num: "generation i", name: "kanto" }},
+      { name: "weepinbell", generation: { num: "generation i", name: "kanto" }}
+    ];
+    const regionFilter = filterPokemonByRegion(region, regionPokemon);
+    expect(regionFilter).toStrictEqual([
+      { name: "pikachu",  generation: { num: "generation i", name: "kanto" }},
+      { name: "weepinbell", generation: { num: "generation i", name: "kanto" }}
+    ]);
+  });
+});
