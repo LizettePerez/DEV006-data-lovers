@@ -260,3 +260,54 @@ describe("filterPokemonByEgg", () => {
     expect(eggFilter).toStrictEqual([{ name: "pichu", egg: "7 km" }]);
   });
 });
+
+import { filterPokemonByRarity } from "../src/data.js";
+
+describe("filterPokemonByRarity", () => {
+  it("Mostrar Pokémon con rareza normal", () => {
+    const rarity = "normal";
+    const rarityList = [
+      { name: "pikachu", ["pokemon-rarity"]: "normal" },
+      { name: "rattata", ["pokemon-rarity"]: "normal" },
+      { name: "zapdos", ["pokemon-rarity"]: "legendary" },
+      { name: "articuno", ["pokemon-rarity"]: "legendary" },
+      { name: "mew", ["pokemon-rarity"]: "mythic" },
+    ];
+    const rarityFilter = filterPokemonByRarity(rarity, rarityList);
+    expect(rarityFilter).toStrictEqual([
+      { name: "pikachu", ["pokemon-rarity"]: "normal" },
+      { name: "rattata", ["pokemon-rarity"]: "normal" },
+    ]);
+  });
+
+  it("Mostrar Pokémon con rareza legendaria", () => {
+    const rarity = "legendary";
+    const rarityList = [
+      { name: "pikachu", ["pokemon-rarity"]: "normal" },
+      { name: "rattata", ["pokemon-rarity"]: "normal" },
+      { name: "zapdos", ["pokemon-rarity"]: "legendary" },
+      { name: "articuno", ["pokemon-rarity"]: "legendary" },
+      { name: "mew", ["pokemon-rarity"]: "mythic" },
+    ];
+    const rarityFilter = filterPokemonByRarity(rarity, rarityList);
+    expect(rarityFilter).toStrictEqual([
+      { name: "zapdos", ["pokemon-rarity"]: "legendary" },
+      { name: "articuno", ["pokemon-rarity"]: "legendary" },
+    ]);
+  });
+
+  it("Mostrar Pokémon con rareza mitica", () => {
+    const rarity = "mythic";
+    const rarityList = [
+      { name: "pikachu", ["pokemon-rarity"]: "normal" },
+      { name: "rattata", ["pokemon-rarity"]: "normal" },
+      { name: "zapdos", ["pokemon-rarity"]: "legendary" },
+      { name: "articuno", ["pokemon-rarity"]: "legendary" },
+      { name: "mew", ["pokemon-rarity"]: "mythic" },
+    ];
+    const rarityFilter = filterPokemonByRarity(rarity, rarityList);
+    expect(rarityFilter).toStrictEqual([
+      { name: "mew", ["pokemon-rarity"]: "mythic" },
+    ]);
+  });
+});
