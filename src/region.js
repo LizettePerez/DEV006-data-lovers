@@ -81,7 +81,7 @@ function createPokemonCards(pokemonList) {
 
 function addFilterButtonRegion(button, region) {
   button.addEventListener("click", function () {
-    const filteredPokemon = filterPokemonByRegion(region);
+    const filteredPokemon = filterPokemonByRegion(region, data.pokemon);
     createPokemonCards(filteredPokemon);
     pokemonContainer.classList.remove("hidden");
   });

@@ -17,8 +17,8 @@ export function sortPokemon(optionValue) {
   return sortedData;
 }
 
-export function searchPokemon(searchText) {
-  const pokemonData = data.pokemon;
+export function searchPokemon(searchText, unFilteredData) {
+  const pokemonData = unFilteredData;
   const filteredPokemon = pokemonData.filter(function (pokemon) {
     const name = pokemon.name.toLowerCase();
     const num = pokemon.num.toString().toLowerCase();
@@ -41,17 +41,19 @@ export function getMaxBaseValue(statName) {
 
 
 // Función para filtrar los Pokémon por type
-export function filterPokemonByType(type) {
-  const filteredPokemon = data.pokemon.filter(function (pokemon) {
-    return pokemon.type.includes(type);
+export function filterPokemonByType(type, typePokemon) {
+  const pokemonData = typePokemon;
+  const filteredPokemon = pokemonData.filter(function (pokemon) {
+    return pokemon.type.includes(type, pokemon.data);
   });
 
   return filteredPokemon;
 }
 
 // Función para filtrar los Pokémon por region
-export function filterPokemonByRegion(region) {
-  const pokemonByRegion = data.pokemon.filter(function (pokemon) {
+export function filterPokemonByRegion(region, regionPokemon) {
+  const pokemonData = regionPokemon;
+  const pokemonByRegion = pokemonData.filter(function (pokemon) {
     return pokemon.generation.name === region;
   });
   return pokemonByRegion;

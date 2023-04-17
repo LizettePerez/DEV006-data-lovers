@@ -1,4 +1,4 @@
-// import data from './data/pokemon/pokemon.js';
+import data from './data/pokemon/pokemon.js';
 import { filterPokemonByType } from './data.js';
 
 
@@ -105,7 +105,7 @@ function goToPokemonDetails(pokemonName) {
 
 function addFilterButtonType(button, type) {
   button.addEventListener("click", function () {
-    const filteredPokemon = filterPokemonByType(type);
+    const filteredPokemon = filterPokemonByType(type, data.pokemon);
     createPokemonCards(filteredPokemon);
     pokemonContainer.classList.remove("hidden");
   });

@@ -46,51 +46,51 @@ describe("sortPokemon", () => {
   });
 });
 
-// import { searchPokemon } from "../src/data.js";
+import { searchPokemon } from "../src/data.js";
 
-// describe("searchPokemon", () => {
-//   it("Debería mostrar todos los Pokémon cuyo nombre coincidan con el término de búsqueda", () => {
-//     const searchText = "bull";
-//     const unFilteredData = [
-//       { name: "Granbull", num: "210" },
-//       { name: "Raticate", num: "20" },
-//       { name: "Charizard", num: "6" },
-//       { name: "Snubbull", num: "209" },
-//       { name: "Pikachu", num: "25" },
-//     ];
-//     const filteredData = searchPokemon(searchText, unFilteredData);
-//     expect(filteredData).toStrictEqual([
-//       { name: "Snubbull", num: "209" },
-//       { name: "Granbull", num: "210" },
-//     ]);
-//   });
+describe("searchPokemon", () => {
+  it("Debería mostrar todos los Pokémon cuyo nombre coincidan con el término de búsqueda", () => {
+    const searchText = "bull";
+    const unFilteredData = [
+      { name: "Granbull", num: "210" },
+      { name: "Raticate", num: "20" },
+      { name: "Charizard", num: "6" },
+      { name: "Snubbull", num: "209" },
+      { name: "Pikachu", num: "25" }
+    ];
+    const filteredData = searchPokemon(searchText, unFilteredData);
+    expect(filteredData).toStrictEqual([
+      { name: "Granbull", num: "210" },
+      { name: "Snubbull", num: "209" }
+    ]);
+  });
 
-// it('Debería mostrar todos los Pokémon cuyo número coincidan con el término de búsqueda', () => {
-//   const searchText = '20';
-//   const unFilteredData = [
-//     { name: 'Granbull', num: '210' },
-//     { name: 'Raticate', num: '20' },
-//     { name: 'Charizard', num: '6' },
-//     { name: 'Snubbull', num: '209' },
-//     { name: 'Pikachu', num: '25' }
-//   ];
-//   const filteredData = searchPokemon(searchText, unFilteredData);
-//   expect(filteredData).toStrictEqual([{ name: 'Raticate', num: '20' }, { name: 'Snubbull', num: '209' }]);
-// });
+  it('Debería mostrar todos los Pokémon cuyo número coincidan con el término de búsqueda', () => {
+    const searchText = '20';
+    const unFilteredData = [
+      { name: 'Granbull', num: '210' },
+      { name: 'Raticate', num: '20' },
+      { name: 'Charizard', num: '6' },
+      { name: 'Snubbull', num: '209' },
+      { name: 'Pikachu', num: '25' }
+    ];
+    const filteredData = searchPokemon(searchText, unFilteredData);
+    expect(filteredData).toStrictEqual([{ name: 'Raticate', num: '20' }, { name: 'Snubbull', num: '209' }]);
+  });
 
-//   it("No debería mostrar ningún Pokémon si el término de búsqueda no coincide", () => {
-//     const searchText = "xyz";
-//     const unFilteredData = [
-//       { name: "Granbull", num: "210" },
-//       { name: "Raticate", num: "20" },
-//       { name: "Charizard", num: "6" },
-//       { name: "Snubbull", num: "209" },
-//       { name: "Pikachu", num: "25" },
-//     ];
-//     const filteredData = searchPokemon(searchText, unFilteredData);
-//     expect(filteredData).toStrictEqual([]);
-//   });
-// });
+  it("No debería mostrar ningún Pokémon si el término de búsqueda no coincide", () => {
+    const searchText = "xyz";
+    const unFilteredData = [
+      { name: "Granbull", num: "210" },
+      { name: "Raticate", num: "20" },
+      { name: "Charizard", num: "6" },
+      { name: "Snubbull", num: "209" },
+      { name: "Pikachu", num: "25" },
+    ];
+    const filteredData = searchPokemon(searchText, unFilteredData);
+    expect(filteredData).toStrictEqual([]);
+  });
+});
 
 import { getMaxBaseValue } from "../src/data.js";
 
@@ -122,23 +122,23 @@ describe("getMaxBaseValue", () => {
   });
 });
 
-// import { filterPokemonByType } from "../src/data.js";
+import { filterPokemonByType } from "../src/data.js";
 
-// describe("filterPokemonByType", () => {
-//   it("Mostrar Pokémon que incluyan el elemento Bug", () => {
-//     const type = "bug";
-//     const typePokemon = [
-//       { name: "pikachu", type: "electric"},
-//       { name: "paras", type: ["bug", "grass"]},
-//       { name: "butterfree", type: ["bug","flying"]}
-//     ];
-//     const typeFilter = filterPokemonByType(type, typePokemon);
-//     expect(typeFilter).toStrictEqual([
-//       { name: "paras", type: ["bug", "grass"]},
-//       { name: "butterfree", type: ["bug","flying"]}
-//     ]);
-//   });
-// });
+describe("filterPokemonByType", () => {
+  it("Mostrar Pokémon que incluyan el elemento Bug", () => {
+    const type = "bug";
+    const typePokemon = [
+      { name: "pikachu", type: "electric"},
+      { name: "paras", type: ["bug", "grass"]},
+      { name: "butterfree", type: ["bug","flying"]}
+    ];
+    const typeFilter = filterPokemonByType(type, typePokemon);
+    expect(typeFilter).toStrictEqual([
+      { name: "paras", type: ["bug", "grass"]},
+      { name: "butterfree", type: ["bug","flying"]}
+    ]);
+  });
+});
 
 
 import { filterPokemonByRegion } from "../src/data.js";

@@ -96,8 +96,9 @@ sortSelect.addEventListener("change", function() {
 // Event listener para detectar el cambio en el input de búsqueda
 searchInput.addEventListener("input", function (search) {
   const searchText = search.target.value.toLowerCase();
-  createPokemonCards(searchPokemon(searchText));
+  createPokemonCards(searchPokemon(searchText, data.pokemon));
 });
+
 
 
 // Funcion para redirigir a un URL de el pokémon seleccionado
