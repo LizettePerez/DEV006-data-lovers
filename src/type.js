@@ -1,9 +1,5 @@
 import data from './data/pokemon/pokemon.js';
 
-
-
-
-
 const pokemonContainer = document.querySelector(".pokemon-container");
 
 const bugButton = document.querySelector(".bug-button");

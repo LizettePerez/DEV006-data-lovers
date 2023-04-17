@@ -22,7 +22,7 @@ export function searchPokemon(searchText) {
   const filteredPokemon = pokemonData.filter(function(pokemon) {
     const name = pokemon.name.toLowerCase();
     const num = pokemon.num.toString().toLowerCase();
-    return name.includes(searchText) || num.includes(searchText);
+    return (name.includes(searchText) || num.includes(searchText));
   });
 
   return filteredPokemon;
