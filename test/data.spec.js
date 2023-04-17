@@ -56,26 +56,29 @@ describe("searchPokemon", () => {
       { name: "Raticate", num: "20" },
       { name: "Charizard", num: "6" },
       { name: "Snubbull", num: "209" },
-      { name: "Pikachu", num: "25" }
+      { name: "Pikachu", num: "25" },
     ];
     const filteredData = searchPokemon(searchText, unFilteredData);
     expect(filteredData).toStrictEqual([
       { name: "Granbull", num: "210" },
-      { name: "Snubbull", num: "209" }
+      { name: "Snubbull", num: "209" },
     ]);
   });
 
-  it('Debería mostrar todos los Pokémon cuyo número coincidan con el término de búsqueda', () => {
-    const searchText = '20';
+  it("Debería mostrar todos los Pokémon cuyo número coincidan con el término de búsqueda", () => {
+    const searchText = "20";
     const unFilteredData = [
-      { name: 'Granbull', num: '210' },
-      { name: 'Raticate', num: '20' },
-      { name: 'Charizard', num: '6' },
-      { name: 'Snubbull', num: '209' },
-      { name: 'Pikachu', num: '25' }
+      { name: "Granbull", num: "210" },
+      { name: "Raticate", num: "20" },
+      { name: "Charizard", num: "6" },
+      { name: "Snubbull", num: "209" },
+      { name: "Pikachu", num: "25" },
     ];
     const filteredData = searchPokemon(searchText, unFilteredData);
-    expect(filteredData).toStrictEqual([{ name: 'Raticate', num: '20' }, { name: 'Snubbull', num: '209' }]);
+    expect(filteredData).toStrictEqual([
+      { name: "Raticate", num: "20" },
+      { name: "Snubbull", num: "209" },
+    ]);
   });
 
   it("No debería mostrar ningún Pokémon si el término de búsqueda no coincide", () => {
@@ -128,18 +131,17 @@ describe("filterPokemonByType", () => {
   it("Mostrar Pokémon que incluyan el elemento Bug", () => {
     const type = "bug";
     const typePokemon = [
-      { name: "pikachu", type: "electric"},
-      { name: "paras", type: ["bug", "grass"]},
-      { name: "butterfree", type: ["bug","flying"]}
+      { name: "pikachu", type: "electric" },
+      { name: "paras", type: ["bug", "grass"] },
+      { name: "butterfree", type: ["bug", "flying"] },
     ];
     const typeFilter = filterPokemonByType(type, typePokemon);
     expect(typeFilter).toStrictEqual([
-      { name: "paras", type: ["bug", "grass"]},
-      { name: "butterfree", type: ["bug","flying"]}
+      { name: "paras", type: ["bug", "grass"] },
+      { name: "butterfree", type: ["bug", "flying"] },
     ]);
   });
 });
-
 
 import { filterPokemonByRegion } from "../src/data.js";
 
@@ -147,13 +149,24 @@ describe("filterPokemonByRegion", () => {
   it("Mostrar Pokémon de region Kanto", () => {
     const region = "kanto";
     const regionPokemon = [
-      { name: "pikachu",  generation: { num: "generation i", name: "kanto" }},
-      { name: "weepinbell", generation: { num: "generation i", name: "kanto" }}
+      { name: "pikachu", generation: { num: "generation i", name: "kanto" } },
+      {
+        name: "misdreavus",
+        generation: { num: "generation ii", name: "johto" },
+      },
+      {
+        name: "weepinbell",
+        generation: { num: "generation i", name: "kanto" },
+      },
+      { name: "natu", generation: { num: "generation ii", name: "johto" } },
     ];
     const regionFilter = filterPokemonByRegion(region, regionPokemon);
     expect(regionFilter).toStrictEqual([
-      { name: "pikachu",  generation: { num: "generation i", name: "kanto" }},
-      { name: "weepinbell", generation: { num: "generation i", name: "kanto" }}
+      { name: "pikachu", generation: { num: "generation i", name: "kanto" } },
+      {
+        name: "weepinbell",
+        generation: { num: "generation i", name: "kanto" },
+      },
     ]);
   });
 });

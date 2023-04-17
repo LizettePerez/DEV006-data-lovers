@@ -1,13 +1,11 @@
-import data from './data/pokemon/pokemon.js';
-
+import data from "./data/pokemon/pokemon.js";
+import { filterPokemonByRarity } from "./data.js";
 
 const pokemonContainer = document.querySelector(".pokemon-container");
 
 const normalButton = document.querySelector(".normal-button");
 const legendaryButton = document.querySelector(".legendary-button");
 const mythicButton = document.querySelector(".mythic-button");
-
-
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -31,7 +29,6 @@ const typeImages = {
   steel: "./img/elementos/steel.png",
 };
 
-
 // Plantilla de cadena de texto para una tarjeta de Pokémon
 function cardTemplate(pokemon) {
   return `
@@ -42,8 +39,9 @@ function cardTemplate(pokemon) {
       <p class="pokemon-num">#${pokemon.num}</p>
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
-        ${pokemon.type.map(function (type) {
-    return `
+        ${pokemon.type
+          .map(function (type) {
+            return `
               <img
                 src="${typeImages[type]}"
                 alt="${type}"
@@ -52,33 +50,38 @@ function cardTemplate(pokemon) {
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
-  }).join("")}
+          })
+          .join("")}
       </div>
     </div>
   `;
 }
 
+// Crear card de cada pokemon
+function createPokemonCards(pokemonList) {
+  pokemonContainer.innerHTML = "";
 
-// Bucle forEach para crear las tarjetas de Pokémon
-data.pokemon.forEach((pokemon) => {
-  const card = document.createElement('div');
-  card.classList.add('pokemon-card');
-  card.dataset.name = pokemon.name;
-  card.innerHTML = cardTemplate(pokemon);
+  for (let i = 0; i < pokemonList.length; i++) {
+    const pokemon = pokemonList[i];
 
-  // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-  card.addEventListener('click', () => {
-    goToPokemonDetails(pokemon.name);
-  });
+    const card = document.createElement("div");
+    card.className = "pokemon-card";
+    card.setAttribute("data-name", pokemon.name);
+    card.innerHTML = cardTemplate(pokemon);
 
-  pokemonContainer.appendChild(card);
-});
+    // Agregar un event listener al hacer clic en la tarjeta de Pokémon
+    card.addEventListener("click", function () {
+      goToPokemonDetails(pokemon.name);
+    });
 
-
+    pokemonContainer.appendChild(card);
+  }
+}
 
 function addFilterButtonRarity(button, rarity) {
   button.addEventListener("click", function () {
-    filterPokemonByRarity(rarity);
+    const filteredPokemon = filterPokemonByRarity(rarity, data.pokemon);
+    createPokemonCards(filteredPokemon);
     pokemonContainer.classList.remove("hidden");
   });
 }
@@ -87,37 +90,17 @@ addFilterButtonRarity(normalButton, "normal");
 addFilterButtonRarity(legendaryButton, "legendary");
 addFilterButtonRarity(mythicButton, "mythic");
 
-
-
-// Función para filtrar los Pokémon por rarity
-function filterPokemonByRarity(rarity) {
-  const cards = document.querySelectorAll(".pokemon-card");
-  for (let i = 0; i < cards.length; i++) {
-    const card = cards[i];
-    const pokemonName = card.dataset.name;
-    const pokemon = data.pokemon.find(function (pokemon) {
-      return pokemon.name === pokemonName;
-    });
-    const pokemonRarity = pokemon["pokemon-rarity"];
-    if (pokemonRarity.includes(rarity)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  }
-}
-
 function goToPokemonDetails(pokemonName) {
   const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
   window.location.href = pokemonDetailsUrl;
 }
 
-const botonArriba = document.querySelector('.arriba');
-botonArriba.addEventListener('click', function () {
+const botonArriba = document.querySelector(".arriba");
+botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 });
 
@@ -125,7 +108,7 @@ botonArriba.addEventListener('click', function () {
 const btnHamburger = document.getElementById("hamburger");
 btnHamburger.addEventListener("click", burgerDisplay);
 function burgerDisplay() {
-  const navbarElement  = document.getElementById("myNavbar");
+  const navbarElement = document.getElementById("myNavbar");
   if (navbarElement.classList.contains("responsive")) {
     navbarElement.classList.remove("responsive");
   } else {
@@ -136,7 +119,6 @@ function burgerDisplay() {
 /* eslint-disable no-console */
 console.log(data);
 /* eslint-enable no-console */
-
 
 // fetch("./data/pokemon/pokemon.json")
 // .then(response => {

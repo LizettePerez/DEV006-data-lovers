@@ -1,4 +1,5 @@
-import data from './data/pokemon/pokemon.js';
+import data from "./data/pokemon/pokemon.js";
+import { filterPokemonByEgg } from "./data.js";
 
 const pokemonContainer = document.querySelector(".pokemon-container");
 
@@ -6,8 +7,6 @@ const k2Button = document.querySelector(".k2-button");
 const k5Button = document.querySelector(".k5-button");
 const k7Button = document.querySelector(".k7-button");
 const k10Button = document.querySelector(".k10-button");
-
-
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -31,7 +30,6 @@ const typeImages = {
   steel: "./img/elementos/steel.png",
 };
 
-
 // Plantilla de cadena de texto para una tarjeta de Pokémon
 function cardTemplate(pokemon) {
   return `
@@ -42,8 +40,7 @@ function cardTemplate(pokemon) {
       <p class="pokemon-num">#${pokemon.num}</p>
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
-        ${pokemon.type.map(function (type) {
-    return `
+        ${pokemon.type.map(function (type) {return `
               <img
                 src="${typeImages[type]}"
                 alt="${type}"
@@ -52,35 +49,38 @@ function cardTemplate(pokemon) {
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
-  }).join("")}
+          })
+          .join("")}
       </div>
     </div>
   `;
 }
 
-// Bucle para crear las tarjetas de Pokémon
-for (let i = 0; i < data.pokemon.length; i++) {
-  const pokemon = data.pokemon[i];
+// Crear card de cada pokemon
+function createPokemonCards(pokemonList) {
+  pokemonContainer.innerHTML = "";
 
-  const card = document.createElement("div");
-  card.className = "pokemon-card";
-  card.setAttribute("data-name", pokemon.name);
-  card.innerHTML = cardTemplate(pokemon);
+  for (let i = 0; i < pokemonList.length; i++) {
+    const pokemon = pokemonList[i];
 
-  // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-  card.addEventListener("click", function () {
-    goToPokemonDetails(pokemon.name);
-  });
+    const card = document.createElement("div");
+    card.className = "pokemon-card";
+    card.setAttribute("data-name", pokemon.name);
+    card.innerHTML = cardTemplate(pokemon);
 
-  pokemonContainer.appendChild(card);
+    // Agregar un event listener al hacer clic en la tarjeta de Pokémon
+    card.addEventListener("click", function () {
+      goToPokemonDetails(pokemon.name);
+    });
+
+    pokemonContainer.appendChild(card);
+  }
 }
-
-
-
 
 function filterPokemonByEggButton(button, egg) {
   button.addEventListener("click", function () {
-    filterPokemonByEgg(egg);
+    const filteredPokemon = filterPokemonByEgg(egg, data.pokemon);
+    createPokemonCards(filteredPokemon);
     pokemonContainer.classList.remove("hidden");
   });
 }
@@ -90,36 +90,17 @@ filterPokemonByEggButton(k5Button, "5 km");
 filterPokemonByEggButton(k7Button, "7 km");
 filterPokemonByEggButton(k10Button, "10 km");
 
-
-// Función para filtrar los Pokémon por egg
-function filterPokemonByEgg(egg) {
-  const cards = document.querySelectorAll(".pokemon-card");
-  for (let i = 0; i < cards.length; i++) {
-    const card = cards[i];
-    const pokemonName = card.dataset.name;
-    const pokemon = data.pokemon.find(function (pokemon) {
-      return pokemon.name === pokemonName;
-    });
-    const pokemonEgg = pokemon.egg;
-    if (pokemonEgg.includes(egg)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  }
-}
-
 function goToPokemonDetails(pokemonName) {
   const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
   window.location.href = pokemonDetailsUrl;
 }
 
-const botonArriba = document.querySelector('.arriba');
-botonArriba.addEventListener('click', function () {
+const botonArriba = document.querySelector(".arriba");
+botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 });
 
@@ -127,13 +108,10 @@ botonArriba.addEventListener('click', function () {
 const btnHamburger = document.getElementById("hamburger");
 btnHamburger.addEventListener("click", burgerDisplay);
 function burgerDisplay() {
-  const navbarElement  = document.getElementById("myNavbar");
+  const navbarElement = document.getElementById("myNavbar");
   if (navbarElement.classList.contains("responsive")) {
     navbarElement.classList.remove("responsive");
   } else {
     navbarElement.classList.add("responsive");
   }
 }
-
-
-

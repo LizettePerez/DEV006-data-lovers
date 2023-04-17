@@ -1,7 +1,5 @@
-import data from './data/pokemon/pokemon.js';
-import { filterPokemonByRegion } from './data.js';
-
-
+import data from "./data/pokemon/pokemon.js";
+import { filterPokemonByRegion } from "./data.js";
 
 const pokemonContainer = document.querySelector(".pokemon-container");
 const kantoButton = document.querySelector(".kanto-button");
@@ -29,7 +27,6 @@ const typeImages = {
   steel: "./img/elementos/steel.png",
 };
 
-
 // Plantilla de cadena de texto para una tarjeta de Pokémon
 function cardTemplate(pokemon) {
   return `
@@ -40,8 +37,9 @@ function cardTemplate(pokemon) {
       <p class="pokemon-num">#${pokemon.num}</p>
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
-        ${pokemon.type.map(function (type) {
-    return `
+        ${pokemon.type
+          .map(function (type) {
+            return `
               <img
                 src="${typeImages[type]}"
                 alt="${type}"
@@ -50,12 +48,12 @@ function cardTemplate(pokemon) {
                 style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
               />
             `;
-  }).join("")}
+          })
+          .join("")}
       </div>
     </div>
   `;
 }
-
 
 // Crear card de cada pokemon
 function createPokemonCards(pokemonList) {
@@ -78,7 +76,6 @@ function createPokemonCards(pokemonList) {
   }
 }
 
-
 function addFilterButtonRegion(button, region) {
   button.addEventListener("click", function () {
     const filteredPokemon = filterPokemonByRegion(region, data.pokemon);
@@ -90,21 +87,17 @@ function addFilterButtonRegion(button, region) {
 addFilterButtonRegion(kantoButton, "kanto");
 addFilterButtonRegion(johtoButton, "johto");
 
-
-
-
-
 function goToPokemonDetails(pokemonName) {
   const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
   window.location.href = pokemonDetailsUrl;
 }
 
-const botonArriba = document.querySelector('.arriba');
-botonArriba.addEventListener('click', function () {
+const botonArriba = document.querySelector(".arriba");
+botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 });
 
@@ -112,11 +105,10 @@ botonArriba.addEventListener('click', function () {
 const btnHamburger = document.getElementById("hamburger");
 btnHamburger.addEventListener("click", burgerDisplay);
 function burgerDisplay() {
-  const navbarElement  = document.getElementById("myNavbar");
+  const navbarElement = document.getElementById("myNavbar");
   if (navbarElement.classList.contains("responsive")) {
     navbarElement.classList.remove("responsive");
   } else {
     navbarElement.classList.add("responsive");
   }
 }
-
