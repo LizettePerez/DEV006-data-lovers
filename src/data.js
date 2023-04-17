@@ -59,3 +59,12 @@ export function filterPokemonByRegion(region, regionPokemon) {
   return pokemonByRegion;
 }
 
+
+// Función para filtrar los Pokémon por egg
+export function filterPokemonByEgg(egg, eggList) {
+  const pokemonData = eggList;
+  const pokemonByRegion = pokemonData.filter(function (pokemon) {
+    return pokemon.egg === egg;
+  });
+  return pokemonByRegion;
+}

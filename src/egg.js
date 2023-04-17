@@ -1,4 +1,5 @@
 import data from './data/pokemon/pokemon.js';
+import { filterPokemonByEgg } from './data.js';
 
 const pokemonContainer = document.querySelector(".pokemon-container");
 
@@ -58,29 +59,31 @@ function cardTemplate(pokemon) {
   `;
 }
 
-// Bucle para crear las tarjetas de Pokémon
-for (let i = 0; i < data.pokemon.length; i++) {
-  const pokemon = data.pokemon[i];
+// Crear card de cada pokemon
+function createPokemonCards(pokemonList) {
+  pokemonContainer.innerHTML = "";
 
-  const card = document.createElement("div");
-  card.className = "pokemon-card";
-  card.setAttribute("data-name", pokemon.name);
-  card.innerHTML = cardTemplate(pokemon);
+  for (let i = 0; i < pokemonList.length; i++) {
+    const pokemon = pokemonList[i];
 
-  // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-  card.addEventListener("click", function () {
-    goToPokemonDetails(pokemon.name);
-  });
+    const card = document.createElement("div");
+    card.className = "pokemon-card";
+    card.setAttribute("data-name", pokemon.name);
+    card.innerHTML = cardTemplate(pokemon);
 
-  pokemonContainer.appendChild(card);
+    // Agregar un event listener al hacer clic en la tarjeta de Pokémon
+    card.addEventListener("click", function () {
+      goToPokemonDetails(pokemon.name);
+    });
+
+    pokemonContainer.appendChild(card);
+  }
 }
-
-
-
 
 function filterPokemonByEggButton(button, egg) {
   button.addEventListener("click", function () {
-    filterPokemonByEgg(egg);
+    const filteredPokemon = filterPokemonByEgg(egg, data.pokemon);
+    createPokemonCards(filteredPokemon);
     pokemonContainer.classList.remove("hidden");
   });
 }
@@ -90,24 +93,6 @@ filterPokemonByEggButton(k5Button, "5 km");
 filterPokemonByEggButton(k7Button, "7 km");
 filterPokemonByEggButton(k10Button, "10 km");
 
-
-// Función para filtrar los Pokémon por egg
-function filterPokemonByEgg(egg) {
-  const cards = document.querySelectorAll(".pokemon-card");
-  for (let i = 0; i < cards.length; i++) {
-    const card = cards[i];
-    const pokemonName = card.dataset.name;
-    const pokemon = data.pokemon.find(function (pokemon) {
-      return pokemon.name === pokemonName;
-    });
-    const pokemonEgg = pokemon.egg;
-    if (pokemonEgg.includes(egg)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  }
-}
 
 function goToPokemonDetails(pokemonName) {
   const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
