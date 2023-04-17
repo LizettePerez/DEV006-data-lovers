@@ -134,12 +134,40 @@ describe("filterPokemonByType", () => {
       { name: "pikachu", type: "electric" },
       { name: "paras", type: ["bug", "grass"] },
       { name: "butterfree", type: ["bug", "flying"] },
+      { name: "ekans", type: "poison" },
+      { name: "jigglypuff", type: "normal" },
     ];
     const typeFilter = filterPokemonByType(type, typePokemon);
     expect(typeFilter).toStrictEqual([
       { name: "paras", type: ["bug", "grass"] },
       { name: "butterfree", type: ["bug", "flying"] },
     ]);
+  });
+
+  it("Mostrar Pokémon que incluyan el elemento Fire", () => {
+    const type = "fire";
+    const typePokemon = [
+      { name: "pikachu", type: "electric" },
+      { name: "paras", type: ["bug", "grass"] },
+      { name: "butterfree", type: ["bug", "flying"] },
+      { name: "ekans", type: "poison" },
+      { name: "jigglypuff", type: "normal" },
+    ];
+    const typeFilter = filterPokemonByType(type, typePokemon);
+    expect(typeFilter).toStrictEqual([]);
+  });
+
+  it("Mostrar Pokémon que incluyan el elemento Poison", () => {
+    const type = "poison";
+    const typePokemon = [
+      { name: "pikachu", type: "electric" },
+      { name: "paras", type: ["bug", "grass"] },
+      { name: "butterfree", type: ["bug", "flying"] },
+      { name: "ekans", type: "poison" },
+      { name: "jigglypuff", type: "normal" },
+    ];
+    const typeFilter = filterPokemonByType(type, typePokemon);
+    expect(typeFilter).toStrictEqual([{ name: "ekans", type: "poison" }]);
   });
 });
 
@@ -168,5 +196,67 @@ describe("filterPokemonByRegion", () => {
         generation: { num: "generation i", name: "kanto" },
       },
     ]);
+  });
+
+  it("Mostrar Pokémon de region Johto", () => {
+    const region = "johto";
+    const regionPokemon = [
+      { name: "pikachu", generation: { num: "generation i", name: "kanto" } },
+      {
+        name: "misdreavus",
+        generation: { num: "generation ii", name: "johto" },
+      },
+      {
+        name: "weepinbell",
+        generation: { num: "generation i", name: "kanto" },
+      },
+      { name: "natu", generation: { num: "generation ii", name: "johto" } },
+    ];
+    const regionFilter = filterPokemonByRegion(region, regionPokemon);
+    expect(regionFilter).toStrictEqual([
+      {
+        name: "misdreavus",
+        generation: { num: "generation ii", name: "johto" },
+      },
+      {
+        name: "natu",
+        generation: { num: "generation ii", name: "johto" },
+      },
+    ]);
+  });
+});
+
+import { filterPokemonByEgg } from "../src/data.js";
+
+describe("filterPokemonByEgg", () => {
+  it("Mostrar Pokémon que salen en huevos de 2km", () => {
+    const egg = "2 km";
+    const eggList = [
+      { name: "pikachu", egg: "2 km" },
+      { name: "rattata", egg: "2 km" },
+      { name: "vulpix", egg: "5 km" },
+      { name: "abra", egg: "5 km" },
+      { name: "pichu", egg: "7 km" },
+      { name: "lapras", egg: "10 km" },
+    ];
+    const eggFilter = filterPokemonByEgg(egg, eggList);
+    expect(eggFilter).toStrictEqual([
+      { name: "pikachu", egg: "2 km" },
+      { name: "rattata", egg: "2 km" },
+    ]);
+  });
+
+  it("Mostrar Pokémon que salen en huevos de 7km", () => {
+    const egg = "7 km";
+    const eggList = [
+      { name: "pikachu", egg: "2 km" },
+      { name: "rattata", egg: "2 km" },
+      { name: "vulpix", egg: "5 km" },
+      { name: "abra", egg: "5 km" },
+      { name: "pichu", egg: "7 km" },
+      { name: "lapras", egg: "10 km" },
+    ];
+    const eggFilter = filterPokemonByEgg(egg, eggList);
+    expect(eggFilter).toStrictEqual([{ name: "pichu", egg: "7 km" }]);
   });
 });

@@ -70,8 +70,8 @@ export function filterPokemonByRarity(rarity, rarityList) {
 // Función para filtrar los Pokémon por egg
 export function filterPokemonByEgg(egg, eggList) {
   const pokemonData = eggList;
-  const pokemonByRegion = pokemonData.filter(function (pokemon) {
+  const pokemonByEgg = pokemonData.filter(function (pokemon) {
     return pokemon.egg === egg;
   });
-  return pokemonByRegion;
+  return pokemonByEgg;
 }
