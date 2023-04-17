@@ -1,9 +1,5 @@
-import data from './data/pokemon/pokemon.js';
-
-
-
-
-
+import data from "./data/pokemon/pokemon.js";
+import { getMaxBaseValue } from "./data.js";
 
 const pokemonName = new URLSearchParams(window.location.search).get("name");
 const pokemon = data.pokemon.find((p) => p.name === pokemonName);
@@ -14,7 +10,8 @@ document.querySelector(".pokemon-image").src = pokemon.img;
 document.querySelector(".pokemon-description").textContent = pokemon.about;
 document.querySelector(".pokemon-height").textContent = pokemon.size.height;
 document.querySelector(".pokemon-weight").textContent = pokemon.size.weight;
-document.querySelector(".pokemon-rarity").textContent = pokemon["pokemon-rarity"];
+document.querySelector(".pokemon-rarity").textContent =
+  pokemon["pokemon-rarity"];
 document.querySelector(".pokemon-region").textContent = pokemon.generation.name;
 // document.querySelector(".stats-attack").textContent = pokemon.stats["base-attack"];
 // document.querySelector(".stats-defense").textContent = pokemon.stats["base-defense"];
@@ -29,7 +26,6 @@ function buttomVolver() {
   history.back();
   return false;
 }
-
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -72,13 +68,15 @@ const weaknessesContainer = document.querySelector(".pokemon-weaknesses-types");
 createTypeElements(weaknessesContainer, pokemon.weaknesses, "pokemon-weakness");
 
 const resistancesContainer = document.querySelector(".pokemon-resistant-types");
-createTypeElements(resistancesContainer, pokemon.resistant, "pokemon-resistance");
-
+createTypeElements(
+  resistancesContainer,
+  pokemon.resistant,
+  "pokemon-resistance"
+);
 
 // function getPokemonByName(name) {
 //   return pokemonListData.find((pokemon) => pokemon.name === name);
 // }
-
 
 if (pokemon && pokemon.evolution) {
   let evolution = pokemon.evolution;
@@ -128,7 +126,9 @@ if (pokemon && pokemon.evolution) {
       <div class="pokemon-evolution-detail">
         <img class="pokemon-evolution-img" src="${evolution.img}">
         <p class="pokemon-evolution-num">#${evolution.num}</p>
-        <h2 class="pokemon-evolution-name">${evolution.name.charAt(0).toUpperCase() + evolution.name.slice(1)}</h2>
+        <h2 class="pokemon-evolution-name">${
+          evolution.name.charAt(0).toUpperCase() + evolution.name.slice(1)
+        }</h2>
         <div class="pokemon-evolution-type">
           ${typesHtml}
         </div>
@@ -142,32 +142,28 @@ if (pokemon && pokemon.evolution) {
 
   for (let i = 0; i < evolutionCards.length; i++) {
     const card = evolutionCards[i];
-    card.addEventListener('click', function () {
-      goToPokemonDetails(card.querySelector(".pokemon-evolution-name").textContent.toLowerCase());
+    card.addEventListener("click", function () {
+      goToPokemonDetails(
+        card.querySelector(".pokemon-evolution-name").textContent.toLowerCase()
+      );
     });
   }
 
   evolutionContainer.classList.remove("hidden");
-
 } else {
   document.querySelector(".pokemon-evolution").classList.add("hidden");
 }
 
-
-
-
-
-function getMaxBaseValue(statName) {
-  let max = 0;
-  for (let i = 0; i < data.pokemon.length; i++) {
-    const statValue = parseInt(data.pokemon[i].stats[statName]);
-    if (statValue > max) {
-      max = statValue;
-    }
-  }
-  return max;
-}
-
+// function getMaxBaseValue(statName) {
+//   let max = 0;
+//   for (let i = 0; i < data.pokemon.length; i++) {
+//     const statValue = parseInt(data.pokemon[i].stats[statName]);
+//     if (statValue > max) {
+//       max = statValue;
+//     }
+//   }
+//   return max;
+// }
 
 const maxBaseAttackValue = getMaxBaseValue("base-attack");
 const maxBaseDefenseValue = getMaxBaseValue("base-defense");
@@ -175,13 +171,14 @@ const maxBaseStaminaValue = getMaxBaseValue("base-stamina");
 const maxMaxCPValue = getMaxBaseValue("max-cp");
 const maxMaxHPValue = getMaxBaseValue("max-hp");
 
-
-
+console.log("Max Base Attack Value: ", maxBaseAttackValue);
+console.log("Max Base Defense Value: ", maxBaseDefenseValue);
+console.log("Max Base Stamina Value: ", maxBaseStaminaValue);
+console.log("Max Max CP Value: ", maxMaxCPValue);
+console.log("Max Max HP Value: ", maxMaxHPValue);
 
 // Obtener el elemento div donde se mostrarán las barras
 const pokemonBarsElement = document.getElementById("pokemon-bars");
-
-
 
 function createPokemonStatsBar() {
   const baseAttack = parseInt(pokemon.stats["base-attack"]); // Obtener el valor de base-attack del objeto pokemon
@@ -199,13 +196,9 @@ function createPokemonStatsBar() {
   const baseHP = parseInt(pokemon.stats["max-hp"]);
   const widthHP = (baseHP / maxMaxHPValue) * 100;
 
-
-
   // Crear contenedor para barras
   const statsBarContainer = document.createElement("div");
   statsBarContainer.classList.add("pokemon-stats-bar-container");
-
-
 
   // Crear div para la barra de ataque
   const attackBarElement = document.createElement("div");
@@ -215,12 +208,14 @@ function createPokemonStatsBar() {
   // Crear div para la barra de defensa
   const defenseBarElement = document.createElement("div");
   defenseBarElement.classList.add("base-defense");
-  defenseBarElement.textContent = "Base Defense " + pokemon.stats["base-defense"];
+  defenseBarElement.textContent =
+    "Base Defense " + pokemon.stats["base-defense"];
 
   // Crear div para la barra de stamina
   const staminaBarElement = document.createElement("div");
   staminaBarElement.classList.add("base-stamina");
-  staminaBarElement.textContent = "Base Stamina " + pokemon.stats["base-stamina"];
+  staminaBarElement.textContent =
+    "Base Stamina " + pokemon.stats["base-stamina"];
 
   // Crear div para la barra de cp
   const cpBarElement = document.createElement("div");
@@ -231,9 +226,6 @@ function createPokemonStatsBar() {
   const hpBarElement = document.createElement("div");
   hpBarElement.classList.add("max-hp");
   hpBarElement.textContent = "Max HP " + pokemon.stats["max-hp"];
-
-
-
 
   // Crear una barra de ataque
   const attackBar = document.createElement("div");
@@ -260,9 +252,6 @@ function createPokemonStatsBar() {
   hpBar.classList.add("pokemon-hp-bar");
   hpBar.style.width = `${widthHP}%`;
 
-
-
-
   // Agregar la barra de ataque a la barra principal
   attackBar.appendChild(attackBarElement);
   statsBarContainer.appendChild(attackBar);
@@ -283,15 +272,15 @@ function createPokemonStatsBar() {
   hpBar.appendChild(hpBarElement);
   statsBarContainer.appendChild(hpBar);
 
-
-
   return statsBarContainer;
 }
 
-
-
 // Crear la barra de ataque del Pokémon actual
-const currentPokemonAttackBar = createPokemonStatsBar(pokemon, maxBaseAttackValue, maxBaseDefenseValue);
+const currentPokemonAttackBar = createPokemonStatsBar(
+  pokemon,
+  maxBaseAttackValue,
+  maxBaseDefenseValue
+);
 
 // Agregar la barra al contenedor pokemon-bars
 pokemonBarsElement.appendChild(currentPokemonAttackBar);
@@ -301,14 +290,12 @@ function goToPokemonDetails(pokemonName) {
   window.location.href = pokemonDetailsUrl;
 }
 
-
-
-const botonArriba = document.querySelector('.arriba');
-botonArriba.addEventListener('click', function () {
+const botonArriba = document.querySelector(".arriba");
+botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 });
 
@@ -316,14 +303,13 @@ botonArriba.addEventListener('click', function () {
 const btnHamburger = document.getElementById("hamburger");
 btnHamburger.addEventListener("click", burgerDisplay);
 function burgerDisplay() {
-  const navbarElement  = document.getElementById("myNavbar");
+  const navbarElement = document.getElementById("myNavbar");
   if (navbarElement.classList.contains("responsive")) {
     navbarElement.classList.remove("responsive");
   } else {
     navbarElement.classList.add("responsive");
   }
 }
-
 
 /* eslint-disable no-console */
 console.log(pokemon);

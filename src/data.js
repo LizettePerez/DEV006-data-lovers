@@ -1,17 +1,17 @@
-import  data  from './data/pokemon/pokemon.js';
+import data from "./data/pokemon/pokemon.js";
 
 // Función para ordenar los Pokémon por nombre o número
 export function sortPokemon(optionValue) {
   let sortedData;
 
   if (optionValue === "name-asc") {
-    sortedData = ((a, b) => a.name.localeCompare(b.name));
+    sortedData = (a, b) => a.name.localeCompare(b.name);
   } else if (optionValue === "name-desc") {
-    sortedData = ((a, b) => b.name.localeCompare(a.name));
+    sortedData = (a, b) => b.name.localeCompare(a.name);
   } else if (optionValue === "num-asc") {
-    sortedData = ((a, b) => a.num - b.num);
+    sortedData = (a, b) => a.num - b.num;
   } else if (optionValue === "num-desc") {
-    sortedData = ((a, b) => b.num - a.num);
+    sortedData = (a, b) => b.num - a.num;
   }
 
   return sortedData;
@@ -19,11 +19,22 @@ export function sortPokemon(optionValue) {
 
 export function searchPokemon(searchText) {
   const pokemonData = data.pokemon;
-  const filteredPokemon = pokemonData.filter(function(pokemon) {
+  const filteredPokemon = pokemonData.filter(function (pokemon) {
     const name = pokemon.name.toLowerCase();
     const num = pokemon.num.toString().toLowerCase();
-    return (name.includes(searchText) || num.includes(searchText));
+    return name.includes(searchText) || num.includes(searchText);
   });
 
   return filteredPokemon;
+}
+
+export function getMaxBaseValue(statName) {
+  let max = 0;
+  for (let i = 0; i < data.pokemon.length; i++) {
+    const statValue = parseInt(data.pokemon[i].stats[statName]);
+    if (statValue > max) {
+      max = statValue;
+    }
+  }
+  return max;
 }
