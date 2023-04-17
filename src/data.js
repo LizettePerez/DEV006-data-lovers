@@ -38,3 +38,13 @@ export function getMaxBaseValue(statName) {
   }
   return max;
 }
+
+
+// Función para filtrar los Pokémon por type
+export function filterPokemonByType(type) {
+  const filteredPokemon = data.pokemon.filter(function (pokemon) {
+    return pokemon.type.includes(type);
+  });
+
+  return filteredPokemon;
+}

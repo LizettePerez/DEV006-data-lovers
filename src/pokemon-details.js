@@ -126,9 +126,7 @@ if (pokemon && pokemon.evolution) {
       <div class="pokemon-evolution-detail">
         <img class="pokemon-evolution-img" src="${evolution.img}">
         <p class="pokemon-evolution-num">#${evolution.num}</p>
-        <h2 class="pokemon-evolution-name">${
-          evolution.name.charAt(0).toUpperCase() + evolution.name.slice(1)
-        }</h2>
+        <h2 class="pokemon-evolution-name">${evolution.name.charAt(0).toUpperCase() + evolution.name.slice(1)}</h2>
         <div class="pokemon-evolution-type">
           ${typesHtml}
         </div>
@@ -171,11 +169,7 @@ const maxBaseStaminaValue = getMaxBaseValue("base-stamina");
 const maxMaxCPValue = getMaxBaseValue("max-cp");
 const maxMaxHPValue = getMaxBaseValue("max-hp");
 
-console.log("Max Base Attack Value: ", maxBaseAttackValue);
-console.log("Max Base Defense Value: ", maxBaseDefenseValue);
-console.log("Max Base Stamina Value: ", maxBaseStaminaValue);
-console.log("Max Max CP Value: ", maxMaxCPValue);
-console.log("Max Max HP Value: ", maxMaxHPValue);
+
 
 // Obtener el elemento div donde se mostrarán las barras
 const pokemonBarsElement = document.getElementById("pokemon-bars");
@@ -314,4 +308,9 @@ function burgerDisplay() {
 /* eslint-disable no-console */
 console.log(pokemon);
 console.log(data);
+console.log("Max Base Attack Value: ", maxBaseAttackValue);
+console.log("Max Base Defense Value: ", maxBaseDefenseValue);
+console.log("Max Base Stamina Value: ", maxBaseStaminaValue);
+console.log("Max Max CP Value: ", maxMaxCPValue);
+console.log("Max Max HP Value: ", maxMaxHPValue);
 /* eslint-enable no-console */

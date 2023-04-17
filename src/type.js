@@ -1,4 +1,6 @@
-import data from './data/pokemon/pokemon.js';
+// import data from './data/pokemon/pokemon.js';
+import { filterPokemonByType } from './data.js';
+
 
 const pokemonContainer = document.querySelector(".pokemon-container");
 
@@ -72,23 +74,26 @@ function cardTemplate(pokemon) {
 }
 
 
-// Bucle para crear las tarjetas de Pokémon
-for (let i = 0; i < data.pokemon.length; i++) {
-  const pokemon = data.pokemon[i];
+// Crear card de cada pokemon
+function createPokemonCards(pokemonList) {
+  pokemonContainer.innerHTML = "";
 
-  const card = document.createElement("div");
-  card.className = "pokemon-card";
-  card.setAttribute("data-name", pokemon.name);
-  card.innerHTML = cardTemplate(pokemon);
+  for (let i = 0; i < pokemonList.length; i++) {
+    const pokemon = pokemonList[i];
 
-  // Agregar un event listener al hacer clic en la tarjeta de Pokémon
-  card.addEventListener("click", function () {
-    goToPokemonDetails(pokemon.name);
-  });
+    const card = document.createElement("div");
+    card.className = "pokemon-card";
+    card.setAttribute("data-name", pokemon.name);
+    card.innerHTML = cardTemplate(pokemon);
 
-  pokemonContainer.appendChild(card);
+    // Agregar un event listener al hacer clic en la tarjeta de Pokémon
+    card.addEventListener("click", function () {
+      goToPokemonDetails(pokemon.name);
+    });
+
+    pokemonContainer.appendChild(card);
+  }
 }
-
 
 
 
@@ -98,10 +103,10 @@ function goToPokemonDetails(pokemonName) {
   window.location.href = pokemonDetailsUrl;
 }
 
-// Funcion para filtrar por type
 function addFilterButtonType(button, type) {
   button.addEventListener("click", function () {
-    filterPokemonByType(type);
+    const filteredPokemon = filterPokemonByType(type);
+    createPokemonCards(filteredPokemon);
     pokemonContainer.classList.remove("hidden");
   });
 }
@@ -116,7 +121,7 @@ addFilterButtonType(fireButton, "fire");
 addFilterButtonType(flyingButton, "flying");
 addFilterButtonType(ghostButton, "ghost");
 addFilterButtonType(grassButton, "grass");
-addFilterButtonType(groundButton, "ground");
+addFilterButtonType(groundButton, "grounvd");
 addFilterButtonType(iceButton, "ice");
 addFilterButtonType(normButton, "normal");
 addFilterButtonType(poisonButton, "poison");
@@ -127,23 +132,9 @@ addFilterButtonType(waterButton, "water");
 
 
 
-// Función para filtrar los Pokémon por type
-function filterPokemonByType(type) {
-  const cards = document.querySelectorAll(".pokemon-card");
-  for (let i = 0; i < cards.length; i++) {
-    const card = cards[i];
-    const pokemonName = card.dataset.name;
-    const pokemon = data.pokemon.find(function (pokemon) {
-      return pokemon.name === pokemonName;
-    });
-    const pokemonType = pokemon.type;
-    if (pokemonType.includes(type)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  }
-}
+
+
+
 
 const botonArriba = document.querySelector('.arriba');
 botonArriba.addEventListener('click', function () {
