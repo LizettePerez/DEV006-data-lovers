@@ -37,21 +37,19 @@ function cardTemplate(pokemon) {
       <p class="pokemon-num">#${pokemon.num}</p>
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
-        ${pokemon.type
-          .map(function (type) {
-            return `
-              <img
-                src="${typeImages[type]}"
-                alt="${type}"
-                class="pokemon-type-img"
-                title="${type.charAt(0).toUpperCase() + type.slice(1)}"
-                style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
-              />
-            `;
-          })
-          .join("")}
+        ${pokemon.type.map(function (type) {
+    return `
+                <img
+                  src="${typeImages[type]}"
+                  alt="${type}"
+                  class="pokemon-type-img"
+                  title="${type.charAt(0).toUpperCase() + type.slice(1)}"
+                  style="width: 25px; height: 25px; display: inline-block; margin-right: 2px;"
+                />
+              `;
+  }).join("")}
+        </div>
       </div>
-    </div>
   `;
 }
 
