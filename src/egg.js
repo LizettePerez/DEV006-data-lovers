@@ -40,7 +40,9 @@ function cardTemplate(pokemon) {
       <p class="pokemon-num">#${pokemon.num}</p>
       <h2 class="pokemon-name">${pokemon.name}</h2>
       <div class="pokemon-type">
-        ${pokemon.type.map(function (type) {return `
+        ${pokemon.type
+          .map(function (type) {
+            return `
               <img
                 src="${typeImages[type]}"
                 alt="${type}"
