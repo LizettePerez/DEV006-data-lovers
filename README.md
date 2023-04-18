@@ -1,10 +1,9 @@
 # Pokédex de Pokemon Go
 
-Este es un proyecto de Pokédex inspirada en una base de datos de Pokemon Go, fue realizado en dupla mediante Vanilla JavaScript y la página es totalmente responsive. El proyecto comenzó con la elaboración de historias de usuario para conocer las necesidades de los jugadores, y posteriormente se realizaron prototipos de baja fidelidad para iterar sobre el diseño de la interfaz. Después, se llevaron a cabo pruebas de usuario para obtener retroalimentación y mejorar el prototipo de alta fidelidad. Las historias de usuario se pensaron para satisfacer las necesidades de los jugadores, desde nuevos hasta expertos.
+Este es un proyecto de Pokédex inspirada en una base de datos de Pokemon Go, fue realizado en dupla mediante Vanilla JavaScript y la página es totalmente responsive. El proyecto comenzó con la elaboración de historias de usuario para conocer las necesidades de los jugadores, y posteriormente se realizaron prototipos de baja fidelidad para iterar sobre el diseño de la interfaz, uno de los principales cambios entre el prototipo de baja y alta fidelidad fue la paleta de colores. Después, se llevaron a cabo pruebas de usuario para obtener retroalimentación y mejorar el prototipo de alta fidelidad. Las historias de usuario se pensaron para satisfacer las necesidades de los jugadores, desde nuevos hasta expertos.
 
 https://lizetteperez.github.io/DEV006-data-lovers/src/
 
-![pokemon-data-to-ui](image.png)
 
 # Dirigido a:
 
@@ -28,4 +27,4 @@ Huevos: muestra una lista de los Pokemon que eclosionan a partir de los diferent
 
 El desarrollo de una Pokédex funcional y útil fue un desafío debido a la gran cantidad de información que debe ser presentada de manera clara y concisa. Además, se requiere un conocimiento detallado de los Pokemon y sus características, lo que puede ser un proceso largo, también la parte para lograr que fuera responsive tuvo cierto grado de dificultad, sin embargo, se logró concretar esa parte gracias a Flexbox aplicado al CSS. Este proyecto ha sido desarrollado cuidadosamente para ofrecer una experiencia de usuario intuitiva y útil.
 
-\*\*Gracias por acercarte a nuestro proyecto, cualquier sugerencia o comentario es bienvenido.\*\*
+**Gracias por acercarte a nuestro proyecto, cualquier sugerencia o comentario es bienvenido.**
