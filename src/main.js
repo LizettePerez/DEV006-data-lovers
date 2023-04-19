@@ -85,7 +85,7 @@ function createPokemonCards(pokemonList) {
 createPokemonCards(data.pokemon);
 
 
-const sortSelect = document.querySelector("#sort-select");
+const sortSelect = document.getElementById("sort-select");
 // Event listener para detectar el cambio en el input de búsqueda
 sortSelect.addEventListener("change", function() {
   const optionValue = sortSelect.value;
@@ -115,6 +115,8 @@ botonArriba.addEventListener('click', function () {
   });
 });
 
+
+
 //EVENTO HAMBURGER
 const btnHamburger = document.getElementById("hamburger");
 btnHamburger.addEventListener("click", burgerDisplay);
@@ -126,6 +128,8 @@ function burgerDisplay() {
     navbarElement.classList.add("responsive");
   }
 }
+
+
 
 /* eslint-disable no-console */
 console.log(data);
