@@ -2,10 +2,6 @@ import  data  from './data/pokemon/pokemon.js';
 import { sortPokemon } from './data.js';
 import { searchPokemon } from './data.js';
 
-const pokemonContainer = document.querySelector(".pokemon-container");
-const searchInput = document.querySelector("#search-input");
-const sortSelect = document.querySelector("#sort-select");
-
 
 //agregar imagen a cada elemento
 const typeImages = {
@@ -55,6 +51,7 @@ function cardTemplate(pokemon) {
   `;
 }
 
+const pokemonContainer = document.querySelector(".pokemon-container");
 // Crear card de cada pokemon
 function createPokemonCards(pokemonList) {
   pokemonContainer.innerHTML = "";
@@ -81,6 +78,7 @@ export { createPokemonCards };
 createPokemonCards(data.pokemon);
 
 
+const searchInput = document.querySelector("#search-input");
 // Event listener para detectar el cambio en el input de búsqueda
 sortSelect.addEventListener("change", function() {
   const optionValue = sortSelect.value;
@@ -92,7 +90,7 @@ sortSelect.addEventListener("change", function() {
 });
 
 
-
+const sortSelect = document.querySelector("#sort-select");
 // Event listener para detectar el cambio en el input de búsqueda
 searchInput.addEventListener("input", function (search) {
   const searchText = search.target.value.toLowerCase();
