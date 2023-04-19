@@ -21,7 +21,7 @@ export function searchPokemon(searchText, unFilteredData) {
   const pokemonData = unFilteredData;
   const filteredPokemon = pokemonData.filter(function (pokemon) {
     const name = pokemon.name.toLowerCase();
-    const num = pokemon.num.toString().toLowerCase();
+    const num = pokemon.num.toString();
     return name.includes(searchText) || num.includes(searchText);
   });
 
