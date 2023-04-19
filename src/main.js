@@ -3,6 +3,8 @@ import { sortPokemon } from './data.js';
 import { searchPokemon } from './data.js';
 
 
+
+
 //agregar imagen a cada elemento
 const typeImages = {
   grass: "./img/elementos/grass.png",
@@ -51,6 +53,13 @@ function cardTemplate(pokemon) {
   `;
 }
 
+// Funcion para redirigir a un URL de el pokémon seleccionado
+function goToPokemonDetails(pokemonName) {
+  const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
+  window.location.href = pokemonDetailsUrl;
+}
+
+
 const pokemonContainer = document.querySelector(".pokemon-container");
 // Crear card de cada pokemon
 function createPokemonCards(pokemonList) {
@@ -72,13 +81,11 @@ function createPokemonCards(pokemonList) {
     pokemonContainer.appendChild(card);
   }
 }
-export { createPokemonCards };
-
 // Crear las tarjetas de Pokémon por defecto al cargar la página
 createPokemonCards(data.pokemon);
 
 
-const searchInput = document.querySelector("#search-input");
+const sortSelect = document.querySelector("#sort-select");
 // Event listener para detectar el cambio en el input de búsqueda
 sortSelect.addEventListener("change", function() {
   const optionValue = sortSelect.value;
@@ -90,7 +97,7 @@ sortSelect.addEventListener("change", function() {
 });
 
 
-const sortSelect = document.querySelector("#sort-select");
+const searchInput = document.querySelector("#search-input");
 // Event listener para detectar el cambio en el input de búsqueda
 searchInput.addEventListener("input", function (search) {
   const searchText = search.target.value.toLowerCase();
@@ -98,12 +105,6 @@ searchInput.addEventListener("input", function (search) {
 });
 
 
-
-// Funcion para redirigir a un URL de el pokémon seleccionado
-function goToPokemonDetails(pokemonName) {
-  const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
-  window.location.href = pokemonDetailsUrl;
-}
 
 const botonArriba = document.querySelector('.arriba');
 botonArriba.addEventListener('click', function () {
