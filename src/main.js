@@ -53,11 +53,13 @@ function cardTemplate(pokemon) {
   `;
 }
 
-// Funcion para redirigir a un URL de el pokémon seleccionado
 function goToPokemonDetails(pokemonName) {
+  // Creamos la URL con el nombre del pokemon pasado como argumento
   const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
+  // Cambiamos la ubicación actual del navegador a la URL del detalle del pokemon
   window.location.href = pokemonDetailsUrl;
 }
+
 
 
 const pokemonContainer = document.querySelector(".pokemon-container");
@@ -106,12 +108,14 @@ searchInput.addEventListener("input", function (search) {
 
 
 
-const botonArriba = document.querySelector('.arriba');
-botonArriba.addEventListener('click', function () {
+const botonArriba = document.querySelector(".arriba");
+botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
   window.scrollTo({
+    // Posición 0 en el eje Y
     top: 0,
-    behavior: 'smooth'
+    // Tipo de movimiento, suave
+    behavior: "smooth",
   });
 });
 

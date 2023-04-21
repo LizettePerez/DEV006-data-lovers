@@ -1,11 +1,15 @@
 import data from "./data/pokemon/pokemon.js";
 import { getMaxBaseValue } from "./data.js";
 
+// Obtener el valor del parámetro "name" de la URL actual y guardarlo en la variable "pokemonName"
 const pokemonName = new URLSearchParams(window.location.search).get("name");
+
+// Buscar el objeto Pokemon correspondiente en la matriz de objetos "pokemon" de la variable "data" utilizando el valor de "pokemonName" y guardarlo en la variable "pokemon"
 const pokemon = data.pokemon.find((p) => p.name === pokemonName);
 
+// Actualizar dinámicamente la información mostrada en la página web con los datos del Pokémon seleccionado.
 document.querySelector(".pokemon-name").textContent = pokemon.name;
-document.querySelector(".pokemon-number").textContent = `#${pokemon.num}`;
+document.querySelector(".pokemon-number").textContent = `#${pokemon.num}`; //interpolacion
 document.querySelector(".pokemon-image").src = pokemon.img;
 document.querySelector(".pokemon-description").textContent = pokemon.about;
 document.querySelector(".pokemon-height").textContent = pokemon.size.height;
@@ -19,15 +23,20 @@ document.querySelector(".pokemon-region").textContent = pokemon.generation.name;
 // document.querySelector(".stats-cp").textContent = pokemon.stats["max-cp"];
 // document.querySelector(".stats-hp").textContent = pokemon.stats["max-hp"];
 
+
+
 const volver = document.getElementById("volver");
 volver.addEventListener("click", buttomVolver);
 
+// Función que se llama cuando el usuario hace clic en el botón
 function buttomVolver() {
+  // Utilizamos el método `history.back()` para volver a la página anterior en el historial del navegador
   history.back();
+  // Usamos `return false` para evitar que el botón realice cualquier otra acción adicional.
   return false;
 }
 
-//agregar imagen a cada elemento
+// Objeto con las cadenas de enlaces a las imágenes de tipos de Pokémon
 const typeImages = {
   grass: "./img/elementos/grass.png",
   poison: "./img/elementos/poison.png",
@@ -49,18 +58,39 @@ const typeImages = {
   steel: "./img/elementos/steel.png",
 };
 
+
+
+
+function goToPokemonDetails(pokemonName) {
+  // Creamos la URL con el nombre del pokemon pasado como argumento
+  const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
+  // Cambiamos la ubicación actual del navegador a la URL del detalle del pokemon
+  window.location.href = pokemonDetailsUrl;
+}
+
+
+
+// Define una función que crea elementos de tipo de Pokemon y los agrega al contenedor especificado
 function createTypeElements(container, types, className) {
+ 
+  // Recorre cada tipo del arreglo de tipos
   for (let i = 0; i < types.length; i++) {
     const typeParagraph = document.createElement("p");
     const typeImage = document.createElement("img");
+    // Asigna la fuente de la imagen a partir del tipo
     typeImage.src = typeImages[types[i]];
     typeImage.alt = types[i];
     typeImage.title = types[i].charAt(0).toUpperCase() + types[i].slice(1);
+    // Agrega la imagen al párrafo
     typeParagraph.appendChild(typeImage);
     typeParagraph.classList.add(className);
+    // Agrega el párrafo al contenedor
     container.appendChild(typeParagraph);
   }
 }
+
+
+// Obtiene el contenedor de tipos/debilidades/resistencias del Pokemon y llama a la función createTypeElements para agregar los tipos al contenedor
 const typesContainer = document.querySelector(".pokemon-types");
 createTypeElements(typesContainer, pokemon.type, "pokemon-type");
 
@@ -68,17 +98,19 @@ const weaknessesContainer = document.querySelector(".pokemon-weaknesses-types");
 createTypeElements(weaknessesContainer, pokemon.weaknesses, "pokemon-weakness");
 
 const resistancesContainer = document.querySelector(".pokemon-resistant-types");
-createTypeElements(
-  resistancesContainer,
-  pokemon.resistant,
-  "pokemon-resistance"
-);
+createTypeElements(resistancesContainer, pokemon.resistant, "pokemon-resistance");
 
 
+
+
+
+// Comprobamos si el pokemon tiene información de evolución
 if (pokemon && pokemon.evolution) {
+  // Obtenemos la información de evolución del pokemon y creamos una lista de evoluciones que incluye al pokemon actual
   let evolution = pokemon.evolution;
   const evolutions = [pokemon]; // incluir el pokemon actual en la lista de evoluciones
 
+  // Mostrar las pre-evoluciones
   while (evolution && evolution["prev-evolution"]) {
     const prevEvolution = evolution["prev-evolution"][0];
     const prevPokemon = data.pokemon.find(function (pokemon) {
@@ -89,6 +121,7 @@ if (pokemon && pokemon.evolution) {
     evolution = prevPokemon.evolution;
   }
 
+  // Mostrar evoluciones
   evolution = pokemon.evolution;
   while (evolution && evolution["next-evolution"]) {
     const nextEvolution = evolution["next-evolution"][0];
@@ -100,13 +133,16 @@ if (pokemon && pokemon.evolution) {
     evolution = nextPokemon.evolution;
   }
 
+  // Finalmente, creamos y agregamos el HTML de cada evolución a la sección
   const evolutionContainer = document.querySelector(".pokemon-evolution");
   let evolutionsHtml = "";
 
+  // Creamos una cadena HTML para cada evolución
   for (let i = 0; i < evolutions.length; i++) {
     const evolution = evolutions[i];
     let typesHtml = "";
 
+    // Creamos una cadena HTML para cada tipo de la evolución
     for (let j = 0; j < evolution.type.length; j++) {
       const type = evolution.type[j];
       typesHtml += `
@@ -119,6 +155,7 @@ if (pokemon && pokemon.evolution) {
         />
       `;
     }
+    // Agregamos el HTML de cada evolución a la cadena principal
     evolutionsHtml += `
       <div class="pokemon-evolution-detail">
         <img class="pokemon-evolution-img" src="${evolution.img}">
@@ -127,7 +164,7 @@ if (pokemon && pokemon.evolution) {
         <div class="pokemon-evolution-type">
           ${typesHtml}
         </div>
-        </div>
+      </div>
     `;
   }
 
@@ -145,21 +182,15 @@ if (pokemon && pokemon.evolution) {
   }
 
   evolutionContainer.classList.remove("hidden");
-} else {
-  document.querySelector(".pokemon-evolution").classList.add("hidden");
 }
 
-// function getMaxBaseValue(statName) {
-//   let max = 0;
-//   for (let i = 0; i < data.pokemon.length; i++) {
-//     const statValue = parseInt(data.pokemon[i].stats[statName]);
-//     if (statValue > max) {
-//       max = statValue;
-//     }
-//   }
-//   return max;
-// }
 
+
+
+
+
+
+// Obtener el valor máximo de cada stat, función en data.js
 const maxBaseAttackValue = getMaxBaseValue("base-attack");
 const maxBaseDefenseValue = getMaxBaseValue("base-defense");
 const maxBaseStaminaValue = getMaxBaseValue("base-stamina");
@@ -168,8 +199,11 @@ const maxMaxHPValue = getMaxBaseValue("max-hp");
 
 
 
+
+
 // Obtener el elemento div donde se mostrarán las barras
 const pokemonBarsElement = document.getElementById("pokemon-bars");
+
 
 function createPokemonStatsBar() {
   const baseAttack = parseInt(pokemon.stats["base-attack"]); // Obtener el valor de base-attack del objeto pokemon
@@ -186,6 +220,8 @@ function createPokemonStatsBar() {
 
   const baseHP = parseInt(pokemon.stats["max-hp"]);
   const widthHP = (baseHP / maxMaxHPValue) * 100;
+
+
 
   // Crear contenedor para barras
   const statsBarContainer = document.createElement("div");
@@ -207,6 +243,8 @@ function createPokemonStatsBar() {
   staminaBarElement.classList.add("base-stamina");
   staminaBarElement.textContent =
     "Base Stamina " + pokemon.stats["base-stamina"];
+
+
 
   // Crear div para la barra de cp
   const cpBarElement = document.createElement("div");
@@ -243,6 +281,8 @@ function createPokemonStatsBar() {
   hpBar.classList.add("pokemon-hp-bar");
   hpBar.style.width = `${widthHP}%`;
 
+
+
   // Agregar la barra de ataque a la barra principal
   attackBar.appendChild(attackBarElement);
   statsBarContainer.appendChild(attackBar);
@@ -266,29 +306,32 @@ function createPokemonStatsBar() {
   return statsBarContainer;
 }
 
-// Crear la barra de ataque del Pokémon actual
-const currentPokemonAttackBar = createPokemonStatsBar(
-  pokemon,
-  maxBaseAttackValue,
-  maxBaseDefenseValue
-);
+// Crear la barra del Pokémon actual
+const currentPokemonBar = createPokemonStatsBar();
 
 // Agregar la barra al contenedor pokemon-bars
-pokemonBarsElement.appendChild(currentPokemonAttackBar);
+pokemonBarsElement.appendChild(currentPokemonBar);
 
-function goToPokemonDetails(pokemonName) {
-  const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
-  window.location.href = pokemonDetailsUrl;
-}
+
+
+
+
+
 
 const botonArriba = document.querySelector(".arriba");
 botonArriba.addEventListener("click", function () {
   // Usa la función "scrollTo" para moverte al inicio del documento
   window.scrollTo({
+    // Posición 0 en el eje Y
     top: 0,
+    // Tipo de movimiento, suave
     behavior: "smooth",
   });
 });
+
+
+
+
 
 //EVENTO HAMBURGER
 const btnHamburger = document.getElementById("hamburger");
@@ -301,6 +344,12 @@ function burgerDisplay() {
     navbarElement.classList.add("responsive");
   }
 }
+
+
+
+
+
+
 
 /* eslint-disable no-console */
 console.log(pokemon);

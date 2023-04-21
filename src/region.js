@@ -85,10 +85,17 @@ function addFilterButtonRegion(button, region) {
 addFilterButtonRegion(kantoButton, "kanto");
 addFilterButtonRegion(johtoButton, "johto");
 
+
+
+
 function goToPokemonDetails(pokemonName) {
   const pokemonDetailsUrl = "./pokemon-details.html?name=" + pokemonName;
   window.location.href = pokemonDetailsUrl;
 }
+
+
+
+
 
 const botonArriba = document.querySelector(".arriba");
 botonArriba.addEventListener("click", function () {
