@@ -74,9 +74,6 @@ createTypeElements(
   "pokemon-resistance"
 );
 
-// function getPokemonByName(name) {
-//   return pokemonListData.find((pokemon) => pokemon.name === name);
-// }
 
 if (pokemon && pokemon.evolution) {
   let evolution = pokemon.evolution;
