@@ -17,7 +17,7 @@ La página está dirigida a los fanáticos de Pokémon Go y a los jugadores nuev
 
 Puedes acceder a nuestra Pokédex en el siguiente enlace:
 
-## [Pokédex de Pokémon Go](https://lizetteperez.github.io/DEV006-data-lovers/src/)
+## [Pokédex de Pokémon Go](https://lizetteperez.github.io/Data-Lovers-PokemonGo/src/index.html)
 
 
 ## 2. Características
